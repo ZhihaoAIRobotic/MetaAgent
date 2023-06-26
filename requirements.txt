@@ -98,7 +98,7 @@ tokenizers
 toml
 toolz
 torch
-torchaudio>
+torchaudio
 torchvision
 tornado
 tqdm
