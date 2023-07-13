@@ -2,24 +2,22 @@ import uuid
 from typing import Any, Optional, Iterable, List
 import chromadb
 from chromadb import Settings
-from superagi.config.config import get_config
-from DIMA.vector_store.base import VectorStore
-from superagi.vector_store.base import Document
-from superagi.vector_store.embedding.openai import BaseEmbedding
+from dima.configs.config import CHROMA_HOST_NAME, CHROMA_PORT
+from dima.vector_store.base import VectorStore
+from dima.embedding.base import Embeddings
+from dima.memory.base import Memory
 
 
 def _build_chroma_client():
-    chroma_host_name = get_config("CHROMA_HOST_NAME") or "localhost"
-    chroma_port = get_config("CHROMA_PORT") or 8000
-    return chromadb.Client(Settings(chroma_api_impl="rest", chroma_server_host=chroma_host_name,
-                                    chroma_server_http_port=chroma_port))
+    return chromadb.Client(Settings(chroma_api_impl="rest", chroma_server_host=CHROMA_HOST_NAME,
+                                    chroma_server_http_port=CHROMA_PORT))
 
 
 class ChromaVS(VectorStore):
     def __init__(
             self,
             collection_name: str,
-            embedding_model: BaseEmbedding,
+            embedding_model: Embeddings,
             text_field: str,
             namespace: Optional[str] = "",
     ):
@@ -68,10 +66,9 @@ class ChromaVS(VectorStore):
         )
         return ids
 
-    def get_matching_text(self, query: str, top_k: int = 5, metadata: Optional[dict] = {}, **kwargs: Any) -> List[
-        Document]:
+    def get_matching_text(self, query: str, top_k: int = 5, metadata: Optional[dict] = {}, **kwargs: Any) -> List[Memory]:
         """Return docs most similar to query using specified search type."""
-        embedding_vector = self.embedding_model.get_embedding(query)
+        embedding_vector = self.embedding_model.embed_query(query)
         collection = self.client.get_collection(name=self.collection_name)
         filters = {}
         for key in metadata.keys():
@@ -90,7 +87,7 @@ class ChromaVS(VectorStore):
                 results["documents"][0],
                 results["metadatas"][0]):
             documents.append(
-                Document(
+                Memory(
                     text_content=text,
                     metadata=metadata
                 )
