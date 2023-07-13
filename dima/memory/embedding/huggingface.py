@@ -1,4 +1,5 @@
-from DIMA.embeddings.base import Embeddings
+"""Wrapper around sentence_transformers embedding models."""
+from dima.memory.embedding.base import Embeddings
 from typing import Any, List
 from pydantic import BaseModel, Extra
 
@@ -11,18 +12,6 @@ DEFAULT_QUERY_INSTRUCTION = (
 
 
 class HuggingFaceEmbeddings(BaseModel, Embeddings):
-    """Wrapper around sentence_transformers embedding models.
-
-    To use, you should have the ``sentence_transformers`` python package installed.
-
-    Example:
-        .. code-block:: python
-
-            from langchain.embeddings import HuggingFaceEmbeddings
-            model_name = "sentence-transformers/all-mpnet-base-v2"
-            hf = HuggingFaceEmbeddings(model_name=model_name)
-    """
-
     client: Any  #: :meta private:
     model_name: str = DEFAULT_MODEL_NAME
     """Model name to use."""

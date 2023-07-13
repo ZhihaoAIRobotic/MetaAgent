@@ -2,11 +2,10 @@
 
 import os
 from typing import Any, Dict, List, Optional
-
 import requests
 from pydantic import BaseModel, root_validator
-from DIMA.embeddings.base import Embeddings
-from langchain.utils import get_from_dict_or_env
+from dima.memory.embedding.base import Embeddings
+from dima.configs.config import JINA_AUTH_TOKEN
 
 
 class JinaEmbeddings(BaseModel, Embeddings):
@@ -23,9 +22,7 @@ class JinaEmbeddings(BaseModel, Embeddings):
     def validate_environment(cls, values: Dict) -> Dict:
         """Validate that auth token exists in environment."""
         # Set Auth
-        jina_auth_token = get_from_dict_or_env(
-            values, "jina_auth_token", "JINA_AUTH_TOKEN"
-        )
+        jina_auth_token = JINA_AUTH_TOKEN
         values["jina_auth_token"] = jina_auth_token
         values["request_headers"] = (("authorization", jina_auth_token),)
 

@@ -14,10 +14,3 @@ class Embeddings(ABC):
     def embed_query(self, text: str) -> List[float]:
         """Embed query text."""
 
-    async def aembed_documents(self, texts: List[str]) -> List[List[float]]:
-        """Embed search docs."""
-        raise NotImplementedError
-
-    async def aembed_query(self, text: str) -> List[float]:
-        """Embed query text."""
-        raise NotImplementedError
