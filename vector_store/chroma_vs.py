@@ -1,11 +1,9 @@
 import uuid
 from typing import Any, Optional, Iterable, List
-
 import chromadb
 from chromadb import Settings
-
 from superagi.config.config import get_config
-from superagi.vector_store.base import VectorStore
+from DIMA.vector_store.base import VectorStore
 from superagi.vector_store.base import Document
 from superagi.vector_store.embedding.openai import BaseEmbedding
 
@@ -17,7 +15,7 @@ def _build_chroma_client():
                                     chroma_server_http_port=chroma_port))
 
 
-class ChromaDB(VectorStore):
+class ChromaVS(VectorStore):
     def __init__(
             self,
             collection_name: str,
@@ -68,7 +66,6 @@ class ChromaDB(VectorStore):
             metadatas=metadatas,
             ids=ids
         )
-
         return ids
 
     def get_matching_text(self, query: str, top_k: int = 5, metadata: Optional[dict] = {}, **kwargs: Any) -> List[
