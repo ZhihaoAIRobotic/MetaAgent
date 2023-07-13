@@ -3,8 +3,8 @@ from typing import Any, Optional, Iterable, List
 import chromadb
 from chromadb import Settings
 from dima.configs.config import CHROMA_HOST_NAME, CHROMA_PORT
-from dima.vector_store.base import VectorStore
-from dima.embedding.base import Embeddings
+from dima.memory.vector_store.base import VectorStore
+from dima.memory.embedding.base import Embeddings
 from dima.memory.base import Memory
 
 
