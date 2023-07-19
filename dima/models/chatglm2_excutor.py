@@ -32,23 +32,3 @@ dep = Deployment(uses=Chatglm2)
 
 with dep:
     dep.block()
-
-
-
-# from jina import Executor, requests, Deployment
-# from docarray import DocList
-# from docarray.documents import TextDoc
-
-
-# class MyExecutor(Executor):
-#     @requests
-#     def foo(self, docs: DocList[TextDoc], **kwargs) -> DocList[TextDoc]:
-#         for d in docs:
-#             d.text = 'hello world'
-#         return docs
-
-
-# with Deployment(uses=MyExecutor) as dep:
-#     response_docs = dep.post(on='/', inputs=DocList[TextDoc]([TextDoc(text='hello')]), return_type=DocList[TextDoc])
-#     print(f'Text: {response_docs[0].text}')
-
