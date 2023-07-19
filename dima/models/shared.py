@@ -2,7 +2,7 @@ import sys
 from typing import Any
 from models.loader.args import parser
 from models.loader.loader import LoaderCheckPoint
-from models.configs.model_config import llm_model_dict, LLM_MODEL
+from models.configs.model_config import (llm_model_dict, LLM_MODEL)
 from models.base.base import BaseAnswer
 
 loaderCheckPoint: LoaderCheckPoint = None
