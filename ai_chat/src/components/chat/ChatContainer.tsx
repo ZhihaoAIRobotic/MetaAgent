@@ -8,11 +8,11 @@ const botid = 2;
 
 export const ChatContainer = () => {
   return (
-    <div className="rounded-md shadow-lg w-full max-w-2xl h-screen bg-gray-400/20 overflow-y-scroll">
+    <div className="relative rounded-md shadow-lg w-full max-w-2xl h-screen bg-gray-400/20 overflow-y-scroll">
       <div className="w-full h-60 sticky top-0 backdrop-blur-sm shadow-sm py-5">
         <BotAvatar />
       </div>
-      <div className="flex flex-col space-y-2 py-5 px-10 h-[calc(100%-10rem-3rem)]">
+      <div className="flex flex-col space-y-2 pt-5 pb-24 px-10 ">
         {chat.map((msg, index) => {
           const { message, time, senderId, feedback } = msg;
           if (msg.senderId === botid) {
@@ -21,7 +21,7 @@ export const ChatContainer = () => {
           return <UserMsgBox msg={message} />;
         })}
       </div>
-      <div className="h-20 w-full items-center flex space-x-2 px-4 sticky bottom-0 bg-black/10 shadow-sm backdrop-blur-sm">
+      <div className="h-20 w-full max-w-2xl items-center flex space-x-2 px-4 fixed bottom-0 bg-black/10 shadow-sm backdrop-blur-sm">
         <Input type="text" className="h-12" />
         <Button type="submit" className="px-2 py-2 h-fit">
           <PaperPlaneIcon className="w-6 h-6" />
