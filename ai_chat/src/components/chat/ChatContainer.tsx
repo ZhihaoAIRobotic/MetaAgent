@@ -5,18 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { format, isSameDay } from "date-fns";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useLocalStorage } from "@react-hooks-library/core";
 
 // temp data
 const doamin = "https://u51443-9850-22580c53.neimeng.seetacloud.com:6443";
@@ -28,6 +26,7 @@ const FormSchema = z.object({
 });
 
 export const ChatContainer = () => {
+  // const [state, setValue] = useLocalStorage("chat","");
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -104,7 +103,7 @@ export const ChatContainer = () => {
 
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={void form.handleSubmit(onSubmit)}
           className="h-16 w-full max-w-2xl items-center flex space-x-2 px-4 fixed bottom-0 bg-black/10 shadow-sm backdrop-blur-sm"
         >
           <FormField

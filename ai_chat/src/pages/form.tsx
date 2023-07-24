@@ -40,7 +40,7 @@ export default function Home() {
     >
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={void form.handleSubmit(onSubmit)}
           className="w-full max-w-xl border border-gray-700 rounded-md p-10 shadow-md  space-y-6 "
         >
           <FormField
