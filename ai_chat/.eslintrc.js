@@ -1,4 +1,3 @@
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
@@ -20,7 +19,7 @@ const config = {
   },
   plugins: ["@typescript-eslint"],
   extends: [
-    "next/core-web-vitals",
+    // "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],

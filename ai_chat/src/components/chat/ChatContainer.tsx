@@ -15,7 +15,17 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useLocalStorage } from "@react-hooks-library/core";
+import { useMemo } from "react";
 
+
+ /**
+  * todo:
+  * chat time 
+  * chat feedback
+  * localstorage
+  * 
+  * avatar images
+  */
 // temp data
 const doamin = "https://u51443-9850-22580c53.neimeng.seetacloud.com:6443";
 const userId = 0;
@@ -25,21 +35,43 @@ const FormSchema = z.object({
   message: z.string().min(1),
 });
 
+type Chat = {
+  message: string;
+  createAt: number;
+  blob?: string;
+  senderId: number;
+}
+type ResponseChat = {
+  text: string;
+  blob?: string;
+};
+type Response = {
+    data: ResponseChat[];
+}
+
 export const ChatContainer = () => {
-  // const [state, setValue] = useLocalStorage("chat","");
+  const [state, setValue] = useLocalStorage("chat","");
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit = (
+  const onSubmit = async (
     data: z.infer<typeof FormSchema>,
     e?: React.BaseSyntheticEvent,
   ) => {
     e?.preventDefault();
-    // console.log(data);
+    console.log("input",data);
 
     const { message } = data;
-    fetchChat(message);
+    const newChat = {
+      message,
+      createAt: Date.now(),
+      senderId: userId,
+    };
+    const newChatList = [...chat, newChat];
+    setValue(JSON.stringify(newChatList));
+
+   await fetchChat(message);
   };
 
   const fetchChat = async (msg: string) => {
@@ -56,12 +88,28 @@ export const ChatContainer = () => {
           data: [{ text: msg }],
         }),
       });
-      const data = await res.json();
-      console.log(data);
+      const data = await res.json( )as Response;
+      console.log("res",data);
+
+      const { data: chat } = data;
+      const { text ,blob} = chat[0];
+      const newChat = {
+        message: text,
+        blob,
+        createAt: Date.now(),
+        senderId: 1,
+      };
+      const newChatList = [...chat, newChat];
+      setValue(JSON.stringify(newChatList));
+
     } catch (err) {
       console.log(err);
     }
   };
+
+  const chat = useMemo(() => {
+    return state ? JSON.parse(state) as Chat[] : [];
+  },[state]);
 
   const getDate = (current: Date, previous?: Date) => {
     if (!previous || !isSameDay(current, previous)) {
@@ -126,30 +174,30 @@ export const ChatContainer = () => {
   );
 };
 
-const chat = [
-  {
-    message: "Hi",
-    createAt: 1690165666,
-    senderId: 0,
-  },
-  {
-    message: "Hello. How can I help You?",
-    createAt: 1690165766,
-    senderId: 2,
-    feedback: {
-      isSent: true,
-      isDelivered: true,
-      isSeen: true,
-    },
-  },
-  {
-    message: "Can I get details of my last transaction I made last month? 🤔",
-    createAt: 1690165886,
-    senderId: 0,
-    feedback: {
-      isSent: true,
-      isDelivered: true,
-      isSeen: true,
-    },
-  },
-];
+// const chat = [
+//   {
+//     message: "Hi",
+//     createAt: 1690165666,
+//     senderId: 0,
+//   },
+//   {
+//     message: "Hello. How can I help You?",
+//     createAt: 1690165766,
+//     senderId: 2,
+//     feedback: {
+//       isSent: true,
+//       isDelivered: true,
+//       isSeen: true,
+//     },
+//   },
+//   {
+//     message: "Can I get details of my last transaction I made last month? 🤔",
+//     createAt: 1690165886,
+//     senderId: 0,
+//     feedback: {
+//       isSent: true,
+//       isDelivered: true,
+//       isSeen: true,
+//     },
+//   },
+// ];
