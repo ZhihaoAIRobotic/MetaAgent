@@ -67,18 +67,20 @@ export const ChatContainer = () => {
       createAt: Date.now(),
       senderId: userId,
     };
-    const newChatList = [...chat, newChat];
-    setValue(JSON.stringify(newChatList));
 
-   await fetchChat(message);
+
+   const res = await fetchChat(message);
+   const newChatList = [...chat, newChat,res];
+
+   setValue(JSON.stringify(newChatList));
    return;
   };
 
   const fetchChat = async (msg: string) => {
     try {
       
-    
-      await fetch(`${doamin}/chat/`, {
+      const testDo= "http://localhost:3000/api/hello"
+      const res = await fetch(testDo, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -91,8 +93,8 @@ export const ChatContainer = () => {
       .then(data => {
 
         console.log("data",data);
-        const { data: chat } = data;
-        const { text ,blob} = chat[0];
+        const { data: chatRes } = data;
+        const { text ,blob} = chatRes[0];
         const newChat = {
           message: text,
           blob,
@@ -100,39 +102,14 @@ export const ChatContainer = () => {
           senderId: 1,
         };
         const newChatList = [...chat, newChat];
-        setValue(JSON.stringify(newChatList));
+        return newChat;
+        // setValue(JSON.stringify(newChatList));
 
       }).catch((err) => {
         console.log("error: ",err)
       });
-
-
-        // const res = await fetch(`${doamin}/chat/`, {
-      //   method: "POST",
-      //   headers: new Headers({
-      //     "Content-Type": "application/json",
-      //   }),
-      //   body: JSON.stringify({
-      //     data: [{ text: msg }],
-      //   }),
-      // });
-
-
-      // console.log("res",res);
-      // const data = await res.json( )as Response;
-      // console.log("data",data);
-
-      // const { data: chat } = data;
-      // const { text ,blob} = chat[0];
-      // const newChat = {
-      //   message: text,
-      //   blob,
-      //   createAt: Date.now(),
-      //   senderId: 1,
-      // };
-      // const newChatList = [...chat, newChat];
-      // setValue(JSON.stringify(newChatList));
-
+      
+      return res;
     } catch (err) {
       console.log(err);
     }
