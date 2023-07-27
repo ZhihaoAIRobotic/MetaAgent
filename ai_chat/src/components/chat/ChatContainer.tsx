@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { format, isSameDay } from "date-fns";
-import { useForm} from "react-hook-form";
+import { SubmitHandler, useForm} from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -20,16 +20,15 @@ import { useMemo } from "react";
 
  /**
   * todo:
-  * chat time 
   * chat feedback
-  * localstorage
   * 
   * avatar images
   */
 // temp data
-const doamin = "https://u51443-9850-22580c53.neimeng.seetacloud.com:6443";
+const doamin = "http://region-46.seetacloud.com:27604";
+// const doamin = "http://region-3.seetacloud.com:57942";
 const userId = 0;
-// curl --request POST 'https://u51443-9850-22580c53.neimeng.seetacloud.com:6443/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "hello world"}], "parameters": {"param1": "hello world"}}'
+// curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "hallo,who are you"}], "parameters": {"param1": "hello world"}}'
 
 const FormSchema = z.object({
   message: z.string().min(1),
@@ -53,14 +52,14 @@ export const ChatContainer = () => {
   const [state, setValue] = useLocalStorage("chat","");
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      message: '',
+    }
   });
 
-  const onSubmit = async (
-    data: z.infer<typeof FormSchema>,
-    e?: React.BaseSyntheticEvent,
+  const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (
+    data
   ) => {
-    e?.preventDefault();
-    console.log("input",data);
 
     const { message } = data;
     const newChat = {
@@ -72,35 +71,67 @@ export const ChatContainer = () => {
     setValue(JSON.stringify(newChatList));
 
    await fetchChat(message);
+   return;
   };
 
   const fetchChat = async (msg: string) => {
     try {
-      const res = await fetch(`${doamin}/chat`, {
-        method: "Post",
-        headers: {
-          // "X-RapidAPI-Key": "your-api-key",
-          // "X-RapidAPI-Host": "api.com",
-          // 'Authorization': 'Basic ' + base64.encode("APIKEY:X"),
+      
+    
+      await fetch(`${doamin}/chat/`, {
+        method: "POST",
+        headers: new Headers({
           "Content-Type": "application/json",
-        },
+        }),
         body: JSON.stringify({
           data: [{ text: msg }],
         }),
-      });
-      const data = await res.json( )as Response;
-      console.log("res",data);
+      })
+      .then(res => res.json())
+      .then(data => {
 
-      const { data: chat } = data;
-      const { text ,blob} = chat[0];
-      const newChat = {
-        message: text,
-        blob,
-        createAt: Date.now(),
-        senderId: 1,
-      };
-      const newChatList = [...chat, newChat];
-      setValue(JSON.stringify(newChatList));
+        console.log("data",data);
+        const { data: chat } = data;
+        const { text ,blob} = chat[0];
+        const newChat = {
+          message: text,
+          blob,
+          createAt: Date.now(),
+          senderId: 1,
+        };
+        const newChatList = [...chat, newChat];
+        setValue(JSON.stringify(newChatList));
+
+      }).catch((err) => {
+        console.log("error: ",err)
+      });
+
+
+        // const res = await fetch(`${doamin}/chat/`, {
+      //   method: "POST",
+      //   headers: new Headers({
+      //     "Content-Type": "application/json",
+      //   }),
+      //   body: JSON.stringify({
+      //     data: [{ text: msg }],
+      //   }),
+      // });
+
+
+      // console.log("res",res);
+      // const data = await res.json( )as Response;
+      // console.log("data",data);
+
+      // const { data: chat } = data;
+      // const { text ,blob} = chat[0];
+      // const newChat = {
+      //   message: text,
+      //   blob,
+      //   createAt: Date.now(),
+      //   senderId: 1,
+      // };
+      // const newChatList = [...chat, newChat];
+      // setValue(JSON.stringify(newChatList));
 
     } catch (err) {
       console.log(err);
@@ -113,12 +144,14 @@ export const ChatContainer = () => {
 
   const getDate = (current: Date, previous?: Date) => {
     if (!previous || !isSameDay(current, previous)) {
-      <div className="text-center text-gray-400 text-xs py-2">
-        {format(current, "dd-MMMM-yyyy")}
-      </div>;
+      return(
+        <div className="text-center text-gray-400 text-xs py-2">
+          {format(current, "dd MMMM yyyy")}
+        </div>
+      );
     }
 
-    return;
+   return null;
   };
 
   return (
@@ -129,29 +162,29 @@ export const ChatContainer = () => {
       </div>
 
       {/* Message Container */}
-      <div className="flex flex-col space-y-2 pt-5 pb-24 px-10 ">
+      <div className="space-y-4 pt-5 pb-24 px-10 ">
         {chat.map((msg, index) => {
           const { message } = msg;
           const msgTime = new Date(msg.createAt);
-          const prevTime = chat[(index = 1)]
+          const prevTime = chat[(index - 1)]
             ? new Date(chat[index - 1]?.createAt)
             : undefined;
           return (
-            <>
+            <div key={index} className="flex flex-col">
               {getDate(msgTime, prevTime)}
               {msg.senderId === userId ? (
                 <UserMsgBox msg={message} />
               ) : (
                 <BotMsgBox msg={message} />
               )}
-            </>
+            </div>
           );
         })}
       </div>
 
       <Form {...form}>
         <form
-          onSubmit={void form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit((data)=>(void onSubmit(data)))}
           className="h-16 w-full max-w-2xl items-center flex space-x-2 px-4 fixed bottom-0 bg-black/10 shadow-sm backdrop-blur-sm"
         >
           <FormField
@@ -160,7 +193,7 @@ export const ChatContainer = () => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input placeholder="......" {...field} className="h-10" />
+                  <Input {...field}  className="h-10" />
                 </FormControl>
               </FormItem>
             )}
@@ -177,12 +210,12 @@ export const ChatContainer = () => {
 // const chat = [
 //   {
 //     message: "Hi",
-//     createAt: 1690165666,
+//     createAt: 1690439387000,
 //     senderId: 0,
 //   },
 //   {
 //     message: "Hello. How can I help You?",
-//     createAt: 1690165766,
+//     createAt: 1690439387000,
 //     senderId: 2,
 //     feedback: {
 //       isSent: true,
@@ -192,7 +225,7 @@ export const ChatContainer = () => {
 //   },
 //   {
 //     message: "Can I get details of my last transaction I made last month? 🤔",
-//     createAt: 1690165886,
+//     createAt: 1690439387000,
 //     senderId: 0,
 //     feedback: {
 //       isSent: true,

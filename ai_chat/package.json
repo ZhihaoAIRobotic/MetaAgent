@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "lint:prettier": "find ./src -type f \\( -iname '*.ts' -o -iname '*.tsx' \\) -exec prettier --write '{}' +",
     "typecheck": "tsc --noEmit",
-    "postinstall": "yarn lint && yarn typecheck "
+    "postinstall": "yarn lint && yarn typecheck"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
