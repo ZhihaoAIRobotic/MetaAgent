@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useLocalStorage } from "@react-hooks-library/core";
 import { useMemo } from "react";
+import axios from "axios";
 
 
  /**
@@ -25,8 +26,8 @@ import { useMemo } from "react";
   * avatar images
   */
 // temp data
-const doamin = "http://localhost:3000/api";
-// const doamin = "http://region-46.seetacloud.com:27604";
+// const doamin = "http://localhost:3000/api";
+const doamin = "http://region-46.seetacloud.com:27604";
 // const doamin = "http://region-3.seetacloud.com:57942";
 
 const userId = 0;
@@ -80,21 +81,11 @@ export const ChatContainer = () => {
 
   const fetchChat = async (msg: string) => {
     try {
-      
-      const testDo= "/hello"
-      const res = await fetch(`${doamin}/chat`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify({
-          data: [{ text: msg }],
-        }),
+      const axiosRes =  axios.post(`${doamin}/chat`, {
+        data: [{ text: msg }],
       })
-      .then(res => res.json())
-      .then(data => {
-
-        console.log("data",data);
+      .then((response) => {
+        const { data } = response;
         const { data: chatRes } = data;
         const { text ,blob} = chatRes[0];
         const newChat = {
@@ -103,15 +94,12 @@ export const ChatContainer = () => {
           createAt: Date.now(),
           senderId: 1,
         };
-        const newChatList = [...chat, newChat];
         return newChat;
-        // setValue(JSON.stringify(newChatList));
-
       }).catch((err) => {
         console.log("error: ",err)
-      });
-      
-      return res;
+        });
+
+      return axiosRes;
     } catch (err) {
       console.log(err);
     }
