@@ -25,8 +25,10 @@ import { useMemo } from "react";
   * avatar images
   */
 // temp data
-const doamin = "http://region-46.seetacloud.com:27604";
+const doamin = "http://localhost:3000/api";
+// const doamin = "http://region-46.seetacloud.com:27604";
 // const doamin = "http://region-3.seetacloud.com:57942";
+
 const userId = 0;
 // curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "hallo,who are you"}], "parameters": {"param1": "hello world"}}'
 
@@ -79,8 +81,8 @@ export const ChatContainer = () => {
   const fetchChat = async (msg: string) => {
     try {
       
-      const testDo= "http://localhost:3000/api/hello"
-      const res = await fetch(testDo, {
+      const testDo= "/hello"
+      const res = await fetch(`${doamin}/chat`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
