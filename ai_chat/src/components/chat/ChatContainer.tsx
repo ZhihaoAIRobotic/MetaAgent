@@ -27,9 +27,8 @@ import axios from "axios";
   */
 // temp data
 // const doamin = "http://localhost:3000/api";
-const doamin = "http://region-46.seetacloud.com:27604";
-// const doamin = "http://region-3.seetacloud.com:57942";
-
+// const doamin = "http://region-46.seetacloud.com:27604";
+const doamin = "http://region-3.seetacloud.com:57942";
 const userId = 0;
 // curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "hallo,who are you"}], "parameters": {"param1": "hello world"}}'
 
@@ -106,7 +105,7 @@ export const ChatContainer = () => {
   };
 
   const chat = useMemo(() => {
-    return state ? JSON.parse(state) as Chat[] : [];
+    return state ? JSON.parse(state).filter((v:Chat)=> !!v) as Chat[] : [];
   },[state]);
 
   const getDate = (current: Date, previous?: Date) => {
