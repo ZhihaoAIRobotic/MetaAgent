@@ -33,7 +33,7 @@ type Data = {
 // const doamin = "http://localhost:3000/api";
 // const doamin = "http://region-46.seetacloud.com:27604";
 const doamin = "http://region-3.seetacloud.com:57942";
-// curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "hallo,who are you"}], "parameters": {"param1": "hello world"}}'
+// curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "you: hallo,who are you \nassistant: "}], "parameters": {"param1": "hello world"}}'
 
 export default async function handler(
   req: NextApiRequest,
@@ -44,7 +44,7 @@ export default async function handler(
   const data = {
     data: [
       {
-        text,
+        text: `You: ${text} \nAssistant: `,
       },
     ],
     parameters: {
