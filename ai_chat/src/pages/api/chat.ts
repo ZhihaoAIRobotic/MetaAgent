@@ -31,9 +31,8 @@ type Data = {
 };
 // temp data
 // const doamin = "http://localhost:3000/api";
-// const doamin = "http://region-46.seetacloud.com:27604";
-const doamin = "http://region-3.seetacloud.com:57942";
-// curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "you: hallo,who are you \nassistant: "}], "parameters": {"param1": "hello world"}}'
+const doamin = "http://region-46.seetacloud.com:30956";
+// curl --request POST 'http://region-46.seetacloud.com:30956/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "you: hallo,who are you \nassistant: "}], "parameters": {"param1": "hello world"}}'
 
 export default async function handler(
   req: NextApiRequest,
@@ -54,6 +53,7 @@ export default async function handler(
 
   const axiosRes = await axios.post<ApiRes>(`${doamin}/chat`, data);
 
-  console.log(axiosRes.data);
+  // console.log(axiosRes.data);
+
   return res.status(200).json(axiosRes.data);
 }

@@ -74,20 +74,19 @@ export const ChatContainer = () => {
 
     const res = await fetchChat(message);
     const newChatList = [...chat, newChat, res];
-
+    console.log("newChatList: ", newChatList);
     setValue(JSON.stringify(newChatList));
     return;
   };
 
   const fetchChat = async (msg: string) => {
     try {
-      await axios
+      const apiRes = await axios
         .post(`${doamin}/chat`, {
           text: msg,
           parameters: "hello world",
         })
         .then((response) => {
-          // console.log("response: ", response);
           const { data } = response as ApiRes;
           const { data: chatRes } = data;
           const { text, blob } = chatRes[0];
@@ -97,11 +96,13 @@ export const ChatContainer = () => {
             createAt: Date.now(),
             senderId: 1,
           };
+          console.log({ newChat });
           return newChat;
         })
         .catch((err) => {
           console.log("error: ", err);
         });
+      return apiRes;
     } catch (err) {
       console.log(err);
     }
@@ -120,7 +121,7 @@ export const ChatContainer = () => {
   };
 
   return (
-    <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-900">
+    <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar scrollbar-thin scrollbar-thumb-gray-400/50">
       {/* Avatar */}
       <div className="sticky top-0 h-60 w-full py-5 shadow-sm backdrop-blur-sm">
         <BotAvatar />
