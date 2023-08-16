@@ -2,6 +2,9 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
+// const DOMAIN = "http://localhost:3000/api";
+const DOMAIN = "http://region-46.seetacloud.com:30956";
+
 type ResponseChat = {
   text: string;
   blob?: string;
@@ -29,10 +32,6 @@ type Data = {
   text: string;
   parameters: string;
 };
-// temp data
-// const doamin = "http://localhost:3000/api";
-const doamin = "http://region-46.seetacloud.com:30956";
-// curl --request POST 'http://region-46.seetacloud.com:30956/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "you: hallo,who are you \nassistant: "}], "parameters": {"param1": "hello world"}}'
 
 export default async function handler(
   req: NextApiRequest,
@@ -51,7 +50,7 @@ export default async function handler(
     },
   } as ResData;
 
-  const axiosRes = await axios.post<ApiRes>(`${doamin}/chat`, data);
+  const axiosRes = await axios.post<ApiRes>(`${DOMAIN}/chat`, data);
 
   // console.log(axiosRes.data);
 
