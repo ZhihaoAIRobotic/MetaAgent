@@ -14,18 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-/**
- * todo:
- * chat feedback
- *
- * avatar images
- */
-// temp data
 const doamin = "http://localhost:3000/api";
-// const doamin = "http://region-46.seetacloud.com:27604";
-// const doamin = "http://region-3.seetacloud.com:57942";
 const userId = 0;
-// curl --request POST 'http://region-46.seetacloud.com:27604/chat' --header 'Content-Type: application/json' -d '{"data": [{"text": "hallo,who are you"}], "parameters": {"param1": "hello world"}}'
 
 const FormSchema = z.object({
   message: z.string().min(1),
