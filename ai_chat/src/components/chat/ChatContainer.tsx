@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-const doamin = "http://localhost:3001/api";
+const doamin = "http://localhost:3000/api";
 const userId = 0;
 
 const FormSchema = z.object({
