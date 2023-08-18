@@ -109,7 +109,7 @@ class DIMAdataloader(ABC):
             e.args += (error_msg,)
             raise e
 
-    def split_docs(self, file_path) -> List[Document]:
+    def __call__(self, file_path):
         docs = self.load_data_source(file_path)
 
         def length_function(text: str) -> int:
@@ -131,12 +131,12 @@ class DIMAdataloader(ABC):
 def main():
     parser = argparse.ArgumentParser(
     description='Start LLM and Embeddings models as a service.')
-    parser.add_argument('--file_path', type=str, default='/home/wy/桌面/alex_kendall_phd_thesis_compressed.pdf')
+    parser.add_argument('--file_path', type=str, default='/home/wy/桌面/datasets/taxonomy-IJCV.pdf')
     args, _ = parser.parse_known_args()
 
     dataloader = DIMAdataloader()
 
-    docs = dataloader.split_docs(args.file_path)
+    docs = dataloader(args.file_path)
 
 if __name__ == '__main__':
     main()
