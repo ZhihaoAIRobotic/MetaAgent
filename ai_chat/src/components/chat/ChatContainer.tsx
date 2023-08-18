@@ -3,7 +3,7 @@ import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { useLocalStorage } from "@react-hooks-library/core";
 import axios from "axios";
 import { format, isSameDay } from "date-fns";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-const doamin = "http://localhost:3000/api";
+const doamin = "http://localhost:3001/api";
 const userId = 0;
 
 const FormSchema = z.object({
@@ -40,6 +40,7 @@ type ApiRes = {
 
 export const ChatContainer = () => {
   const [state, setValue] = useLocalStorage("chat", "");
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -62,10 +63,13 @@ export const ChatContainer = () => {
       senderId: userId,
     };
 
-    const res = await fetchChat(message);
-    const newChatList = [...chat, newChat, res];
-    console.log("newChatList: ", newChatList);
+    const newChatList = [...chat, newChat];
     setValue(JSON.stringify(newChatList));
+    setIsLoading(true);
+    const res = await fetchChat(message);
+    setIsLoading(false);
+    const resChatList = [...newChatList, res];
+    setValue(JSON.stringify(resChatList));
     return;
   };
 
@@ -86,7 +90,6 @@ export const ChatContainer = () => {
             createAt: Date.now(),
             senderId: 1,
           };
-          console.log({ newChat });
           return newChat;
         })
         .catch((err) => {
@@ -114,7 +117,7 @@ export const ChatContainer = () => {
     <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar scrollbar-thin scrollbar-thumb-gray-400/50">
       {/* Avatar */}
       <div className="sticky top-0 h-60 w-full py-5 shadow-sm backdrop-blur-sm">
-        <BotAvatar />
+        <BotAvatar isLoading={isLoading} />
       </div>
 
       {/* Message Container */}
@@ -162,31 +165,3 @@ export const ChatContainer = () => {
     </div>
   );
 };
-
-// const chat = [
-//   {
-//     message: "Hi",
-//     createAt: 1690439387000,
-//     senderId: 0,
-//   },
-//   {
-//     message: "Hello. How can I help You?",
-//     createAt: 1690439387000,
-//     senderId: 2,
-//     feedback: {
-//       isSent: true,
-//       isDelivered: true,
-//       isSeen: true,
-//     },
-//   },
-//   {
-//     message: "Can I get details of my last transaction I made last month? 🤔",
-//     createAt: 1690439387000,
-//     senderId: 0,
-//     feedback: {
-//       isSent: true,
-//       isDelivered: true,
-//       isSeen: true,
-//     },
-//   },
-// ];
