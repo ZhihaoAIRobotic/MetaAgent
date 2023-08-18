@@ -3,7 +3,7 @@ type BotMsgBoxProps = {
 };
 export const BotMsgBox: React.FC<BotMsgBoxProps> = ({ msg }) => {
   return (
-    <div className="self-start bg-gray-50 rounded-r-lg rounded-bl-lg shadow-lg p-4 w-fit">
+    <div className="w-fit self-start rounded-r-lg rounded-bl-lg bg-gray-50 p-4 shadow-lg">
       {msg}
     </div>
   );

@@ -1,3 +1,7 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -11,9 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -31,7 +32,7 @@ export default function Home() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+    // console.log(data);
   }
 
   return (
@@ -41,7 +42,7 @@ export default function Home() {
       <Form {...form}>
         <form
           onSubmit={void form.handleSubmit(onSubmit)}
-          className="w-full max-w-xl border border-gray-700 rounded-md p-10 shadow-md  space-y-6 "
+          className="w-full max-w-xl space-y-6 rounded-md border border-gray-700 p-10  shadow-md "
         >
           <FormField
             control={form.control}
