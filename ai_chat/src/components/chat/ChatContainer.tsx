@@ -1,9 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { useLocalStorage } from "@react-hooks-library/core";
+import { useScrollIntoView } from "@reactuses/core";
 import axios from "axios";
 import { format, isSameDay } from "date-fns";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -41,6 +42,10 @@ type ApiRes = {
 export const ChatContainer = () => {
   const [state, setValue] = useLocalStorage("chat", "");
   const [isLoading, setIsLoading] = useState(false);
+  const chatRef = useRef<HTMLDivElement>(null);
+  const { scrollIntoView } = useScrollIntoView(chatRef, {
+    offset: 72,
+  });
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -65,11 +70,14 @@ export const ChatContainer = () => {
 
     const newChatList = [...chat, newChat];
     setValue(JSON.stringify(newChatList));
+    scrollIntoView();
     setIsLoading(true);
     const res = await fetchChat(message);
     setIsLoading(false);
     const resChatList = [...newChatList, res];
     setValue(JSON.stringify(resChatList));
+    scrollIntoView();
+
     return;
   };
 
@@ -93,11 +101,11 @@ export const ChatContainer = () => {
           return newChat;
         })
         .catch((err) => {
-          console.log("error: ", err);
+          // console.log("error: ", err);
         });
       return apiRes;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -114,7 +122,7 @@ export const ChatContainer = () => {
   };
 
   return (
-    <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar scrollbar-thin scrollbar-thumb-gray-400/50">
+    <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar-thin scrollbar-thumb-gray-400/50">
       {/* Avatar */}
       <div className="sticky top-0 h-60 w-full py-5 shadow-sm backdrop-blur-sm">
         <BotAvatar isLoading={isLoading} />
@@ -140,7 +148,7 @@ export const ChatContainer = () => {
           );
         })}
       </div>
-
+      <div ref={chatRef}></div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => void onSubmit(data))}

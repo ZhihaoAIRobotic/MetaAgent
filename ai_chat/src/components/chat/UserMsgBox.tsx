@@ -3,7 +3,7 @@ type UserMsgBoxProps = {
 };
 export const UserMsgBox: React.FC<UserMsgBoxProps> = ({ msg }) => {
   return (
-    <div className="self-end bg-gray-50 rounded-l-lg rounded-br-lg shadow-lg p-4 w-fit bg-green-500/75">
+    <div className="w-fit self-end rounded-l-lg rounded-br-lg bg-gray-50 bg-green-500/75 p-4 shadow-lg">
       {msg}
     </div>
   );
