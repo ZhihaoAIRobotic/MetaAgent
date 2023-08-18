@@ -57,8 +57,18 @@ def unnormalize(tensor, mean, std):
     for t, m, s in zip(tensor, mean, std):
         t.mul_(s).add_(m)
     return tensor
-
-
+    # for i, (t, m, s) in enumerate(zip(tensor, mean, std)):
+    #     tensor[i] = t * s + m
+    # return tensor
+    # unnormalized_tensor = tensor.clone()
+    # for i, (t, m, s) in enumerate(zip(unnormalized_tensor, mean, std)):
+    #     unnormalized_tensor[i] = t * s + m
+    # return unnormalized_tensor
+    # with torch.no_grad():
+    #     unnormalized_tensor = tensor.clone()
+    #     for i, (m, s) in enumerate(zip(mean, std)):
+    #         unnormalized_tensor[i] = unnormalized_tensor[i] * s + m
+    return tensor
 def tensor2rgb(img_tensor):
     """ Convert an image tensor to a numpy RGB image.
 
@@ -69,7 +79,7 @@ def tensor2rgb(img_tensor):
         np.array: RGB image of shape (H, W, 3)
     """
     output_img = unnormalize(img_tensor.clone(), [0.5, 0.5, 0.5], [0.5, 0.5, 0.5])
-    output_img = output_img.squeeze().permute(1, 2, 0).cpu().numpy()
+    output_img = output_img.squeeze().permute(1, 2, 0).detach().cpu().numpy()
     output_img = np.round(output_img * 255).astype('uint8')
 
     return output_img
