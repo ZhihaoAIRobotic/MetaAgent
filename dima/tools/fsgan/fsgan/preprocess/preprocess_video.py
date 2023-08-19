@@ -253,7 +253,7 @@ class VideoProcessBase(object):
             for i, frame in enumerate(tqdm(in_vid_loader, unit='batches', file=sys.stdout)):
                 frame = frame.to(self.device)
                 poses = self.face_pose(frame).div_(99.)  # Yaw, Pitch, Roll
-                seq_poses.append(poses.cpu().numpy())
+                seq_poses.append(poses.cpu().detach().numpy())
             seq_poses = np.concatenate(seq_poses)
 
             # Save poses to file
@@ -332,7 +332,7 @@ class VideoProcessBase(object):
                 frame = frame.to(self.device)
                 H = self.L(frame)
                 landmarks = self.heatmap_encoder(H)
-                seq_landmarks.append(landmarks.cpu().numpy())
+                seq_landmarks.append(landmarks.cpu().detach().numpy())
             seq_landmarks = np.concatenate(seq_landmarks)
 
             # Save landmarks to file
