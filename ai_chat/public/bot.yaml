@@ -1,0 +1,5 @@
+LLM_Model: ChatGML2-6B
+PDF_path: ./data_cache/PDF_path
+Tools:
+  -name: "faceswapgan"
+  -description: "use faceswapgan to swap faces"
