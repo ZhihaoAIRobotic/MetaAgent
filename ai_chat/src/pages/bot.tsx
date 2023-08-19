@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Link from "next/link";
+import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
@@ -60,9 +61,9 @@ export default function Bot() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
-  // const onDrop = useCallback((acceptedFiles) => {
-  //   // Do something with the files
-  // }, []);
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    // Do something with the files
+  }, []);
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({ onDrop });
   const files = acceptedFiles.map((file) => (
