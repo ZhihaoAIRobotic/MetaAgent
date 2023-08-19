@@ -9,12 +9,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function form() {
   return (
-    <div>
-      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-md bg-gray-200/50 p-2">
-        <Link href={"/"} className="rounded p-2 hover:bg-gray-500/50">
+    <div className="bg-gray-900">
+      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-full bg-gray-100/80 p-2">
+        <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/50">
           <Chat />
         </Link>
-        <Link href={"/bot"} className="rounded p-2 hover:bg-gray-500/50">
+        <Link href={"/bot"} className="rounded-full p-2 hover:bg-gray-500/50">
           <BotIcon />
         </Link>
       </div>
