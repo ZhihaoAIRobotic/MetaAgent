@@ -6,6 +6,11 @@ import argparse
 import tiktoken
 from abc import ABC, abstractmethod
 from transformers import AutoModel, AutoTokenizer
+from docarray import DocumentArray, Document
+from docarray import Document as Jocument
+from jina import Deployment, Executor, requests
+
+
 from langchain.document_loaders import (
     CSVLoader,
     EverNoteLoader,
@@ -59,7 +64,7 @@ class DIMAdataloader(ABC):
         self.chunk_overlap = chunk_overlap
         self.tokenizer = tokenizer
 
-    def load_directory(self, path: str, silent_errors=True) -> List[Document]:
+    def load_directory(self, path: str, silent_errors=True):
         # We don't load hidden files starting with "."
         all_files = list(Path(path).rglob("**/[!.]*"))
         results = []
@@ -79,7 +84,7 @@ class DIMAdataloader(ABC):
             file_path: str,
             mapping: dict = FILE_LOADER_MAPPING,
             default_loader: BaseLoader = UnstructuredFileLoader,
-    ) -> Document:
+    ):
         # Choose loader from mapping, load default if no match found
         ext = "." + file_path.rsplit(".", 1)[-1]
         if ext in mapping:
@@ -90,7 +95,7 @@ class DIMAdataloader(ABC):
         return loader.load()
 
 
-    def load_data_source(self, data_source: str) -> List[Document]:
+    def load_data_source(self, data_source: str):
         is_web = data_source.startswith("http")
         is_dir = os.path.isdir(data_source)
         is_file = os.path.isfile(data_source)
@@ -109,7 +114,7 @@ class DIMAdataloader(ABC):
             e.args += (error_msg,)
             raise e
 
-    def __call__(self, file_path):
+    def __call__(self, file_path: str):
         docs = self.load_data_source(file_path)
 
         def length_function(text: str) -> int:
@@ -124,9 +129,24 @@ class DIMAdataloader(ABC):
         )
 
         splitted_docs = text_splitter.split_documents(docs)
-        print(f"Loaded: {len(splitted_docs)} document chucks")
+        _docs = DocumentArray(Jocument(text=[docs.page_content for docs in splitted_docs]))[0]
+        print(f"Loaded: {len(_docs.content)} document chucks")
 
         return splitted_docs
+
+# class Init_Formats(Executor):
+#     def __call__(self, strings, **kwargs):
+#         return DocumentArray(Jocument(text=strings))
+
+# class KnowledgeDatabaseChroma(Executor):
+#     def __init__(self,  *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.data_loader = DIMAdataloader()
+#
+#     def split_docs(self, file_path: DocumentArray, **kwargs):
+#         docs = self.data_loader(DocumentArray(Jocument(text=file_path)).contents[0])
+#         print(len(docs))
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -134,8 +154,8 @@ def main():
     parser.add_argument('--file_path', type=str, default='/home/wy/桌面/datasets/taxonomy-IJCV.pdf')
     args, _ = parser.parse_known_args()
 
+    # init_formats = Init_Formats()
     dataloader = DIMAdataloader()
-
     docs = dataloader(args.file_path)
 
 if __name__ == '__main__':
