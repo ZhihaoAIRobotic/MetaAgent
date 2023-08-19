@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Link from "next/link";
-import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
@@ -15,7 +14,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -62,9 +60,9 @@ export default function Bot() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
-  const onDrop = useCallback((acceptedFiles: any) => {
-    // Do something with the files
-  }, []);
+  // const onDrop = useCallback((acceptedFiles) => {
+  //   // Do something with the files
+  // }, []);
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({ onDrop });
   const files = acceptedFiles.map((file) => (
@@ -109,11 +107,11 @@ export default function Bot() {
     }
   };
 
-  const onFileUpload = (event: any) => {
-    // const file = document.getElementById("picture") as HTMLInputElement;
+  // const onFileUpload = (event:) => {
+  //   // const file = document.getElementById("picture") as HTMLInputElement;
 
-    console.log(event);
-  };
+  //   console.log(event);
+  // };
 
   return (
     <div className="bg-gray-900">
