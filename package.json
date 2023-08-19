@@ -1,3 +1,5 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "write-yaml-file": "^5.0.0"
+  }
 }

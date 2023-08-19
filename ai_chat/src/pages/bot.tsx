@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -50,7 +49,7 @@ export default function Bot() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    // console.log(data);
+    console.log(data);
   }
 
   const onFileUpload = ({ target }: { target: HTMLInputElement }) => {
