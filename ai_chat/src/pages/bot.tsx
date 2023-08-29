@@ -40,7 +40,7 @@ type ApiRes = {
 };
 
 const doamin = "http://localhost:3000/api";
-const model = ["ChatGML2-6B"];
+const model = ["ChatGLM2-6B","Llama2-7B","GPT2"];
 
 const tools = [
   {
@@ -50,7 +50,7 @@ const tools = [
 ];
 
 const FormSchema = z.object({
-  model: z.enum(["ChatGML2-6B"], {
+  model: z.enum(["ChatGLM2-6B","Llama2-7B","GPT2"], {
     required_error: "You need to select a model",
   }),
   tool: z.enum(["faceswapgan"], {

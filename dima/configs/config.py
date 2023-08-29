@@ -1,3 +1,6 @@
 CHROMA_PORT = 8000
 CHROMA_HOST_NAME = "localhost"
 JINA_AUTH_TOKEN = "1"
+
+
+

@@ -3,7 +3,7 @@ import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // const DOMAIN = "http://localhost:3000/api";
-const DOMAIN = "http://region-46.seetacloud.com:30956";
+const DOMAIN = "http://localhost:60008";
 
 type ResponseChat = {
   text: string;
