@@ -5,12 +5,6 @@ from typing import List
 import argparse
 import tiktoken
 from abc import ABC, abstractmethod
-from transformers import AutoModel, AutoTokenizer
-from docarray import DocumentArray
-from docarray import Document as Jocument
-from jina import Deployment, Executor, requests
-
-
 from langchain.document_loaders import (
     CSVLoader,
     EverNoteLoader,
@@ -58,7 +52,7 @@ WEB_LOADER_MAPPING = {
 }
 
 
-class DIMAdataloader(ABC):
+class Dataloader(ABC):
     def __init__(self, chunk_size=1024, chunk_overlap=32, tokenizer=tiktoken.get_encoding('cl100k_base')):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
@@ -116,7 +110,7 @@ class DIMAdataloader(ABC):
 
     def __call__(self, file_path: str):
         docs = self.load_data_source(file_path)
-
+        doc_text = ""
         def length_function(text: str) -> int:
             # count chunks like the embeddings model tokenizer does
             return len(self.tokenizer.encode(text, disallowed_special=()))
@@ -129,20 +123,23 @@ class DIMAdataloader(ABC):
         )
 
         splitted_docs = text_splitter.split_documents(docs)
-        _docs = DocumentArray(Jocument(text=[docs.page_content for docs in splitted_docs]))[0]
-        print(f"Loaded: {len(_docs.content)} document chucks")
+        doc_text_list = [docs.page_content for docs in splitted_docs]
+        for i in doc_text_list:
+            print(i)
+            doc_text += i
 
-        return splitted_docs
+        return _docs
 
 def main():
     parser = argparse.ArgumentParser(
     description='Start LLM and Embeddings models as a service.')
-    parser.add_argument('--file_path', type=str, default='/home/wy/桌面/datasets/taxonomy-IJCV.pdf')
+    parser.add_argument('--file_path', type=str, default='/home/lzh/核心技术及创新点.pdf')
     args, _ = parser.parse_known_args()
 
     # init_formats = Init_Formats()
-    dataloader = DIMAdataloader()
+    dataloader = Dataloader()
     docs = dataloader(args.file_path)
+    # print
 
 if __name__ == '__main__':
     main()
