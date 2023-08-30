@@ -6,7 +6,7 @@ import argparse
 import tiktoken
 from abc import ABC, abstractmethod
 from transformers import AutoModel, AutoTokenizer
-from docarray import DocumentArray, Document
+from docarray import DocumentArray
 from docarray import Document as Jocument
 from jina import Deployment, Executor, requests
 
