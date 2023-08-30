@@ -5,7 +5,7 @@ from docarray import DocList
 
 
 class Chatglm2(Executor):
-    def __init__(self, param1=1, param2=2, param3=3, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True)
         model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True, device='cuda')
@@ -13,22 +13,14 @@ class Chatglm2(Executor):
 
     @requests(on='/chat')
     def chat(self, docs, **kwargs):
-        prompt = "Girlfriend's Persona: She is a very cute girlfriend.\
-                                            <START> \
-                                            [DIALOGUE HISTORY] \
-                                            You: hi, dear, \
-                                            Girlfriend: hi, dear \
-                                            You: "
-        prompt2 = " Girlfriend: "
-        input = prompt + docs[0].text + prompt2
+        input = docs[0].text 
         response, history = self.model.chat(self.tokenizer, input, history=[])
         # print(response)
         doc = DocList[TextDoc]([TextDoc(text=response)])
         return doc
 
 
-dep = Deployment(uses=Chatglm2)
-
-
-with dep:
-    dep.block()
+if __name__ == '__main__':
+    dep = Deployment(uses=Chatglm2, port=60008, protocol='http')
+    with dep:
+        dep.block()
