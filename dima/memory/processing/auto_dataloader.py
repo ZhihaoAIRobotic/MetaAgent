@@ -134,20 +134,6 @@ class DIMAdataloader(ABC):
 
         return splitted_docs
 
-# class Init_Formats(Executor):
-#     def __call__(self, strings, **kwargs):
-#         return DocumentArray(Jocument(text=strings))
-
-# class KnowledgeDatabaseChroma(Executor):
-#     def __init__(self,  *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.data_loader = DIMAdataloader()
-#
-#     def split_docs(self, file_path: DocumentArray, **kwargs):
-#         docs = self.data_loader(DocumentArray(Jocument(text=file_path)).contents[0])
-#         print(len(docs))
-
-
 def main():
     parser = argparse.ArgumentParser(
     description='Start LLM and Embeddings models as a service.')
