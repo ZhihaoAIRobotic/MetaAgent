@@ -3,7 +3,13 @@ import shutil
 from pathlib import Path
 from typing import List
 import argparse
+import tiktoken
+from abc import ABC, abstractmethod
 from transformers import AutoModel, AutoTokenizer
+from docarray import DocumentArray
+from docarray import Document as Jocument
+from jina import Deployment, Executor, requests
+
 
 from langchain.document_loaders import (
     CSVLoader,
@@ -52,99 +58,92 @@ WEB_LOADER_MAPPING = {
 }
 
 
-def load_document(
-    file_path: str,
-    mapping: dict = FILE_LOADER_MAPPING,
-    default_loader: BaseLoader = UnstructuredFileLoader,
-) -> Document:
-    # Choose loader from mapping, load default if no match found
-    ext = "." + file_path.rsplit(".", 1)[-1]
-    if ext in mapping:
-        loader_class, loader_args = mapping[ext]
-        loader = loader_class(file_path, **loader_args)
-    else:
-        loader = default_loader(file_path)
-    return loader.load()
+class DIMAdataloader(ABC):
+    def __init__(self, chunk_size=1024, chunk_overlap=32, tokenizer=tiktoken.get_encoding('cl100k_base')):
+        self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
+        self.tokenizer = tokenizer
+
+    def load_directory(self, path: str, silent_errors=True):
+        # We don't load hidden files starting with "."
+        all_files = list(Path(path).rglob("**/[!.]*"))
+        results = []
+        with tqdm(total=len(all_files), desc="Loading documents", ncols=80) as pbar:
+            for file in all_files:
+                try:
+                    results.extend(self.load_document(str(file)))
+                except Exception as e:
+                    if silent_errors:
+                        print(f"failed to load {file}")
+                    else:
+                        raise e
+                pbar.update()
+        return results
+
+    def load_document(self,
+            file_path: str,
+            mapping: dict = FILE_LOADER_MAPPING,
+            default_loader: BaseLoader = UnstructuredFileLoader,
+    ):
+        # Choose loader from mapping, load default if no match found
+        ext = "." + file_path.rsplit(".", 1)[-1]
+        if ext in mapping:
+            loader_class, loader_args = mapping[ext]
+            loader = loader_class(file_path, **loader_args)
+        else:
+            loader = default_loader(file_path)
+        return loader.load()
 
 
-def load_directory(path: str, silent_errors=True) -> List[Document]:
-    # We don't load hidden files starting with "."
-    all_files = list(Path(path).rglob("**/[!.]*"))
-    results = []
-    with tqdm(total=len(all_files), desc="Loading documents", ncols=80) as pbar:
-        for file in all_files:
-            try:
-                results.extend(load_document(str(file)))
-            except Exception as e:
-                if silent_errors:
-                    print(f"failed to load {file}")
-                else:
-                    raise e
-            pbar.update()
-    return results
+    def load_data_source(self, data_source: str):
+        is_web = data_source.startswith("http")
+        is_dir = os.path.isdir(data_source)
+        is_file = os.path.isfile(data_source)
+        docs = None
+        try:
+            if is_dir:
+                docs = self.load_directory(data_source)
+            elif is_file:
+                docs = self.load_document(data_source)
+            elif is_web:
+                docs = self.load_document(data_source, WEB_LOADER_MAPPING, WebBaseLoader)
+            return docs
+        except Exception as e:
+            error_msg = f"Failed to load your data source '{data_source}'."
+            print(error_msg)
+            e.args += (error_msg,)
+            raise e
 
+    def __call__(self, file_path: str):
+        docs = self.load_data_source(file_path)
 
-def load_data_source(data_source: str) -> List[Document]:
-    is_web = data_source.startswith("http")
-    is_dir = os.path.isdir(data_source)
-    is_file = os.path.isfile(data_source)
-    docs = None
-    try:
-        if is_dir:
-            docs = load_directory(data_source)
-        elif is_file:
-            docs = load_document(data_source)
-        elif is_web:
-            docs = load_document(data_source, WEB_LOADER_MAPPING, WebBaseLoader)
-        return docs
-    except Exception as e:
-        error_msg = f"Failed to load your data source '{data_source}'."
-        print(error_msg)
-        e.args += (error_msg,)
-        raise e
+        def length_function(text: str) -> int:
+            # count chunks like the embeddings model tokenizer does
+            return len(self.tokenizer.encode(text, disallowed_special=()))
 
-# def get_tokenizer(options: dict) -> Embeddings:
-#     match options["model"].embedding:
-#         case EMBEDDINGS.OPENAI:
-#             tokenizer = tiktoken.encoding_for_model(EMBEDDINGS.OPENAI)
-#         case EMBEDDINGS.HUGGINGFACE:
-#             tokenizer = AutoTokenizer.from_pretrained(EMBEDDINGS.HUGGINGFACE)
-#     return tokenizer
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=self.chunk_size,
+            chunk_overlap=self.chunk_overlap,
+            length_function=length_function,
+            separators=["\n\n", "\n", " ", ""],
+        )
 
-def split_docs(docs: List[Document], options: dict) -> List[Document]:
-    tokenizer = AutoTokenizer.from_pretrained(options['tokenizer'])
+        splitted_docs = text_splitter.split_documents(docs)
+        _docs = DocumentArray(Jocument(text=[docs.page_content for docs in splitted_docs]))[0]
+        print(f"Loaded: {len(_docs.content)} document chucks")
 
-    def length_function(text: str) -> int:
-        # count chunks like the embeddings model tokenizer does
-        return len(tokenizer.encode(text))
-
-    chunk_overlap = int(options["chunk_size"] * options["chunk_overlap_size"] / 100)
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=options["chunk_size"],
-        chunk_overlap=chunk_overlap,
-        length_function=length_function,
-        separators=["\n\n", "\n", " ", ""],
-    )
-
-    splitted_docs = text_splitter.split_documents(docs)
-    print(f"Loaded: {len(splitted_docs)} document chucks")
-    return splitted_docs
-
-
-def initialze_models():
-    options_defaults = {
-        'tokenizer': '',
-        "model": 'chatglm-6b',
-        "chunk_size": 1024,
-        "chunk_overlap_size": 128,
-        "max_tokens": 2048}
-    return options_defaults
+        return splitted_docs
 
 def main():
     parser = argparse.ArgumentParser(
     description='Start LLM and Embeddings models as a service.')
-    parser.add_argument('--file_path', type=str, defalut='./DIMA/xxx.pdf')
-    args = parser.parse_args()
+    parser.add_argument('--file_path', type=str, default='/home/wy/桌面/datasets/taxonomy-IJCV.pdf')
+    args, _ = parser.parse_known_args()
 
-    options = initialze_models()
-    split_docs(args.file_path, options)
+    # init_formats = Init_Formats()
+    dataloader = DIMAdataloader()
+    docs = dataloader(args.file_path)
+
+if __name__ == '__main__':
+    main()
+
