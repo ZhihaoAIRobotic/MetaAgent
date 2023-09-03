@@ -1,0 +1,78 @@
+LLM_Model: Chatglm2
+PDF_path: ./data_cache/pdf
+Vector_store: ChromaVS
+Tools:
+  - name: "faceswapgan"
+    description: "Use faceswapgan to swap faces"
+
+
+OPENAI_API_BASE: "https://api.openai.com/v1"
+#OPENAI_PROXY: "http://127.0.0.1:8118"
+OPENAI_API_KEY: "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"
+OPENAI_API_MODEL: "gpt-3.5-turbo"
+MAX_TOKENS: 1500
+RPM: 10
+
+#### if Anthropic
+#Anthropic_API_KEY: "YOUR_API_KEY"
+
+#### if AZURE, check https://github.com/openai/openai-cookbook/blob/main/examples/azure/chat.ipynb
+
+#OPENAI_API_TYPE: "azure"
+#OPENAI_API_BASE: "YOUR_AZURE_ENDPOINT"
+#OPENAI_API_KEY: "YOUR_AZURE_API_KEY"
+#OPENAI_API_VERSION: "YOUR_AZURE_API_VERSION"
+#DEPLOYMENT_ID: "YOUR_DEPLOYMENT_ID"
+
+#### for Search
+
+## Supported values: serpapi/google/serper/ddg
+#SEARCH_ENGINE: serpapi
+
+## Visit https://serpapi.com/ to get key.
+#SERPAPI_API_KEY: "YOUR_API_KEY"
+
+## Visit https://console.cloud.google.com/apis/credentials to get key.
+#GOOGLE_API_KEY: "YOUR_API_KEY"
+## Visit https://programmablesearchengine.google.com/controlpanel/create to get id.
+#GOOGLE_CSE_ID: "YOUR_CSE_ID"
+
+## Visit https://serper.dev/ to get key.
+#SERPER_API_KEY: "YOUR_API_KEY"
+
+#### for web access
+
+## Supported values: playwright/selenium
+#WEB_BROWSER_ENGINE: playwright
+
+## Supported values: chromium/firefox/webkit, visit https://playwright.dev/python/docs/api/class-browsertype
+##PLAYWRIGHT_BROWSER_TYPE: chromium
+
+## Supported values: chrome/firefox/edge/ie, visit https://www.selenium.dev/documentation/webdriver/browsers/
+# SELENIUM_BROWSER_TYPE: chrome
+
+#### for TTS
+
+#AZURE_TTS_SUBSCRIPTION_KEY: "YOUR_API_KEY"
+#AZURE_TTS_REGION: "eastus"
+
+#### for Stable Diffusion
+## Use SD service, based on https://github.com/AUTOMATIC1111/stable-diffusion-webui
+SD_URL: "YOUR_SD_URL"
+SD_T2I_API: "/sdapi/v1/txt2img"
+
+#### for Execution
+#LONG_TERM_MEMORY: false
+
+#### for Mermaid CLI
+## If you installed mmdc (Mermaid CLI) only for metagpt then enable the following configuration.
+#PUPPETEER_CONFIG: "./config/puppeteer-config.json"
+#MMDC: "./node_modules/.bin/mmdc"
+
+
+### for calc_usage
+# CALC_USAGE: false
+
+### for Research
+MODEL_FOR_RESEARCHER_SUMMARY: gpt-3.5-turbo
+MODEL_FOR_RESEARCHER_REPORT: gpt-3.5-turbo-16k
