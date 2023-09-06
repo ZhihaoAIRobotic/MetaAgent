@@ -16,8 +16,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -40,7 +40,7 @@ type ApiRes = {
 };
 
 const doamin = "http://localhost:3000/api";
-const model = ["ChatGLM2-6B","Llama2-7B","GPT2"];
+const model = ["ChatGLM2-6B", "Llama2-7B", "GPT2"];
 
 const tools = [
   {
@@ -50,12 +50,13 @@ const tools = [
 ];
 
 const FormSchema = z.object({
-  model: z.enum(["ChatGLM2-6B","Llama2-7B","GPT2"], {
+  model: z.enum(["ChatGLM2-6B", "Llama2-7B", "GPT2"], {
     required_error: "You need to select a model",
   }),
   tool: z.enum(["faceswapgan"], {
     required_error: "You need to select a Tool",
   }),
+  filePath: z.string(),
 });
 
 export default function Bot() {
@@ -116,12 +117,12 @@ export default function Bot() {
   // };
 
   return (
-    <div className="bg-gray-900">
-      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-full bg-gray-100/80 p-2">
-        <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/50">
+    <div className="bg-[#27272A]">
+      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-full bg-gray-50/10 p-2">
+        <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/20">
           <Chat />
         </Link>
-        <Link href={"/bot"} className="rounded-full p-2 hover:bg-gray-500/50">
+        <Link href={"/bot"} className="rounded-full p-2 hover:bg-gray-500/20">
           <BotIcon />
         </Link>
       </div>
@@ -209,39 +210,22 @@ export default function Bot() {
                 </FormItem>
               )}
             />
-            {/* <FormField
+            <FormField
               control={form.control}
-              name="tool"
+              name="filePath"
               render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel className="font-semibold">Tools</FormLabel>
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-col space-y-1"
-                    >
-                      {tools.map((item) => (
-                        <FormItem
-                          className="flex items-center space-x-3 space-y-0"
-                          key={item.name}
-                        >
-                          <FormControl>
-                            <RadioGroupItem value={item.name} />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {item.name}
-                          </FormLabel>
-                        </FormItem>
-                      ))}
-                    </RadioGroup>
+                    <Input placeholder="Path" {...field} />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
-            /> */}
+            />
 
-            <div className="grid w-full max-w-sm items-center gap-1.5">
+            {/* <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="file" className="font-semibold">
                 File
               </Label>
@@ -261,7 +245,7 @@ export default function Bot() {
                   </p>
                 )}
               </div>
-            </div>
+            </div> */}
             {/* <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="file" className="font-semibold">
                 File
