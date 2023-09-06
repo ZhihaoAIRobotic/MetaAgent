@@ -14,7 +14,7 @@ class SimpleDoc(BaseDoc):
 
 
 class ShortTermMemory(BaseDoc):
-    storage: DocList[Info]
+    storage: DocList[Info] = DocList[Info]()
 
     # storage: List[str]
     def add(self, info: Info):
