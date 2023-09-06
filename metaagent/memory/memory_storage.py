@@ -5,7 +5,7 @@ from langchain.vectorstores.faiss import FAISS
 
 from metaagent.const import DATA_PATH, MEM_TTL
 from metaagent.logs import logger
-from metaagent.agents.comunication import Message
+from metaagent.information import Message
 from metaagent.utils import serialize_message, deserialize_message
 from metaagent.memory.vector_store.faiss import FaissStore
 

@@ -6,29 +6,29 @@ from typing import Type, TypedDict
 from pydantic import BaseModel
 
 from metaagent.logs import logger
+from docarray import BaseDoc
 
 
-class RawMessage(TypedDict):
+class RawInfo(BaseDoc):
     content: str
     role: str
 
 
-@dataclass
-class Message:
+class Info(BaseDoc):
     """list[<role>: <content>]"""
     content: str
-    instruct_content: BaseModel = field(default=None)
-    role: str = field(default='user')  # system / user / assistant
-    cause_by: Type["Action"] = field(default="")
-    sent_from: str = field(default="")
-    send_to: str = field(default="")
+    instruction: str
+    role: str ='user'  # system / user / assistant
+    cause_by: str
+    sent_from: str
+    send_to: str
 
-    def __str__(self):
+    def Info_str(self):
         # prefix = '-'.join([self.role, str(self.cause_by)])
         return f"{self.role}: {self.content}"
 
-    def __repr__(self):
-        return self.__str__()
+    def Info_str_repr(self):
+        return self.Info_str()
 
     def to_dict(self) -> dict:
         return {

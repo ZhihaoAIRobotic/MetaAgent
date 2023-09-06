@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from metaagent.logs import logger
-from metaagent.memory.memory import Memory
+from metaagent.memory.shortterm_memory import Memory
 from metaagent.memory.memory_storage import MemoryStorage
-from metaagent.agents.comunication import Message
+from metaagent.information import Message
 
 
 class LongTermMemory(Memory):

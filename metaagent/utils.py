@@ -12,7 +12,7 @@ import pickle
 import tiktoken
 
 from metaagent.actions.action_output import ActionOutput
-from metaagent.agents.comunication import Message
+from metaagent.information import Message
 
 
 def get_class(class_name):

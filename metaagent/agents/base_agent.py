@@ -10,9 +10,9 @@ from metaagent.config import CONFIG
 from metaagent.actions.action import Action, ActionOutput
 from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
-from metaagent.memory.memory import Memory
+from metaagent.memory.shortterm_memory import Memory
 from metaagent.memory.longterm_memory import LongTermMemory
-from metaagent.agents.comunication import Message
+from metaagent.information import Message
 
 from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE, ROLE_TEMPLATE 
 
@@ -61,7 +61,7 @@ class RoleContext(BaseModel):
         return self.memory.get()
 
 
-class Role:
+class Agent:
     """角色/代理"""
 
     def __init__(self, name="", profile="", goal="", constraints="", desc=""):

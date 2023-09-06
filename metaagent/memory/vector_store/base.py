@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, Iterable, List, Optional
-from metaagent.memory.memory import Memory
+from metaagent.memory.shortterm_memory import Memory
 from metaagent.config import Config
 from pathlib import Path
 
