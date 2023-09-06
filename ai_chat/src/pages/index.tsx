@@ -9,17 +9,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function form() {
   return (
-    <div className="bg-[#27272A]">
-      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-full bg-gray-100/80 p-2">
-        <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/50">
+    <div className="h-screen w-full items-center justify-center gap-4 bg-[#27272A] md:flex md:pr-10">
+      <div className="fixed left-10 top-4 z-10 flex h-fit w-fit flex-col gap-4 rounded-full bg-gray-50/10 p-2 md:relative md:left-0">
+        <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/20">
           <Chat />
         </Link>
-        <Link href={"/bot"} className="rounded-full p-2 hover:bg-gray-500/50">
+        <Link href={"/bot"} className="rounded-full p-2 hover:bg-gray-500/20">
           <BotIcon />
         </Link>
       </div>
+
       <main
-        className={`flex min-h-screen justify-center space-y-10 ${inter.className}`}
+        className={`flex h-screen w-full  max-w-2xl  items-center justify-center ${inter.className}`}
       >
         <ChatContainer />
       </main>

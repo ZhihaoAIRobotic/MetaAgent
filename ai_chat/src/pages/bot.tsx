@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
@@ -39,6 +40,7 @@ type ApiRes = {
   data: Response;
 };
 
+const inter = Inter({ subsets: ["latin"] });
 const doamin = "http://localhost:3000/api";
 const model = ["ChatGLM2-6B", "Llama2-7B", "GPT2"];
 
@@ -117,8 +119,10 @@ export default function Bot() {
   // };
 
   return (
-    <div className="bg-[#27272A]">
-      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-full bg-gray-50/10 p-2">
+    <div
+      className={`bg-[#27272A] ${inter.className} h-screen w-full items-center justify-center gap-4 md:flex`}
+    >
+      <div className="fixed left-10 top-4 z-10 flex h-fit w-fit flex-col gap-4 rounded-full bg-gray-50/10 p-2 md:relative md:left-0">
         <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/20">
           <Chat />
         </Link>
@@ -126,13 +130,11 @@ export default function Bot() {
           <BotIcon />
         </Link>
       </div>
-      <main
-        className={`flex min-h-screen flex-col items-center justify-between p-12`}
-      >
+      <main className="mx-auto flex h-full w-full max-w-xl items-center justify-center md:mx-0 md:h-fit">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit((data) => void onSubmit(data))}
-            className="w-full max-w-xl space-y-6 rounded-md bg-gray-800/50 p-10 shadow-md"
+            className="flex w-full flex-col space-y-6 rounded-md bg-gray-600/20 p-10 shadow-md "
           >
             <FormField
               control={form.control}
@@ -259,7 +261,7 @@ export default function Bot() {
               />
             </div> */}
             <Separator />
-            <Button variant={"secondary"} asChild>
+            <Button variant={"outline"} asChild className="self-center">
               <a download href={"/bot.yaml"}>
                 Download Bot
               </a>

@@ -122,7 +122,7 @@ export const ChatContainer = () => {
   };
 
   return (
-    <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar-thin scrollbar-thumb-gray-400/50">
+    <div className="relative h-full w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar-thin scrollbar-thumb-gray-400/50 md:h-4/5">
       {/* Avatar */}
       <div className="sticky top-0 h-60 w-full py-5 shadow-sm backdrop-blur-sm">
         <BotAvatar isLoading={isLoading} />
@@ -148,11 +148,13 @@ export const ChatContainer = () => {
           );
         })}
       </div>
+
       <div ref={chatRef}></div>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => void onSubmit(data))}
-          className="fixed bottom-0 flex h-16 w-full max-w-2xl items-center space-x-2 bg-black/10 px-4 shadow-sm backdrop-blur-sm"
+          className="fixed bottom-0 flex h-16 w-full max-w-2xl items-center space-x-2 bg-black/10 px-4 shadow-sm backdrop-blur-sm md:bottom-[10%]"
         >
           <FormField
             control={form.control}
