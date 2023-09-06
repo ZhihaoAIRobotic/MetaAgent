@@ -13,7 +13,6 @@ class Info(BaseDoc):
 class ShortTermMemory(BaseDoc):
     storage: DocList[Info]
 
-    # storage: List[str]
     def add(self, info: Info):
         if info in self.storage:
             return
@@ -46,7 +45,6 @@ class ShortTermMemory(BaseDoc):
         return content
 
 
-# b = ['a','b'] 
 
 
 
@@ -57,25 +55,31 @@ class FooExecutor(Executor):
 
     @requests
     def foo(self, docs: DocList[ShortTermMemory], **kwargs) -> DocList[ShortTermMemory]:
+        print('foo')
         docs[0].add(Info(text='foo', action='a'))
 
 
 class BarExecutor(Executor):
     @requests
     def bar(self, docs: DocList[ShortTermMemory], **kwargs) -> DocList[ShortTermMemory]:
-        print("query content: ", docs[0].remember_by_action('a').text)
+        print('bar')
+        docs[0].add(Info(text='bar', action='a'))
 
 
 class BazExecutor(Executor):
     @requests
     def baz(self, docs: DocList[ShortTermMemory], **kwargs) -> DocList[ShortTermMemory]:
-        docs[0].storage.text = 'bar'
+        print('baz')
+        docs[0].add(Info(text='baz', action='b'))
 
 
 class MyExecutor(Executor):
     @requests
     def foo(self, docs: DocList[ShortTermMemory], **kwargs) -> DocList[ShortTermMemory]:
-        print(docs)  # process docs here
+        # Both BarExecutor and BazExecutor only received a single Document from FooExecutor because they are run in parallel. The last Executor executor3 receives both DocLists and merges them automatically. This automated merging can be disabled with no_reduce=True. Merge and transfer are finished here. 
+        print(docs)
+        # print(docs[0])  # process docs here
+        # print(docs[1])  # process docs here
 
         # f = Flow().add(uses=Executor)  # you can add your Executor to a Flow
 
@@ -85,16 +89,20 @@ f = (
     .add(uses=FooExecutor, uses_with={"foo": 1, "bar": 1}, name='fooExecutor')
     .add(uses=BarExecutor, name='barExecutor', needs='fooExecutor')
     .add(uses=BazExecutor, name='bazExecutor', needs='fooExecutor')
-    .add(uses=MyExecutor, needs=['barExecutor', 'bazExecutor'])
+    .add(uses=MyExecutor, no_reduce=True, needs=['barExecutor', 'bazExecutor'])
 )
 
-
+f.plot()
 
 with f:
-    b = DocList[Info]([Info(text='doc1', action='a'), Info(text='doc2', action='b')])
+    b = DocList[Info]([Info(text='doc1', action='b'), Info(text='doc2', action='b')])
     a = ShortTermMemory(storage=b)
-    d = f.post('/', inputs=a, return_type=DocList[ShortTermMemory]).storage
-    print(d[0].text)
+    d = f.post('/', inputs=a, return_type=DocList[ShortTermMemory])
+    print(d)
+    print(d[0].remember_by_action('a').text)
+    print(d[0].storage.text)
+
+    # print(d[0].text)
     # f.block()
 
 
