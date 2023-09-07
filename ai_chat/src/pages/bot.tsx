@@ -65,35 +65,38 @@ export default function Bot() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Do something with the files
-  }, []);
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({ onDrop });
-  const files = acceptedFiles.map((file) => (
-    <span key={file.name}>
-      {file.name}
-      <br />
-    </span>
-  ));
+
+  //@todo: drag and drop file here
+  // const onDrop = useCallback((acceptedFiles: File[]) => {
+  //   // Do something with the files
+  // }, []);
+  // const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+  //   useDropzone({ onDrop });
+  // const files = acceptedFiles.map((file) => (
+  //   <span key={file.name}>
+  //     {file.name}
+  //     <br />
+  //   </span>
+  // ));
 
   const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (data) => {
     console.log(data);
+    const { model, tool, filePath } = data;
 
     // application/pdf
   };
 
-  const fetchChat = async (msg: string) => {
+  const fetchChat = async () => {
     try {
       const apiRes = await axios
         .post(`${doamin}/createYaml`, {
-          text: msg,
+          // text: msg,
           parameters: "hello world",
         })
         .then((response) => {
           const { data } = response as ApiRes;
           console.log("success");
-          const { data: chatRes } = data;
+          // const { data: chatRes } = data;
           // const { text, blob } = chatRes[0];
           // const newChat = {
           //   message: text,
@@ -130,7 +133,9 @@ export default function Bot() {
           <BotIcon />
         </Link>
       </div>
+
       <main className="mx-auto flex h-full w-full max-w-xl items-center justify-center md:mx-0 md:h-fit">
+        <button onClick={fetchChat}>click</button>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit((data) => void onSubmit(data))}
