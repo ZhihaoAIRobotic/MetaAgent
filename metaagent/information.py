@@ -22,7 +22,8 @@ class Info(BaseDoc):
     cause_by: str
     sent_from: str
     send_to: str
-
+    
+    @property
     def Info_str(self):
         # prefix = '-'.join([self.role, str(self.cause_by)])
         return f"{self.role}: {self.content}"

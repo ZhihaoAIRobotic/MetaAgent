@@ -9,6 +9,11 @@ class Info(BaseDoc):
     text: str
     action: str
 
+    @property
+    def Info_str(self):
+        # prefix = '-'.join([self.role, str(self.cause_by)])
+        return f"{self.action}: {self.text}"
+
 
 class ShortTermMemory(BaseDoc):
     storage: DocList[Info]
@@ -99,9 +104,9 @@ with f:
     a = ShortTermMemory(storage=b)
     d = f.post('/', inputs=a, return_type=DocList[ShortTermMemory])
     print(d)
-    print(d[0].remember_by_action('a').text)
-    print(d[0].storage.text)
-
+    print([i.Info_str for i in d[0].storage])
+    # print(type(d[0].storage)))
+    print(DocList[Info](b+d[0].storage))
     # print(d[0].text)
     # f.block()
 

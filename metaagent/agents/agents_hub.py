@@ -1,25 +1,21 @@
+from __future__ import annotations
+
 from enum import Enum
 
 from jina import Executor, requests, Flow
-from docarray import DocList
+from docarray import DocList, BaseDoc
 
 from metaagent.information import Info
 from metaagent.environment.environment import EnvInfo
+from metaagent.agents.base_agent import AgentInfo
 
-class Agent_info(BaseDoc):
-    name: str
-    role: str
-    profile: str
-    goal: str
-    constraints: str
-    desc: str
 
 class HubStart(Executor):
     def __init__(self) -> None:
         pass
 
     @requests
-    def sendto_agents(self, env_info: EnvInfo, agents_info: DocList[Info]):
+    def sendto_agents(self, env_info: EnvInfo, agents_info: DocList[AgentInfo], **kwargs):
         # Send environment info to agents
         pass
 
@@ -29,7 +25,7 @@ class HubEnd(Executor):
         pass
 
     @requests
-    def recievefrom_agents(self):
+    def recievefrom_agents(self, env_info: EnvInfo, agents_info: DocList[AgentInfo], **kwargs):
         # Recieve new environment info from agents
         pass
 

@@ -5,7 +5,7 @@ from typing import Optional
 from tenacity import retry, stop_after_attempt, wait_fixed
 
 from metaagent.actions.action_output import ActionOutput
-from metaagent.models import OpenAIGPTAPI
+from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.utils import OutputParser
 from metaagent.logs import logger
 

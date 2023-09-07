@@ -12,7 +12,7 @@ import pickle
 import tiktoken
 
 from metaagent.actions.action_output import ActionOutput
-from metaagent.information import Message
+# from metaagent.information import Message
 
 
 def get_class(class_name):
@@ -189,129 +189,129 @@ TOKEN_MAX = {
 }
 
 
-def count_message_tokens(messages, model="gpt-3.5-turbo-0613"):
-    """Return the number of tokens used by a list of messages."""
-    try:
-        encoding = tiktoken.encoding_for_model(model)
-    except KeyError:
-        print("Warning: model not found. Using cl100k_base encoding.")
-        encoding = tiktoken.get_encoding("cl100k_base")
-    if model in {
-        "gpt-3.5-turbo-0613",
-        "gpt-3.5-turbo-16k-0613",
-        "gpt-4-0314",
-        "gpt-4-32k-0314",
-        "gpt-4-0613",
-        "gpt-4-32k-0613",
-    }:
-        tokens_per_message = 3
-        tokens_per_name = 1
-    elif model == "gpt-3.5-turbo-0301":
-        tokens_per_message = 4  # every message follows <|start|>{role/name}\n{content}<|end|>\n
-        tokens_per_name = -1  # if there's a name, the role is omitted
-    elif "gpt-3.5-turbo" in model:
-        print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
-        return count_message_tokens(messages, model="gpt-3.5-turbo-0613")
-    elif "gpt-4" in model:
-        print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
-        return count_message_tokens(messages, model="gpt-4-0613")
-    else:
-        raise NotImplementedError(
-            f"""num_tokens_from_messages() is not implemented for model {model}. See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens."""
-        )
-    num_tokens = 0
-    for message in messages:
-        num_tokens += tokens_per_message
-        for key, value in message.items():
-            num_tokens += len(encoding.encode(value))
-            if key == "name":
-                num_tokens += tokens_per_name
-    num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
-    return num_tokens
+# def count_message_tokens(messages, model="gpt-3.5-turbo-0613"):
+#     """Return the number of tokens used by a list of messages."""
+#     try:
+#         encoding = tiktoken.encoding_for_model(model)
+#     except KeyError:
+#         print("Warning: model not found. Using cl100k_base encoding.")
+#         encoding = tiktoken.get_encoding("cl100k_base")
+#     if model in {
+#         "gpt-3.5-turbo-0613",
+#         "gpt-3.5-turbo-16k-0613",
+#         "gpt-4-0314",
+#         "gpt-4-32k-0314",
+#         "gpt-4-0613",
+#         "gpt-4-32k-0613",
+#     }:
+#         tokens_per_message = 3
+#         tokens_per_name = 1
+#     elif model == "gpt-3.5-turbo-0301":
+#         tokens_per_message = 4  # every message follows <|start|>{role/name}\n{content}<|end|>\n
+#         tokens_per_name = -1  # if there's a name, the role is omitted
+#     elif "gpt-3.5-turbo" in model:
+#         print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
+#         return count_message_tokens(messages, model="gpt-3.5-turbo-0613")
+#     elif "gpt-4" in model:
+#         print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
+#         return count_message_tokens(messages, model="gpt-4-0613")
+#     else:
+#         raise NotImplementedError(
+#             f"""num_tokens_from_messages() is not implemented for model {model}. See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens."""
+#         )
+#     num_tokens = 0
+#     for message in messages:
+#         num_tokens += tokens_per_message
+#         for key, value in message.items():
+#             num_tokens += len(encoding.encode(value))
+#             if key == "name":
+#                 num_tokens += tokens_per_name
+#     num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
+#     return num_tokens
 
 
-def count_string_tokens(string: str, model_name: str) -> int:
-    """
-    Returns the number of tokens in a text string.
+# def count_string_tokens(string: str, model_name: str) -> int:
+#     """
+#     Returns the number of tokens in a text string.
 
-    Args:
-        string (str): The text string.
-        model_name (str): The name of the encoding to use. (e.g., "gpt-3.5-turbo")
+#     Args:
+#         string (str): The text string.
+#         model_name (str): The name of the encoding to use. (e.g., "gpt-3.5-turbo")
 
-    Returns:
-        int: The number of tokens in the text string.
-    """
-    encoding = tiktoken.encoding_for_model(model_name)
-    return len(encoding.encode(string))
-
-
-def get_max_completion_tokens(messages: list[dict], model: str, default: int) -> int:
-    """Calculate the maximum number of completion tokens for a given model and list of messages.
-
-    Args:
-        messages: A list of messages.
-        model: The model name.
-
-    Returns:
-        The maximum number of completion tokens.
-    """
-    if model not in TOKEN_MAX:
-        return default
-    return TOKEN_MAX[model] - count_message_tokens(messages) - 1
+#     Returns:
+#         int: The number of tokens in the text string.
+#     """
+#     encoding = tiktoken.encoding_for_model(model_name)
+#     return len(encoding.encode(string))
 
 
-def actionoutout_schema_to_mapping(schema: Dict) -> Dict:
-    """
-    directly traverse the `properties` in the first level.
-    schema structure likes
-    ```
-    {
-        "title":"prd",
-        "type":"object",
-        "properties":{
-            "Original Requirements":{
-                "title":"Original Requirements",
-                "type":"string"
-            },
-        },
-        "required":[
-            "Original Requirements",
-        ]
-    }
-    ```
-    """
-    mapping = dict()
-    for field, property in schema["properties"].items():
-        if property["type"] == "string":
-            mapping[field] = (str, ...)
-        elif property["type"] == "array" and property["items"]["type"] == "string":
-            mapping[field] = (List[str], ...)
-        elif property["type"] == "array" and property["items"]["type"] == "array":
-            # here only consider the `Tuple[str, str]` situation
-            mapping[field] = (List[Tuple[str, str]], ...)
-    return mapping
+# def get_max_completion_tokens(messages: list[dict], model: str, default: int) -> int:
+#     """Calculate the maximum number of completion tokens for a given model and list of messages.
+
+#     Args:
+#         messages: A list of messages.
+#         model: The model name.
+
+#     Returns:
+#         The maximum number of completion tokens.
+#     """
+#     if model not in TOKEN_MAX:
+#         return default
+#     return TOKEN_MAX[model] - count_message_tokens(messages) - 1
 
 
-def serialize_message(message: Message):
-    message_cp = copy.deepcopy(message)  # avoid `instruct_content` value update by reference
-    ic = message_cp.instruct_content
-    if ic:
-        # model create by pydantic create_model like `pydantic.main.prd`, can't pickle.dump directly
-        schema = ic.schema()
-        mapping = actionoutout_schema_to_mapping(schema)
+# def actionoutout_schema_to_mapping(schema: Dict) -> Dict:
+#     """
+#     directly traverse the `properties` in the first level.
+#     schema structure likes
+#     ```
+#     {
+#         "title":"prd",
+#         "type":"object",
+#         "properties":{
+#             "Original Requirements":{
+#                 "title":"Original Requirements",
+#                 "type":"string"
+#             },
+#         },
+#         "required":[
+#             "Original Requirements",
+#         ]
+#     }
+#     ```
+#     """
+#     mapping = dict()
+#     for field, property in schema["properties"].items():
+#         if property["type"] == "string":
+#             mapping[field] = (str, ...)
+#         elif property["type"] == "array" and property["items"]["type"] == "string":
+#             mapping[field] = (List[str], ...)
+#         elif property["type"] == "array" and property["items"]["type"] == "array":
+#             # here only consider the `Tuple[str, str]` situation
+#             mapping[field] = (List[Tuple[str, str]], ...)
+#     return mapping
 
-        message_cp.instruct_content = {"class": schema["title"], "mapping": mapping, "value": ic.dict()}
-    msg_ser = pickle.dumps(message_cp)
 
-    return msg_ser
+# def serialize_message(message: Message):
+#     message_cp = copy.deepcopy(message)  # avoid `instruct_content` value update by reference
+#     ic = message_cp.instruct_content
+#     if ic:
+#         # model create by pydantic create_model like `pydantic.main.prd`, can't pickle.dump directly
+#         schema = ic.schema()
+#         mapping = actionoutout_schema_to_mapping(schema)
+
+#         message_cp.instruct_content = {"class": schema["title"], "mapping": mapping, "value": ic.dict()}
+#     msg_ser = pickle.dumps(message_cp)
+
+#     return msg_ser
 
 
-def deserialize_message(message_ser: str) -> Message:
-    message = pickle.loads(message_ser)
-    if message.instruct_content:
-        ic = message.instruct_content
-        ic_obj = ActionOutput.create_model_class(class_name=ic["class"], mapping=ic["mapping"])
-        ic_new = ic_obj(**ic["value"])
-        message.instruct_content = ic_new
+# def deserialize_message(message_ser: str) -> Message:
+#     message = pickle.loads(message_ser)
+#     if message.instruct_content:
+#         ic = message.instruct_content
+#         ic_obj = ActionOutput.create_model_class(class_name=ic["class"], mapping=ic["mapping"])
+#         ic_new = ic_obj(**ic["value"])
+#         message.instruct_content = ic_new
 
-    return message
+#     return message

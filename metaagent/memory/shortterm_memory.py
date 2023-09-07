@@ -26,7 +26,7 @@ class ShortTermMemory(BaseDoc):
         for info in infos:
             self.add(info)
 
-    def remember(self, k=0) -> list[Info]:
+    def remember(self, k=0) -> DocList[Info]:
         """Return the most recent k memories, return all when k=0"""
         return self.storage[-k:]
     
@@ -40,7 +40,7 @@ class ShortTermMemory(BaseDoc):
             news.append(i)
         return news
 
-    def remember_by_action(self, action: str) -> list[Info]:
+    def remember_by_action(self, action: str) -> DocList[Info]:
         """Return all messages triggered by a specified Action"""
         storage_index = InMemoryExactNNIndex[Info]()
         storage_index.index(self.storage)
@@ -48,6 +48,15 @@ class ShortTermMemory(BaseDoc):
         content = storage_index.filter(query)
         return content
 
+    def remember_by_actions(self, actions: Iterable[str]) -> DocList[Info]:
+        """Return all messages triggered by specified Actions"""
+        contents = DocList[Info]()
+        for action in actions:
+            storage_index = InMemoryExactNNIndex[Info]()
+            storage_index.index(self.storage)
+            query = {'action': {'$eq': action}}
+            contents = contents + storage_index.filter(query)
+        return DocList[Info](contents)
 
 
 # b = ['a','b'] 

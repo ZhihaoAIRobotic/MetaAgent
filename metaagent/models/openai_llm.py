@@ -178,64 +178,6 @@ from metaagent.utils import (
     get_max_completion_tokens,
 )
 
-class CostManager(metaclass=Singleton):
-    """计算使用接口的开销"""
-
-    def __init__(self):
-        self.total_prompt_tokens = 0
-        self.total_completion_tokens = 0
-        self.total_cost = 0
-        self.total_budget = 0
-
-    def update_cost(self, prompt_tokens, completion_tokens, model):
-        """
-        Update the total cost, prompt tokens, and completion tokens.
-
-        Args:
-        prompt_tokens (int): The number of tokens used in the prompt.
-        completion_tokens (int): The number of tokens used in the completion.
-        model (str): The model used for the API call.
-        """
-        self.total_prompt_tokens += prompt_tokens
-        self.total_completion_tokens += completion_tokens
-        cost = (prompt_tokens * TOKEN_COSTS[model]["prompt"] + completion_tokens * TOKEN_COSTS[model]["completion"]) / 1000
-        self.total_cost += cost
-        logger.info(
-            f"Total running cost: ${self.total_cost:.3f} | Max budget: ${CONFIG.max_budget:.3f} | "
-            f"Current cost: ${cost:.3f}, prompt_tokens: {prompt_tokens}, completion_tokens: {completion_tokens}"
-        )
-        CONFIG.total_cost = self.total_cost
-
-    def get_total_prompt_tokens(self):
-        """
-        Get the total number of prompt tokens.
-
-        Returns:
-        int: The total number of prompt tokens.
-        """
-        return self.total_prompt_tokens
-
-    def get_total_completion_tokens(self):
-        """
-        Get the total number of completion tokens.
-
-        Returns:
-        int: The total number of completion tokens.
-        """
-        return self.total_completion_tokens
-
-    def get_total_cost(self):
-        """
-        Get the total cost of API calls.
-
-        Returns:
-        float: The total cost of API calls.
-        """
-        return self.total_cost
-
-    def get_costs(self) -> Costs:
-        """获得所有开销"""
-        return Costs(self.total_prompt_tokens, self.total_completion_tokens, self.total_cost, self.total_budget)
 
 
 def log_and_reraise(retry_state):
@@ -257,7 +199,6 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         self.llm = openai
         self.model = CONFIG.openai_api_model
         self.auto_max_tokens = False
-        self._cost_manager = CostManager()
         RateLimiter.__init__(self, rpm=self.rpm)
 
     def __init_openai(self, config):
@@ -385,17 +326,6 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
             logger.info(f"Result of task {idx}: {result}")
         return results
 
-    def _update_costs(self, usage: dict):
-        if CONFIG.calc_usage:
-            try:
-                prompt_tokens = int(usage['prompt_tokens'])
-                completion_tokens = int(usage['completion_tokens'])
-                self._cost_manager.update_cost(prompt_tokens, completion_tokens, self.model)
-            except Exception as e:
-                logger.error("updating costs failed!", e)
-
-    def get_costs(self) -> Costs:
-        return self._cost_manager.get_costs()
 
     def get_max_tokens(self, messages: list[dict]):
         if not self.auto_max_tokens:
