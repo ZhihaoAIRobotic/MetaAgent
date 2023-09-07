@@ -7,7 +7,7 @@ from metaagent.logs import logger
 
 def test_write_prd():
     product_manager = ProductManager()
-    requirements = "开发一个基于大语言模型与私有知识库的搜索引擎，希望可以基于大语言模型进行搜索总结"
+    requirements = "I want an AI Agent product that can help me to write and publish paper."
     prd = product_manager.handle(Info(content=requirements, cause_by='BossRequirement'))
     logger.info(requirements)
     logger.info(prd)

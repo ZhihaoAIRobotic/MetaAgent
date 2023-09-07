@@ -81,9 +81,6 @@ class Agent(Executor):
 
     def _act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
-        print('######################################')
-        print(self.agent_info.important_memory)
-        print('######################################')
         # requirment = self.agent_info.important_memory.
         response = self.todo.run(self.agent_info.important_memory)
         if isinstance(response, ActionOutput):

@@ -8,7 +8,7 @@
 from typing import List, Tuple
 
 from metaagent.actions.action import Action, ActionOutput
-from metaagent.actions.search_and_summarize import SearchAndSummarize
+from metaagent.actions.search_and_summarize import SearchAndSummarize, SEARCH_AND_SUMMARIZE_SYSTEM_EN_US
 from metaagent.logs import logger
 
 
@@ -132,10 +132,14 @@ class WritePRD(Action):
         super().__init__(name, context, llm)
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
+
         sas = SearchAndSummarize()
-        # rsp = await sas.run(context=requirements, system_text=SEARCH_AND_SUMMARIZE_SYSTEM_EN_US)
-        rsp = ""
+        rsp = sas.run(context=requirements, system_text=SEARCH_AND_SUMMARIZE_SYSTEM_EN_US)
+        # rsp = ""
         info = f"### Search Results\n{sas.result}\n\n### Search Summary\n{rsp}"
+        print('info######################################')
+        print(info)
+        print('######################################')
         if sas.result:
             logger.info(sas.result)
             logger.info(rsp)
