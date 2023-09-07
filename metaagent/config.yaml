@@ -30,7 +30,7 @@ RPM: 10
 #SEARCH_ENGINE: serpapi
 
 ## Visit https://serpapi.com/ to get key.
-#SERPAPI_API_KEY: "YOUR_API_KEY"
+SERPAPI_API_KEY: "8dab4998fa3a8721045e2717465e6689f5dd9a9dd3d365868e99748baa01ab0d"
 
 ## Visit https://console.cloud.google.com/apis/credentials to get key.
 #GOOGLE_API_KEY: "YOUR_API_KEY"

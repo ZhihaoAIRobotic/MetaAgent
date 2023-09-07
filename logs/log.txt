@@ -55,3 +55,1828 @@
 2023-09-07 14:43:22.214 | INFO     | metaagent.config:__init__:43 - Config loading done.
 2023-09-07 14:43:44.582 | INFO     | metaagent.config:__init__:43 - Config loading done.
 2023-09-07 14:43:47.308 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 14:46:00.167 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:39:37.364 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:40:34.476 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:42:21.876 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:42:25.605 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:42:39.058 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:49:23.029 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 15:49:26.158 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:02:02.078 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:04:41.059 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:05:11.951 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:05:34.326 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:06:48.801 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:07:44.934 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:07:49.482 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:09:32.163 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:11:19.519 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:11:57.508 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:13:02.107 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:13:16.409 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:18:39.130 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:18:45.658 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:18:56.714 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:20:34.409 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:21:53.514 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:22:16.804 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:22:17.417 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:22:50.115 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:22:50.738 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:22:50.738 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:22:50.738 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:23:33.272 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:23:33.898 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:23:33.898 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:23:33.899 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:23:33.900 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:26:18.173 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:26:18.786 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:26:18.786 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:26:18.786 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:26:18.787 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:26:57.104 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:26:57.729 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:26:57.729 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:26:57.729 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:26:57.730 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:29:27.303 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:29:27.920 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:29:27.920 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:29:27.920 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:29:27.921 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:31:38.885 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:31:39.500 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:31:39.500 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:31:39.500 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:31:39.501 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:32:13.585 | DEBUG    | metaagent.models.openai_llm:aask:66 - [{'role': 'system', 'content': 'Your name is Alice\nYour profile is Product Manager.\nYour goal is Efficiently create a successful product.\nThe constraint is . '}, {'role': 'user', 'content': '\n# Context\n## Original Requirements\n<DocList[Info] (length=0)>\n\n## Search Information\n### Search Results\n\n\n### Search Summary\n\n\n## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME\n```mermaid\nquadrantChart\n    title Reach and engagement of campaigns\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 We should expand\n    quadrant-2 Need to promote\n    quadrant-3 Re-evaluate\n    quadrant-4 May be improved\n    "Campaign: A": [0.3, 0.6]\n    "Campaign B": [0.45, 0.23]\n    "Campaign C": [0.57, 0.69]\n    "Campaign D": [0.78, 0.34]\n    "Campaign E": [0.40, 0.34]\n    "Campaign F": [0.35, 0.78]\n    "Our Target Product": [0.5, 0.6]\n```\n\n## Format example\n\n---\n## Original Requirements\nThe boss ... \n\n## Product Goals\n```python\n[\n    "Create a ...",\n]\n```\n\n## User Stories\n```python\n[\n    "As a user, ...",\n]\n```\n\n## Competitive Analysis\n```python\n[\n    "Python Snake Game: ...",\n]\n```\n\n## Competitive Quadrant Chart\n```mermaid\nquadrantChart\n    title Reach and engagement of campaigns\n    ...\n    "Our Target Product": [0.6, 0.7]\n```\n\n## Requirement Analysis\nThe product should be a ...\n\n## Requirement Pool\n```python\n[\n    ("End game ...", "P0")\n]\n```\n\n## UI Design draft\nGive a basic function description, and a draft\n\n## Anything UNCLEAR\nThere are no unclear points.\n---\n\n-----\nRole: You are a professional product manager; the goal is to design a concise, usable, efficient product\nRequirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design\nATTENTION: Use \'##\' to SPLIT SECTIONS, not \'#\'. AND \'## <SECTION_NAME>\' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.\n\n## Original Requirements: Provide as Plain text, place the polished complete original requirements here\n\n## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple\n\n## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less\n\n## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible\n\n## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.\n\n## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.\n\n## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower\n\n## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.\n## Anything UNCLEAR: Provide as Plain text. Make clear here.\n'}]
+2023-09-07 16:32:13.586 | DEBUG    | metaagent.actions.action:_aask_v1:53 - ## Original Requirements:
+The boss wants us to create a new product that will efficiently solve a specific problem for our users. The product should be user-friendly, reliable, and scalable. It should also have a modern and visually appealing design. The boss wants the product to be launched within 6 months and expects it to generate a significant amount of revenue.
+
+## Product Goals:
+- Create a user-friendly and reliable product that efficiently solves the problem for our users.
+- Ensure scalability to accommodate a growing user base.
+- Generate significant revenue within 6 months of launch.
+
+## User Stories:
+- As a user, I want to easily navigate through the product and find the information I need quickly.
+- As a user, I want the product to be responsive and perform well, even with a large amount of data.
+- As a user, I want the product to have intuitive and efficient workflows to streamline my tasks.
+- As a user, I want the product to have a visually appealing design that enhances the overall user experience.
+- As a user, I want the product to provide reliable and accurate results to help me make informed decisions.
+
+## Competitive Analysis:
+- Competitor A offers a similar product with a simple and intuitive interface, but lacks scalability and reliability.
+- Competitor B provides a reliable and scalable product, but the user interface is outdated and not user-friendly.
+- Competitor C has a visually appealing product with efficient workflows, but it lacks reliability and scalability.
+- Competitor D offers a user-friendly and reliable product, but it lacks the modern design and scalability.
+- Competitor E provides a scalable and visually appealing product, but the user interface is complex and not intuitive.
+- Competitor F has a reliable and scalable product with a modern design, but the workflows are not efficient.
+- Competitor G offers a user-friendly and visually appealing product, but it lacks scalability and reliability.
+
+## Competitive Quadrant Chart:
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Competitor A": [0.3, 0.6]
+    "Competitor B": [0.45, 0.23]
+    "Competitor C": [0.57, 0.69]
+    "Competitor D": [0.78, 0.34]
+    "Competitor E": [0.40, 0.34]
+    "Competitor F": [0.35, 0.78]
+    "Competitor G": [0.6, 0.7]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Requirement Analysis:
+The product should efficiently solve the specific problem for our users. It should be user-friendly, reliable, and scalable. The design should be modern and visually appealing. The product should be launched within 6 months and generate significant revenue.
+
+## Requirement Pool:
+- The product should have a responsive and intuitive user interface. (P0)
+- The product should be able to handle a large amount of data without performance issues. (P1)
+- The product should provide efficient workflows to streamline user tasks. (P0)
+- The product should have a visually appealing design that enhances the user experience. (P1)
+- The product should provide reliable and accurate results to help users make informed decisions. (P0)
+
+## UI Design draft:
+The product will have a clean and modern design with a simple and intuitive user interface. It will have a responsive layout that adapts to different screen sizes. The main navigation will be located at the top of the screen, allowing users to easily access different sections of the product. The design will use a combination of colors, typography, and icons to create a visually appealing experience. The workflows will be designed to be efficient and minimize the number of steps required to complete tasks.
+2023-09-07 16:32:13.590 | DEBUG    | metaagent.actions.action:_aask_v1:56 - {'Original Requirements': 'The boss wants us to create a new product that will efficiently solve a specific problem for our users. The product should be user-friendly, reliable, and scalable. It should also have a modern and visually appealing design. The boss wants the product to be launched within 6 months and expects it to generate a significant amount of revenue.', 'Product Goals': ['- Create a user-friendly and reliable product that efficiently solves the problem for our users.', '- Ensure scalability to accommodate a growing user base.', '- Generate significant revenue within 6 months of launch.'], 'User Stories': ['- As a user, I want to easily navigate through the product and find the information I need quickly.', '- As a user, I want the product to be responsive and perform well, even with a large amount of data.', '- As a user, I want the product to have intuitive and efficient workflows to streamline my tasks.', '- As a user, I want the product to have a visually appealing design that enhances the overall user experience.', '- As a user, I want the product to provide reliable and accurate results to help me make informed decisions.'], 'Competitive Analysis': ['- Competitor A offers a similar product with a simple and intuitive interface, but lacks scalability and reliability.', '- Competitor B provides a reliable and scalable product, but the user interface is outdated and not user-friendly.', '- Competitor C has a visually appealing product with efficient workflows, but it lacks reliability and scalability.', '- Competitor D offers a user-friendly and reliable product, but it lacks the modern design and scalability.', '- Competitor E provides a scalable and visually appealing product, but the user interface is complex and not intuitive.', '- Competitor F has a reliable and scalable product with a modern design, but the workflows are not efficient.', '- Competitor G offers a user-friendly and visually appealing product, but it lacks scalability and reliability.'], 'Competitive Quadrant Chart': 'quadrantChart\n    title Reach and engagement of campaigns\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 We should expand\n    quadrant-2 Need to promote\n    quadrant-3 Re-evaluate\n    quadrant-4 May be improved\n    "Competitor A": [0.3, 0.6]\n    "Competitor B": [0.45, 0.23]\n    "Competitor C": [0.57, 0.69]\n    "Competitor D": [0.78, 0.34]\n    "Competitor E": [0.40, 0.34]\n    "Competitor F": [0.35, 0.78]\n    "Competitor G": [0.6, 0.7]\n    "Our Target Product": [0.5, 0.6]\n', 'Requirement Analysis': 'The product should efficiently solve the specific problem for our users. It should be user-friendly, reliable, and scalable. The design should be modern and visually appealing. The product should be launched within 6 months and generate significant revenue.', 'Requirement Pool': ['- The product should have a responsive and intuitive user interface. (P0)', '- The product should be able to handle a large amount of data without performance issues. (P1)', '- The product should provide efficient workflows to streamline user tasks. (P0)', '- The product should have a visually appealing design that enhances the user experience. (P1)', '- The product should provide reliable and accurate results to help users make informed decisions. (P0)'], 'UI Design draft': 'The product will have a clean and modern design with a simple and intuitive user interface. It will have a responsive layout that adapts to different screen sizes. The main navigation will be located at the top of the screen, allowing users to easily access different sections of the product. The design will use a combination of colors, typography, and icons to create a visually appealing experience. The workflows will be designed to be efficient and minimize the number of steps required to complete tasks.'}
+2023-09-07 16:34:58.362 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:34:58.979 | DEBUG    | metaagent.agents.base_agent:_set_state:51 - [WritePRD]
+2023-09-07 16:34:58.979 | DEBUG    | metaagent.agents.base_agent:_react:108 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:34:58.979 | INFO     | metaagent.agents.base_agent:_act:79 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:34:58.980 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:35:28.074 | DEBUG    | metaagent.models.openai_llm:aask:66 - [{'role': 'system', 'content': 'Your name is Alice\nYour profile is Product Manager.\nYour goal is Efficiently create a successful product.\nThe constraint is . '}, {'role': 'user', 'content': '\n# Context\n## Original Requirements\n<DocList[Info] (length=0)>\n\n## Search Information\n### Search Results\n\n\n### Search Summary\n\n\n## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME\n```mermaid\nquadrantChart\n    title Reach and engagement of campaigns\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 We should expand\n    quadrant-2 Need to promote\n    quadrant-3 Re-evaluate\n    quadrant-4 May be improved\n    "Campaign: A": [0.3, 0.6]\n    "Campaign B": [0.45, 0.23]\n    "Campaign C": [0.57, 0.69]\n    "Campaign D": [0.78, 0.34]\n    "Campaign E": [0.40, 0.34]\n    "Campaign F": [0.35, 0.78]\n    "Our Target Product": [0.5, 0.6]\n```\n\n## Format example\n\n---\n## Original Requirements\nThe boss ... \n\n## Product Goals\n```python\n[\n    "Create a ...",\n]\n```\n\n## User Stories\n```python\n[\n    "As a user, ...",\n]\n```\n\n## Competitive Analysis\n```python\n[\n    "Python Snake Game: ...",\n]\n```\n\n## Competitive Quadrant Chart\n```mermaid\nquadrantChart\n    title Reach and engagement of campaigns\n    ...\n    "Our Target Product": [0.6, 0.7]\n```\n\n## Requirement Analysis\nThe product should be a ...\n\n## Requirement Pool\n```python\n[\n    ("End game ...", "P0")\n]\n```\n\n## UI Design draft\nGive a basic function description, and a draft\n\n## Anything UNCLEAR\nThere are no unclear points.\n---\n\n-----\nRole: You are a professional product manager; the goal is to design a concise, usable, efficient product\nRequirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design\nATTENTION: Use \'##\' to SPLIT SECTIONS, not \'#\'. AND \'## <SECTION_NAME>\' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.\n\n## Original Requirements: Provide as Plain text, place the polished complete original requirements here\n\n## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple\n\n## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less\n\n## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible\n\n## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.\n\n## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.\n\n## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower\n\n## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.\n## Anything UNCLEAR: Provide as Plain text. Make clear here.\n'}]
+2023-09-07 16:35:28.075 | DEBUG    | metaagent.actions.action:_aask_v1:53 - ## Original Requirements
+The boss wants to create a new product that efficiently solves a specific problem for users.
+
+## Product Goals
+```python
+[
+    "Create a product that efficiently solves a specific problem",
+    "Ensure the product is user-friendly and easy to use",
+    "Maximize user engagement and satisfaction"
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, I want to be able to easily input my data into the product",
+    "As a user, I want the product to quickly analyze and provide insights based on my data",
+    "As a user, I want the product to have a clean and intuitive user interface",
+    "As a user, I want to be able to easily share the insights generated by the product",
+    "As a user, I want the product to continuously improve and adapt to my needs"
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Competitor A offers a similar product with a focus on data visualization",
+    "Competitor B provides a product that specializes in data analysis",
+    "Competitor C offers a comprehensive solution with advanced machine learning capabilities",
+    "Competitor D focuses on user collaboration and sharing of insights",
+    "Competitor E provides a simple and easy-to-use product for basic data analysis",
+    "Competitor F offers a cloud-based solution with real-time data processing",
+    "Competitor G specializes in predictive analytics and forecasting"
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of competitors
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 Niche players
+    quadrant-2 Potential threats
+    quadrant-3 Established competitors
+    quadrant-4 Market leaders
+    "Competitor A": [0.4, 0.6]
+    "Competitor B": [0.5, 0.7]
+    "Competitor C": [0.7, 0.8]
+    "Competitor D": [0.6, 0.5]
+    "Competitor E": [0.3, 0.4]
+    "Competitor F": [0.8, 0.6]
+    "Competitor G": [0.7, 0.7]
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should efficiently solve a specific problem for users by providing quick and accurate data analysis and insights. It should have a user-friendly interface and allow for easy data input and sharing of insights. Continuous improvement and adaptation to user needs should be prioritized.
+
+## Requirement Pool
+```python
+[
+    ("Efficient data analysis algorithms", "P0"),
+    ("Intuitive user interface design", "P0"),
+    ("Easy data input and import functionality", "P1"),
+    ("Insight sharing and collaboration features", "P1"),
+    ("Continuous improvement and adaptation", "P2")
+]
+```
+
+## UI Design draft
+The product should have a clean and modern user interface with a simple layout. It should include features such as:
+- Easy data input and import options
+- Clear and interactive data visualization
+- Quick and accurate data analysis
+- Sharing and collaboration functionality
+- Customizable settings and preferences
+
+The style of the UI should be minimalistic with a focus on usability. The layout should be intuitive and organized, with important features easily accessible.
+
+## Anything UNCLEAR
+There are no unclear points.
+2023-09-07 16:35:28.082 | DEBUG    | metaagent.actions.action:_aask_v1:61 - {'Original Requirements': 'The boss wants to create a new product that efficiently solves a specific problem for users.', 'Product Goals': ['Create a product that efficiently solves a specific problem', 'Ensure the product is user-friendly and easy to use', 'Maximize user engagement and satisfaction'], 'User Stories': ['As a user, I want to be able to easily input my data into the product', 'As a user, I want the product to quickly analyze and provide insights based on my data', 'As a user, I want the product to have a clean and intuitive user interface', 'As a user, I want to be able to easily share the insights generated by the product', 'As a user, I want the product to continuously improve and adapt to my needs'], 'Competitive Analysis': ['Competitor A offers a similar product with a focus on data visualization', 'Competitor B provides a product that specializes in data analysis', 'Competitor C offers a comprehensive solution with advanced machine learning capabilities', 'Competitor D focuses on user collaboration and sharing of insights', 'Competitor E provides a simple and easy-to-use product for basic data analysis', 'Competitor F offers a cloud-based solution with real-time data processing', 'Competitor G specializes in predictive analytics and forecasting'], 'Competitive Quadrant Chart': 'quadrantChart\n    title Reach and engagement of competitors\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 Niche players\n    quadrant-2 Potential threats\n    quadrant-3 Established competitors\n    quadrant-4 Market leaders\n    "Competitor A": [0.4, 0.6]\n    "Competitor B": [0.5, 0.7]\n    "Competitor C": [0.7, 0.8]\n    "Competitor D": [0.6, 0.5]\n    "Competitor E": [0.3, 0.4]\n    "Competitor F": [0.8, 0.6]\n    "Competitor G": [0.7, 0.7]\n    "Our Target Product": [0.6, 0.7]\n', 'Requirement Analysis': 'The product should efficiently solve a specific problem for users by providing quick and accurate data analysis and insights. It should have a user-friendly interface and allow for easy data input and sharing of insights. Continuous improvement and adaptation to user needs should be prioritized.', 'Requirement Pool': [('Efficient data analysis algorithms', 'P0'), ('Intuitive user interface design', 'P0'), ('Easy data input and import functionality', 'P1'), ('Insight sharing and collaboration features', 'P1'), ('Continuous improvement and adaptation', 'P2')], 'UI Design draft': 'The product should have a clean and modern user interface with a simple layout. It should include features such as:\n- Easy data input and import options\n- Clear and interactive data visualization\n- Quick and accurate data analysis\n- Sharing and collaboration functionality\n- Customizable settings and preferences\n\nThe style of the UI should be minimalistic with a focus on usability. The layout should be intuitive and organized, with important features easily accessible.', 'Anything UNCLEAR': 'There are no unclear points.'}
+2023-09-07 16:35:28.083 | INFO     | __main__:test_write_prd:12 - 开发一个基于大语言模型与私有知识库的搜索引擎，希望可以基于大语言模型进行搜索总结
+2023-09-07 16:35:28.083 | INFO     | __main__:test_write_prd:13 - [1;35mInfo[0m[1m([0m
+    [33mid[0m=[32m'52e6436011648ab44242eb9e7eab2316'[0m,
+    [33mcontent[0m=[32m'## Original Requirements\nThe boss wants to create a new product that efficiently solves a specific problem for users.\n\n## Product Goals\n```python\n[0m[32m[[0m[32m\n    "Create a product that efficiently solves a specific problem",\n    "Ensure the [0m
+[32mproduct is user-friendly and easy to use",\n    "Maximize user engagement and satisfaction"\n[0m[32m][0m[32m\n```\n\n## User Stories\n```python\n[0m[32m[[0m[32m\n    "As a user, I want to be able to easily input my data into the product",\n    "As a user, I want the product to [0m
+[32mquickly analyze and provide insights based on my data",\n    "As a user, I want the product to have a clean and intuitive user interface",\n    "As a user, I want to be able to easily share the insights generated by the product",\n    "As a user, I want [0m
+[32mthe product to continuously improve and adapt to my needs"\n[0m[32m][0m[32m\n```\n\n## Competitive Analysis\n```python\n[0m[32m[[0m[32m\n    "Competitor A offers a similar product with a focus on data visualization",\n    "Competitor B provides a product that specializes in data [0m
+[32manalysis",\n    "Competitor C offers a comprehensive solution with advanced machine learning capabilities",\n    "Competitor D focuses on user collaboration and sharing of insights",\n    "Competitor E provides a simple and easy-to-use product for basic [0m
+[32mdata analysis",\n    "Competitor F offers a cloud-based solution with real-time data processing",\n    "Competitor G specializes in predictive analytics and forecasting"\n[0m[32m][0m[32m\n```\n\n## Competitive Quadrant Chart\n```mermaid\nquadrantChart\n    title Reach [0m
+[32mand engagement of competitors\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 Niche players\n    quadrant-2 Potential threats\n    quadrant-3 Established competitors\n    quadrant-4 Market leaders\n    [0m
+[32m"Competitor A": [0m[32m[[0m[32m0.4, 0.6[0m[32m][0m[32m\n    "Competitor B": [0m[32m[[0m[32m0.5, 0.7[0m[32m][0m[32m\n    "Competitor C": [0m[32m[[0m[32m0.7, 0.8[0m[32m][0m[32m\n    "Competitor D": [0m[32m[[0m[32m0.6, 0.5[0m[32m][0m[32m\n    "Competitor E": [0m[32m[[0m[32m0.3, 0.4[0m[32m][0m[32m\n    "Competitor F": [0m[32m[[0m[32m0.8, 0.6[0m[32m][0m[32m\n    "Competitor G": [0m[32m[[0m[32m0.7, 0.7[0m[32m][0m[32m\n    "Our Target Product": [0m[32m[[0m[32m0.6, [0m
+[32m0.7[0m[32m][0m[32m\n```\n\n## Requirement Analysis\nThe product should efficiently solve a specific problem for users by providing quick and accurate data analysis and insights. It should have a user-friendly interface and allow for easy data input and sharing of [0m
+[32minsights. Continuous improvement and adaptation to user needs should be prioritized.\n\n## Requirement Pool\n```python\n[0m[32m[[0m[32m\n    [0m[32m([0m[32m"Efficient data analysis algorithms", "P0"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Intuitive user interface design", "P0"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Easy data input and import [0m
+[32mfunctionality", "P1"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Insight sharing and collaboration features", "P1"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Continuous improvement and adaptation", "P2"[0m[32m)[0m[32m\n[0m[32m][0m[32m\n```\n\n## UI Design draft\nThe product should have a clean and modern user interface with a simple layout. It should [0m
+[32minclude features such as:\n- Easy data input and import options\n- Clear and interactive data visualization\n- Quick and accurate data analysis\n- Sharing and collaboration functionality\n- Customizable settings and preferences\n\nThe style of the UI [0m
+[32mshould be minimalistic with a focus on usability. The layout should be intuitive and organized, with important features easily accessible.\n\n## Anything UNCLEAR\nThere are no unclear points.'[0m,
+    [33minstruction[0m=[32m''[0m,
+    [33mrole[0m=[32m'Product Manager'[0m,
+    [33mcause_by[0m=[32m'WritePRD'[0m,
+    [33msent_from[0m=[32m''[0m,
+    [33msend_to[0m=[32m''[0m
+[1m)[0m
+2023-09-07 16:47:14.004 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:47:14.623 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 16:47:14.623 | DEBUG    | metaagent.agents.base_agent:_react:112 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:47:14.623 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:47:14.624 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:47:49.115 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:47:49.724 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 16:47:49.724 | DEBUG    | metaagent.agents.base_agent:_react:115 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:47:49.724 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:47:49.725 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:50:33.380 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:50:34.424 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 16:50:34.424 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:50:34.424 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:53:52.205 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:53:52.830 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 16:53:52.830 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:53:52.830 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:53:52.831 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:59:22.012 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:59:22.617 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 16:59:22.617 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:59:22.617 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:59:22.619 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 16:59:50.872 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 16:59:51.488 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 16:59:51.488 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 16:59:51.488 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 16:59:51.489 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 17:01:12.153 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 17:01:12.765 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 17:01:12.765 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 17:01:12.765 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 17:01:12.767 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=0)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 17:02:56.808 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 17:02:57.411 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 17:02:57.412 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 17:02:57.412 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 17:02:57.413 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+<DocList[Info] (length=1)>
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 17:05:30.613 | INFO     | metaagent.config:__init__:43 - Config loading done.
+2023-09-07 17:05:31.230 | DEBUG    | metaagent.agents.base_agent:_set_state:55 - [WritePRD]
+2023-09-07 17:05:31.231 | DEBUG    | metaagent.agents.base_agent:_react:116 - Alice(Product Manager): 0, will do WritePRD
+2023-09-07 17:05:31.231 | INFO     | metaagent.agents.base_agent:_act:83 - Alice(Product Manager): ready to WritePRD
+2023-09-07 17:05:31.232 | DEBUG    | metaagent.actions.write_prd:run:145 - 
+# Context
+## Original Requirements
+['开发一个基于大语言模型与私有知识库的搜索引擎，希望可以基于大语言模型进行搜索总结']
+
+## Search Information
+### Search Results
+
+
+### Search Summary
+
+
+## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    "Campaign: A": [0.3, 0.6]
+    "Campaign B": [0.45, 0.23]
+    "Campaign C": [0.57, 0.69]
+    "Campaign D": [0.78, 0.34]
+    "Campaign E": [0.40, 0.34]
+    "Campaign F": [0.35, 0.78]
+    "Our Target Product": [0.5, 0.6]
+```
+
+## Format example
+
+---
+## Original Requirements
+The boss ... 
+
+## Product Goals
+```python
+[
+    "Create a ...",
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, ...",
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Python Snake Game: ...",
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of campaigns
+    ...
+    "Our Target Product": [0.6, 0.7]
+```
+
+## Requirement Analysis
+The product should be a ...
+
+## Requirement Pool
+```python
+[
+    ("End game ...", "P0")
+]
+```
+
+## UI Design draft
+Give a basic function description, and a draft
+
+## Anything UNCLEAR
+There are no unclear points.
+---
+
+-----
+Role: You are a professional product manager; the goal is to design a concise, usable, efficient product
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. AND '## <SECTION_NAME>' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.
+
+## Original Requirements: Provide as Plain text, place the polished complete original requirements here
+
+## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple
+
+## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less
+
+## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible
+
+## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.
+
+## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.
+
+## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower
+
+## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.
+## Anything UNCLEAR: Provide as Plain text. Make clear here.
+
+2023-09-07 17:06:03.689 | DEBUG    | metaagent.models.openai_llm:aask:66 - [{'role': 'system', 'content': 'Your name is Alice\nYour profile is Product Manager.\nYour goal is Efficiently create a successful product.\nThe constraint is . '}, {'role': 'user', 'content': '\n# Context\n## Original Requirements\n[\'开发一个基于大语言模型与私有知识库的搜索引擎，希望可以基于大语言模型进行搜索总结\']\n\n## Search Information\n### Search Results\n\n\n### Search Summary\n\n\n## mermaid quadrantChart code syntax example. DONT USE QUOTO IN CODE DUE TO INVALID SYNTAX. Replace the <Campain X> with REAL COMPETITOR NAME\n```mermaid\nquadrantChart\n    title Reach and engagement of campaigns\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 We should expand\n    quadrant-2 Need to promote\n    quadrant-3 Re-evaluate\n    quadrant-4 May be improved\n    "Campaign: A": [0.3, 0.6]\n    "Campaign B": [0.45, 0.23]\n    "Campaign C": [0.57, 0.69]\n    "Campaign D": [0.78, 0.34]\n    "Campaign E": [0.40, 0.34]\n    "Campaign F": [0.35, 0.78]\n    "Our Target Product": [0.5, 0.6]\n```\n\n## Format example\n\n---\n## Original Requirements\nThe boss ... \n\n## Product Goals\n```python\n[\n    "Create a ...",\n]\n```\n\n## User Stories\n```python\n[\n    "As a user, ...",\n]\n```\n\n## Competitive Analysis\n```python\n[\n    "Python Snake Game: ...",\n]\n```\n\n## Competitive Quadrant Chart\n```mermaid\nquadrantChart\n    title Reach and engagement of campaigns\n    ...\n    "Our Target Product": [0.6, 0.7]\n```\n\n## Requirement Analysis\nThe product should be a ...\n\n## Requirement Pool\n```python\n[\n    ("End game ...", "P0")\n]\n```\n\n## UI Design draft\nGive a basic function description, and a draft\n\n## Anything UNCLEAR\nThere are no unclear points.\n---\n\n-----\nRole: You are a professional product manager; the goal is to design a concise, usable, efficient product\nRequirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design\nATTENTION: Use \'##\' to SPLIT SECTIONS, not \'#\'. AND \'## <SECTION_NAME>\' SHOULD WRITE BEFORE the code and triple quote. Output carefully referenced "Format example" in format.\n\n## Original Requirements: Provide as Plain text, place the polished complete original requirements here\n\n## Product Goals: Provided as Python list[str], up to 3 clear, orthogonal product goals. If the requirement itself is simple, the goal should also be simple\n\n## User Stories: Provided as Python list[str], up to 5 scenario-based user stories, If the requirement itself is simple, the user stories should also be less\n\n## Competitive Analysis: Provided as Python list[str], up to 7 competitive product analyses, consider as similar competitors as possible\n\n## Competitive Quadrant Chart: Use mermaid quadrantChart code syntax. up to 14 competitive products. Translation: Distribute these competitor scores evenly between 0 and 1, trying to conform to a normal distribution centered around 0.5 as much as possible.\n\n## Requirement Analysis: Provide as Plain text. Be simple. LESS IS MORE. Make your requirements less dumb. Delete the parts unnessasery.\n\n## Requirement Pool: Provided as Python list[str, str], the parameters are requirement description, priority(P0/P1/P2), respectively, comply with PEP standards; no more than 5 requirements and consider to make its difficulty lower\n\n## UI Design draft: Provide as Plain text. Be simple. Describe the elements and functions, also provide a simple style description and layout description.\n## Anything UNCLEAR: Provide as Plain text. Make clear here.\n'}]
+2023-09-07 17:06:03.689 | DEBUG    | metaagent.actions.action:_aask_v1:53 - ## Original Requirements
+Develop a search engine based on a large language model and a private knowledge base, with the ability to summarize search results using the language model.
+
+## Product Goals
+```python
+[
+    "Create a highly efficient search engine",
+    "Leverage a large language model for improved search capabilities",
+    "Provide search result summaries for better user experience"
+]
+```
+
+## User Stories
+```python
+[
+    "As a user, I want to be able to search for information quickly and accurately",
+    "As a user, I want the search engine to understand my queries and provide relevant results",
+    "As a user, I want to see a summary of the search results to quickly understand the content",
+    "As a user, I want the search engine to prioritize reliable and trustworthy sources",
+    "As a user, I want the search engine to continuously improve its search capabilities"
+]
+```
+
+## Competitive Analysis
+```python
+[
+    "Google Search: Provides comprehensive search results and relevant information",
+    "Bing Search: Offers a visually appealing search interface and integrates with Microsoft services",
+    "DuckDuckGo: Focuses on privacy and does not track user information",
+    "Baidu Search: Popular search engine in China with localized content",
+    "Yandex Search: Offers search capabilities in multiple languages and focuses on regional content",
+    "Ecosia: A search engine that plants trees with its ad revenue",
+    "Qwant: A privacy-focused search engine that does not track user activity"
+]
+```
+
+## Competitive Quadrant Chart
+```mermaid
+quadrantChart
+    title Reach and engagement of search engines
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 Niche players
+    quadrant-2 Growing players
+    quadrant-3 Established players
+    quadrant-4 Dominant players
+    "Google Search": [0.9, 0.9]
+    "Bing Search": [0.7, 0.8]
+    "DuckDuckGo": [0.4, 0.6]
+    "Baidu Search": [0.6, 0.7]
+    "Yandex Search": [0.5, 0.5]
+    "Ecosia": [0.3, 0.4]
+    "Qwant": [0.3, 0.3]
+    "Our Target Product": [0.8, 0.8]
+```
+
+## Requirement Analysis
+The product should be a highly efficient search engine that leverages a large language model and a private knowledge base. It should provide accurate and relevant search results, as well as summaries of the search results. The search engine should prioritize reliable and trustworthy sources and continuously improve its search capabilities.
+
+## Requirement Pool
+```python
+[
+    ("Implement a large language model for search queries", "P0"),
+    ("Develop a private knowledge base for improved search results", "P0"),
+    ("Create a summarization algorithm for search result summaries", "P1"),
+    ("Implement a ranking algorithm to prioritize reliable sources", "P1"),
+    ("Continuously update and improve the search engine's capabilities", "P2")
+]
+```
+
+## UI Design draft
+The search engine should have a simple and clean user interface. It should have a search bar at the center of the page, with a search button next to it. The search results should be displayed in a list format, with each result showing the title, description, and source. The search result summaries should be displayed below each search result. The user should be able to click on a search result to view the full content. The UI should have a modern and responsive design, with a focus on readability and usability.
+
+## Anything UNCLEAR
+There are no unclear points.
+2023-09-07 17:06:03.693 | DEBUG    | metaagent.actions.action:_aask_v1:61 - {'Original Requirements': 'Develop a search engine based on a large language model and a private knowledge base, with the ability to summarize search results using the language model.', 'Product Goals': ['Create a highly efficient search engine', 'Leverage a large language model for improved search capabilities', 'Provide search result summaries for better user experience'], 'User Stories': ['As a user, I want to be able to search for information quickly and accurately', 'As a user, I want the search engine to understand my queries and provide relevant results', 'As a user, I want to see a summary of the search results to quickly understand the content', 'As a user, I want the search engine to prioritize reliable and trustworthy sources', 'As a user, I want the search engine to continuously improve its search capabilities'], 'Competitive Analysis': ['Google Search: Provides comprehensive search results and relevant information', 'Bing Search: Offers a visually appealing search interface and integrates with Microsoft services', 'DuckDuckGo: Focuses on privacy and does not track user information', 'Baidu Search: Popular search engine in China with localized content', 'Yandex Search: Offers search capabilities in multiple languages and focuses on regional content', 'Ecosia: A search engine that plants trees with its ad revenue', 'Qwant: A privacy-focused search engine that does not track user activity'], 'Competitive Quadrant Chart': 'quadrantChart\n    title Reach and engagement of search engines\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    quadrant-1 Niche players\n    quadrant-2 Growing players\n    quadrant-3 Established players\n    quadrant-4 Dominant players\n    "Google Search": [0.9, 0.9]\n    "Bing Search": [0.7, 0.8]\n    "DuckDuckGo": [0.4, 0.6]\n    "Baidu Search": [0.6, 0.7]\n    "Yandex Search": [0.5, 0.5]\n    "Ecosia": [0.3, 0.4]\n    "Qwant": [0.3, 0.3]\n    "Our Target Product": [0.8, 0.8]\n', 'Requirement Analysis': 'The product should be a highly efficient search engine that leverages a large language model and a private knowledge base. It should provide accurate and relevant search results, as well as summaries of the search results. The search engine should prioritize reliable and trustworthy sources and continuously improve its search capabilities.', 'Requirement Pool': [('Implement a large language model for search queries', 'P0'), ('Develop a private knowledge base for improved search results', 'P0'), ('Create a summarization algorithm for search result summaries', 'P1'), ('Implement a ranking algorithm to prioritize reliable sources', 'P1'), ("Continuously update and improve the search engine's capabilities", 'P2')], 'UI Design draft': 'The search engine should have a simple and clean user interface. It should have a search bar at the center of the page, with a search button next to it. The search results should be displayed in a list format, with each result showing the title, description, and source. The search result summaries should be displayed below each search result. The user should be able to click on a search result to view the full content. The UI should have a modern and responsive design, with a focus on readability and usability.', 'Anything UNCLEAR': 'There are no unclear points.'}
+2023-09-07 17:06:03.694 | INFO     | __main__:test_write_prd:12 - 开发一个基于大语言模型与私有知识库的搜索引擎，希望可以基于大语言模型进行搜索总结
+2023-09-07 17:06:03.694 | INFO     | __main__:test_write_prd:13 - [1;35mInfo[0m[1m([0m
+    [33mid[0m=[32m'1822a41a08ffc2738f1cdb90552d4dda'[0m,
+    [33mcontent[0m=[32m'## Original Requirements\nDevelop a search engine based on a large language model and a private knowledge base, with the ability to summarize search results using the language model.\n\n## Product Goals\n```python\n[0m[32m[[0m[32m\n    "Create a highly [0m
+[32mefficient search engine",\n    "Leverage a large language model for improved search capabilities",\n    "Provide search result summaries for better user experience"\n[0m[32m][0m[32m\n```\n\n## User Stories\n```python\n[0m[32m[[0m[32m\n    "As a user, I want to be able to search for [0m
+[32minformation quickly and accurately",\n    "As a user, I want the search engine to understand my queries and provide relevant results",\n    "As a user, I want to see a summary of the search results to quickly understand the content",\n    "As a user, I [0m
+[32mwant the search engine to prioritize reliable and trustworthy sources",\n    "As a user, I want the search engine to continuously improve its search capabilities"\n[0m[32m][0m[32m\n```\n\n## Competitive Analysis\n```python\n[0m[32m[[0m[32m\n    "Google Search: Provides comprehensive [0m
+[32msearch results and relevant information",\n    "Bing Search: Offers a visually appealing search interface and integrates with Microsoft services",\n    "DuckDuckGo: Focuses on privacy and does not track user information",\n    "Baidu Search: Popular search[0m
+[32mengine in China with localized content",\n    "Yandex Search: Offers search capabilities in multiple languages and focuses on regional content",\n    "Ecosia: A search engine that plants trees with its ad revenue",\n    "Qwant: A privacy-focused search [0m
+[32mengine that does not track user activity"\n[0m[32m][0m[32m\n```\n\n## Competitive Quadrant Chart\n```mermaid\nquadrantChart\n    title Reach and engagement of search engines\n    x-axis Low Reach --> High Reach\n    y-axis Low Engagement --> High Engagement\n    [0m
+[32mquadrant-1 Niche players\n    quadrant-2 Growing players\n    quadrant-3 Established players\n    quadrant-4 Dominant players\n    "Google Search": [0m[32m[[0m[32m0.9, 0.9[0m[32m][0m[32m\n    "Bing Search": [0m[32m[[0m[32m0.7, 0.8[0m[32m][0m[32m\n    "DuckDuckGo": [0m[32m[[0m[32m0.4, 0.6[0m[32m][0m[32m\n    "Baidu Search": [0m[32m[[0m[32m0.6, 0.7[0m[32m][0m[32m\n   [0m
+[32m"Yandex Search": [0m[32m[[0m[32m0.5, 0.5[0m[32m][0m[32m\n    "Ecosia": [0m[32m[[0m[32m0.3, 0.4[0m[32m][0m[32m\n    "Qwant": [0m[32m[[0m[32m0.3, 0.3[0m[32m][0m[32m\n    "Our Target Product": [0m[32m[[0m[32m0.8, 0.8[0m[32m][0m[32m\n```\n\n## Requirement Analysis\nThe product should be a highly efficient search engine that leverages a large language model and a private[0m
+[32mknowledge base. It should provide accurate and relevant search results, as well as summaries of the search results. The search engine should prioritize reliable and trustworthy sources and continuously improve its search capabilities.\n\n## Requirement [0m
+[32mPool\n```python\n[0m[32m[[0m[32m\n    [0m[32m([0m[32m"Implement a large language model for search queries", "P0"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Develop a private knowledge base for improved search results", "P0"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Create a summarization algorithm for search result summaries", "P1"[0m[32m)[0m[32m,\n    [0m
+[32m([0m[32m"Implement a ranking algorithm to prioritize reliable sources", "P1"[0m[32m)[0m[32m,\n    [0m[32m([0m[32m"Continuously update and improve the search engine\'s capabilities", "P2"[0m[32m)[0m[32m\n[0m[32m][0m[32m\n```\n\n## UI Design draft\nThe search engine should have a simple and clean user interface. It [0m
+[32mshould have a search bar at the center of the page, with a search button next to it. The search results should be displayed in a list format, with each result showing the title, description, and source. The search result summaries should be displayed below[0m
+[32meach search result. The user should be able to click on a search result to view the full content. The UI should have a modern and responsive design, with a focus on readability and usability.\n\n## Anything UNCLEAR\nThere are no unclear points.'[0m,
+    [33minstruction[0m=[32m''[0m,
+    [33mrole[0m=[32m'Product Manager'[0m,
+    [33mcause_by[0m=[32m'WritePRD'[0m,
+    [33msent_from[0m=[32m''[0m,
+    [33msend_to[0m=[32m''[0m
+[1m)[0m

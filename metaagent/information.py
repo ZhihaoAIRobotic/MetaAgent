@@ -4,12 +4,12 @@ from docarray import BaseDoc
 
 class Info(BaseDoc):
     """list[<role>: <content>]"""
-    content: str
-    instruction: str
+    content: str = ''
+    instruction: str = ''
     role: str = 'user'  # system / user / assistant
-    cause_by: str
-    sent_from: str
-    send_to: str
+    cause_by: str = ''
+    sent_from: str = ''
+    send_to: str = ''
     
     @property
     def Info_str(self):

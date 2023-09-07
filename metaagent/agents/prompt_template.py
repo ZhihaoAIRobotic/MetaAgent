@@ -1,5 +1,5 @@
 PREFIX_TEMPLATE = """Your name is {name}
-Your role is {role}.
+Your profile is {profile}.
 Your goal is {goal}.
 The constraint is {constraints}. """
 

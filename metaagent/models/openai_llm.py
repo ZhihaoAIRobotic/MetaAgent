@@ -57,12 +57,12 @@ class BaseGPTAPI(BaseChatbot):
         rsp = self.completion(message)
         return self.get_choice_text(rsp)
 
-    async def aask(self, msg: str, system_msgs: Optional[list[str]] = None) -> str:
+    def aask(self, msg: str, system_msgs: Optional[list[str]] = None) -> str:
         if system_msgs:
             message = self._system_msgs(system_msgs) + [self._user_msg(msg)]
         else:
             message = [self._default_system_msg(), self._user_msg(msg)]
-        rsp = await self.acompletion_text(message, stream=True)
+        rsp = self.acompletion_text(message, stream=True)
         logger.debug(message)
         # logger.debug(rsp)
         return rsp
@@ -80,13 +80,13 @@ class BaseGPTAPI(BaseChatbot):
             context.append(self._assistant_msg(rsp_text))
         return self._extract_assistant_rsp(context)
 
-    async def aask_batch(self, msgs: list) -> str:
+    def aask_batch(self, msgs: list) -> str:
         """Sequential questioning"""
         context = []
         for msg in msgs:
             umsg = self._user_msg(msg)
             context.append(umsg)
-            rsp_text = await self.acompletion_text(context)
+            rsp_text = self.acompletion_text(context)
             context.append(self._assistant_msg(rsp_text))
         return self._extract_assistant_rsp(context)
 
@@ -95,9 +95,9 @@ class BaseGPTAPI(BaseChatbot):
         rsp_text = self.ask_batch(msgs)
         return rsp_text
 
-    async def aask_code(self, msgs: list[str]) -> str:
+    def aask_code(self, msgs: list[str]) -> str:
         """FIXME: No code segment filtering has been done here, and all results are actually displayed"""
-        rsp_text = await self.aask_batch(msgs)
+        rsp_text = self.aask_batch(msgs)
         return rsp_text
 
     @abstractmethod
@@ -111,7 +111,7 @@ class BaseGPTAPI(BaseChatbot):
         """
 
     @abstractmethod
-    async def acompletion(self, messages: list[dict]):
+    def acompletion(self, messages: list[dict]):
         """Asynchronous version of completion
         All GPTAPIs are required to provide the standard OpenAI completion interface
         [
@@ -122,7 +122,7 @@ class BaseGPTAPI(BaseChatbot):
         """
 
     @abstractmethod
-    async def acompletion_text(self, messages: list[dict], stream=False) -> str:
+    def acompletion_text(self, messages: list[dict], stream=False) -> str:
         """Asynchronous version of completion. Return str. Support stream-print"""
 
     def get_choice_text(self, rsp: dict) -> str:
@@ -151,14 +151,14 @@ class RateLimiter:
     def split_batches(self, batch):
         return [batch[i: i + self.rpm] for i in range(0, len(batch), self.rpm)]
 
-    async def wait_if_needed(self, num_requests):
+    def wait_if_needed(self, num_requests):
         current_time = time.time()
         elapsed_time = current_time - self.last_call_time
 
         if elapsed_time < self.interval * num_requests:
             remaining_time = self.interval * num_requests - elapsed_time
             logger.info(f"sleep {remaining_time}")
-            await asyncio.sleep(remaining_time)
+            time.sleep(remaining_time)
 
         self.last_call_time = time.time()
 
@@ -209,14 +209,14 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
             openai.api_version = config.openai_api_version
         self.rpm = int(config.get("RPM", 10))
 
-    async def _achat_completion_stream(self, messages: list[dict]) -> str:
-        response = await openai.ChatCompletion.acreate(**self._cons_kwargs(messages), stream=True)
+    def _achat_completion_stream(self, messages: list[dict]) -> str:
+        response = openai.ChatCompletion.create(**self._cons_kwargs(messages), stream=True)
 
         # create variables to collect the stream of chunks
         collected_chunks = []
         collected_messages = []
         # iterate through the stream of events
-        async for chunk in response:
+        for chunk in response:
             collected_chunks.append(chunk)  # save the event response
             chunk_message = chunk["choices"][0]["delta"]  # extract the message
             collected_messages.append(chunk_message)  # save the message
@@ -225,8 +225,7 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         print()
 
         full_reply_content = "".join([m.get("content", "") for m in collected_messages])
-        usage = self._calc_usage(messages, full_reply_content)
-        self._update_costs(usage)
+        # usage = self._calc_usage(messages, full_reply_content)
         return full_reply_content
 
     def _cons_kwargs(self, messages: list[dict]) -> dict:
@@ -251,14 +250,14 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         kwargs["timeout"] = 3
         return kwargs
 
-    async def _achat_completion(self, messages: list[dict]) -> dict:
-        rsp = await self.llm.ChatCompletion.acreate(**self._cons_kwargs(messages))
-        self._update_costs(rsp.get("usage"))
+    def _achat_completion(self, messages: list[dict]) -> dict:
+        rsp = self.llm.ChatCompletion.acreate(**self._cons_kwargs(messages))
+        # self._update_costs(rsp.get("usage"))
         return rsp
 
     def _chat_completion(self, messages: list[dict]) -> dict:
         rsp = self.llm.ChatCompletion.create(**self._cons_kwargs(messages))
-        self._update_costs(rsp)
+        # self._update_costs(rsp)
         return rsp
 
     def completion(self, messages: list[dict]) -> dict:
@@ -266,23 +265,23 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         #     messages = self.messages_to_dict(messages)
         return self._chat_completion(messages)
 
-    async def acompletion(self, messages: list[dict]) -> dict:
+    def acompletion(self, messages: list[dict]) -> dict:
         # if isinstance(messages[0], Message):
         #     messages = self.messages_to_dict(messages)
-        return await self._achat_completion(messages)
+        return self._achat_completion(messages)
 
-    @retry(
-        stop=stop_after_attempt(3),
-        wait=wait_fixed(1),
-        after=after_log(logger, logger.level('WARNING').name),
-        retry=retry_if_exception_type(APIConnectionError),
-        retry_error_callback=log_and_reraise,
-    )
-    async def acompletion_text(self, messages: list[dict], stream=False) -> str:
+    # @retry(
+    #     stop=stop_after_attempt(3),
+    #     wait=wait_fixed(1),
+    #     after=after_log(logger, logger.level('WARNING').name),
+    #     retry=retry_if_exception_type(APIConnectionError),
+    #     retry_error_callback=log_and_reraise,
+    # )
+    def acompletion_text(self, messages: list[dict], stream=False) -> str:
         """when streaming, print each token in place."""
         if stream:
-            return await self._achat_completion_stream(messages)
-        rsp = await self._achat_completion(messages)
+            return self._achat_completion_stream(messages)
+        rsp = self._achat_completion(messages)
         return self.get_choice_text(rsp)
 
     def _calc_usage(self, messages: list[dict], rsp: str) -> dict:
@@ -299,31 +298,29 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         else:
             return usage
 
-    async def acompletion_batch(self, batch: list[list[dict]]) -> list[dict]:
-        """返回完整JSON"""
-        split_batches = self.split_batches(batch)
-        all_results = []
+    # def acompletion_batch(self, batch: list[list[dict]]) -> list[dict]:
+    #     split_batches = self.split_batches(batch)
+    #     all_results = []
 
-        for small_batch in split_batches:
-            logger.info(small_batch)
-            await self.wait_if_needed(len(small_batch))
+    #     for small_batch in split_batches:
+    #         logger.info(small_batch)
+    #         self.wait_if_needed(len(small_batch))
 
-            future = [self.acompletion(prompt) for prompt in small_batch]
-            results = await asyncio.gather(*future)
-            logger.info(results)
-            all_results.extend(results)
+    #         future = [self.acompletion(prompt) for prompt in small_batch]
+    #         # results = asyncio.gather(*future)
+    #         logger.info(results)
+    #         all_results.extend(results)
 
-        return all_results
+    #     return all_results
 
-    async def acompletion_batch_text(self, batch: list[list[dict]]) -> list[str]:
-        """仅返回纯文本"""
-        raw_results = await self.acompletion_batch(batch)
-        results = []
-        for idx, raw_result in enumerate(raw_results, start=1):
-            result = self.get_choice_text(raw_result)
-            results.append(result)
-            logger.info(f"Result of task {idx}: {result}")
-        return results
+    # def acompletion_batch_text(self, batch: list[list[dict]]) -> list[str]:
+    #     raw_results = self.acompletion_batch(batch)
+    #     results = []
+    #     for idx, raw_result in enumerate(raw_results, start=1):
+    #         result = self.get_choice_text(raw_result)
+    #         results.append(result)
+    #         logger.info(f"Result of task {idx}: {result}")
+    #     return results
 
     def get_max_tokens(self, messages: list[dict]):
         if not self.auto_max_tokens:

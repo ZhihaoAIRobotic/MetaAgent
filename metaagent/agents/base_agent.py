@@ -14,7 +14,6 @@ from metaagent.logs import logger
 from metaagent.information import Info
 from metaagent.environment.env_info import EnvInfo
 from metaagent.agents.agent_info import AgentInfo
-
 from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE 
 
 
@@ -45,12 +44,16 @@ class Agent(Executor):
         """Watch the results by actions"""
         for i in actions:
             self.agent_info.watch_action_results.append(i)
+        print('######################################')
+        print(self.agent_info.watch_action_results)
+        print('######################################')
+
 
     def _set_state(self, state):
         """Update the current state."""
         self.state = state
         logger.debug(self.all_actions)
-        self.todo = self.all_actions[self.agent_info.state]
+        self.todo = self.all_actions[self.state]
 
     @property
     def profile(self):
@@ -78,6 +81,10 @@ class Agent(Executor):
 
     def _act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
+        print('######################################')
+        print(self.agent_info.important_memory)
+        print('######################################')
+        # requirment = self.agent_info.important_memory.
         response = self.todo.run(self.agent_info.important_memory)
         if isinstance(response, ActionOutput):
             msg = Info(content=response.content, instruct_content=response.instruct_content, role=self.profile, cause_by=str(self.todo))
@@ -134,11 +141,11 @@ class Agent(Executor):
             return
         self.agent_info.memory.add(msg)
 
-    # def handle(self, message: Message) -> Message:
-    #     """接收信息，并用行动回复"""
-    #     # logger.debug(f"{self.name=}, {self.profile=}, {message.role=}")
-    #     self.recv(message)
+    def handle(self, info: Info) -> Info:
+        """接收信息，并用行动回复"""
+        # logger.debug(f"{self.name=}, {self.profile=}, {message.role=}")
+        self.recv(info)
 
-    #     return await self._react()
+        return self._react()
 
 

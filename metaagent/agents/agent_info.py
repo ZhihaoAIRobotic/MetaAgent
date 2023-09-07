@@ -24,7 +24,7 @@ class AgentInfo(BaseDoc):
     @property
     def important_memory(self) -> list[str]:
         """Get the information corresponding to the watched actions"""
-        return self.memory.remember_by_action(self.watch_action_results)
+        return self.memory.remember_by_actions(self.watch_action_results).content
     
     @property
     def role_id(self) -> str:

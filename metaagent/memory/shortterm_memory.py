@@ -44,8 +44,10 @@ class ShortTermMemory(BaseDoc):
         """Return all messages triggered by a specified Action"""
         storage_index = InMemoryExactNNIndex[Info]()
         storage_index.index(self.storage)
-        query = {'action': {'$eq': action}}
+        print(action)
+        query = {'cause_by': {'$eq': action}}
         content = storage_index.filter(query)
+        print(content.content)
         return content
 
     def remember_by_actions(self, actions: Iterable[str]) -> DocList[Info]:
@@ -54,7 +56,7 @@ class ShortTermMemory(BaseDoc):
         for action in actions:
             storage_index = InMemoryExactNNIndex[Info]()
             storage_index.index(self.storage)
-            query = {'action': {'$eq': action}}
+            query = {'cause_by': {'$eq': action}}
             contents = contents + storage_index.filter(query)
         return DocList[Info](contents)
 
