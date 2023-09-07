@@ -1,2 +1,2 @@
 [flake8]
-extend-ignore = E501, E225
+extend-ignore = E501

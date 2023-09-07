@@ -6,8 +6,8 @@ from jina import Executor, requests, Flow
 from docarray import DocList, BaseDoc
 
 from metaagent.information import Info
-from metaagent.environment.environment import EnvInfo
-from metaagent.agents.base_agent import AgentInfo
+from metaagent.environment.env_info import EnvInfo
+from metaagent.agents.agent_info import AgentInfo
 
 
 class HubStart(Executor):

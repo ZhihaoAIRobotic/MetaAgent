@@ -5,14 +5,8 @@ import jina
 from docarray import BaseDoc, DocList
 
 from metaagent.agents.agents_hub import AgentsHub
-from metaagent.agents.base_agent import Agent
 from metaagent.memory.shortterm_memory import ShortTermMemory
-
-
-class EnvInfo(BaseDoc):
-    agents_name: List[str]
-    env_memory: ShortTermMemory
-    history: str
+from metaagent.environment.env_info import EnvInfo
 
 
 class Environment():

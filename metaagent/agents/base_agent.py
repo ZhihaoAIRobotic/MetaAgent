@@ -1,52 +1,25 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Type
+from typing import Iterable
 
-from pydantic import BaseModel, Field
-
-from jina import Executor, requests, Flow
-from docarray import DocList, BaseDoc
+from jina import Executor, requests
+from docarray import DocList
 from metaagent.utils import get_class
 
 # from metagpt.environment import Environment
-from metaagent.config import CONFIG
-from metaagent.actions.action import Action, ActionOutput
+from metaagent.actions.action import ActionOutput
 from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
-from metaagent.memory.shortterm_memory import ShortTermMemory
 from metaagent.information import Info
-from metaagent.environment.environment import EnvInfo
+from metaagent.environment.env_info import EnvInfo
+from metaagent.agents.agent_info import AgentInfo
 
-from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE, ROLE_TEMPLATE 
-
-
-class AgentInfo(BaseDoc):
-    name: str
-    profile: str
-    goal: str
-    constraints: str
-    memory: ShortTermMemory = ShortTermMemory()
-    news: DocList[Info] = DocList[Info]()
-    watch_action_results: list[str] = []
-
-    @property
-    def history(self) -> list[str]:
-        info_strs = self.memory.remember()
-        return [i.Info_str for i in info_strs]
-    
-    @property
-    def important_memory(self) -> list[str]:
-        """Get the information corresponding to the watched actions"""
-        return self.memory.remember_by_action(self.watch_action_results)
-    
-    @property
-    def role_id(self) -> str:
-        return f"{self.name}({self.profile})"
+from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE 
 
 
 class Agent(Executor):
-    def __init__(self, name="", profile="", goal="", constraints="", desc=""):
+    def __init__(self, name="", profile="", goal="", constraints="", desc="", **kwargs):
         self._llm = OpenAIGPTAPI()
         self.agent_info = AgentInfo(name=name, profile=profile, goal=goal, constraints=constraints, desc=desc)
         self.all_states = []

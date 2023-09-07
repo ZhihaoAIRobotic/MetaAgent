@@ -179,7 +179,6 @@ from metaagent.utils import (
 )
 
 
-
 def log_and_reraise(retry_state):
     logger.error(f"Retry attempts exhausted. Last exception: {retry_state.outcome.exception()}")
     logger.warning("""
@@ -325,7 +324,6 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
             results.append(result)
             logger.info(f"Result of task {idx}: {result}")
         return results
-
 
     def get_max_tokens(self, messages: list[dict]):
         if not self.auto_max_tokens:
