@@ -76,7 +76,7 @@ class Agent(Executor):
             next_state = "0"
         self._set_state(int(next_state))
 
-    def _act(self) -> Message:
+    def _act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
         response = self.todo.run(self.agent_info.important_memory)
         if isinstance(response, ActionOutput):
@@ -103,7 +103,7 @@ class Agent(Executor):
             logger.debug(f'{self._role_id} observed: {news_text}')
         return len(self.agent_info.news)
     
-    def _react(self) -> Message:
+    def _react(self) -> Info:
         """先想，然后再做"""
         self._think()
         logger.debug(f"{self._role_id}: {self.state}, will do {self.todo}")
@@ -127,14 +127,6 @@ class Agent(Executor):
         # 将回复发布到环境，等待下一个订阅者处理
         env_info.env_memory.add(rsp)
         env_info.history += f"\n{rsp.Info_str}"
-        return rsp
-
-    def _publish_message(self, msg):
-        """如果role归属于env，那么role的消息会向env广播"""
-        if not self._rc.env:
-            # 如果env不存在，不发布消息
-            return
-        self._rc.env.publish_message(msg)
 
     def recv(self, msg: Info) -> None:
         """add message to memory."""
