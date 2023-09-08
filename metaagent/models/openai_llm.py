@@ -1,7 +1,6 @@
-from __future__ import annotations
 import asyncio
 import time
-from typing import NamedTuple, Optional
+from typing import NamedTuple, Optional, Dict, List
 
 import openai
 from openai.error import APIConnectionError
@@ -25,11 +24,11 @@ class BaseChatbot(ABC):
         """Ask GPT a question and get an answer"""
 
     @abstractmethod
-    def ask_batch(self, msgs: list) -> str:
+    def ask_batch(self, msgs: List) -> str:
         """Ask GPT multiple questions and get a series of answers"""
 
     @abstractmethod
-    def ask_code(self, msgs: list) -> str:
+    def ask_code(self, msgs: List) -> str:
         """Ask GPT multiple questions and get a piece of code"""
 
 
@@ -37,16 +36,16 @@ class BaseGPTAPI(BaseChatbot):
     """GPT API abstract class, requiring all inheritors to provide a series of standard capabilities"""
     system_prompt = 'You are a helpful assistant.'
 
-    def _user_msg(self, msg: str) -> dict[str, str]:
+    def _user_msg(self, msg: str) -> Dict[str, str]:
         return {"role": "user", "content": msg}
 
-    def _assistant_msg(self, msg: str) -> dict[str, str]:
+    def _assistant_msg(self, msg: str) -> Dict[str, str]:
         return {"role": "assistant", "content": msg}
 
-    def _system_msg(self, msg: str) -> dict[str, str]:
+    def _system_msg(self, msg: str) -> Dict[str, str]:
         return {"role": "system", "content": msg}
 
-    def _system_msgs(self, msgs: list[str]) -> list[dict[str, str]]:
+    def _system_msgs(self, msgs: List[str]) -> List[Dict[str, str]]:
         return [self._system_msg(msg) for msg in msgs]
 
     def _default_system_msg(self):
@@ -57,7 +56,7 @@ class BaseGPTAPI(BaseChatbot):
         rsp = self.completion(message)
         return self.get_choice_text(rsp)
 
-    def aask(self, msg: str, system_msgs: Optional[list[str]] = None) -> str:
+    def aask(self, msg: str, system_msgs: Optional[List[str]] = None) -> str:
         if system_msgs:
             message = self._system_msgs(system_msgs) + [self._user_msg(msg)]
         else:
@@ -70,7 +69,7 @@ class BaseGPTAPI(BaseChatbot):
     def _extract_assistant_rsp(self, context):
         return "\n".join([i["content"] for i in context if i["role"] == "assistant"])
 
-    def ask_batch(self, msgs: list) -> str:
+    def ask_batch(self, msgs: List) -> str:
         context = []
         for msg in msgs:
             umsg = self._user_msg(msg)
@@ -80,7 +79,7 @@ class BaseGPTAPI(BaseChatbot):
             context.append(self._assistant_msg(rsp_text))
         return self._extract_assistant_rsp(context)
 
-    def aask_batch(self, msgs: list) -> str:
+    def aask_batch(self, msgs: List) -> str:
         """Sequential questioning"""
         context = []
         for msg in msgs:
@@ -90,18 +89,18 @@ class BaseGPTAPI(BaseChatbot):
             context.append(self._assistant_msg(rsp_text))
         return self._extract_assistant_rsp(context)
 
-    def ask_code(self, msgs: list[str]) -> str:
+    def ask_code(self, msgs: List[str]) -> str:
         """FIXME: No code segment filtering has been done here, and all results are actually displayed"""
         rsp_text = self.ask_batch(msgs)
         return rsp_text
 
-    def aask_code(self, msgs: list[str]) -> str:
+    def aask_code(self, msgs: List[str]) -> str:
         """FIXME: No code segment filtering has been done here, and all results are actually displayed"""
         rsp_text = self.aask_batch(msgs)
         return rsp_text
 
     @abstractmethod
-    def completion(self, messages: list[dict]):
+    def completion(self, messages: List[Dict]):
         """All GPTAPIs are required to provide the standard OpenAI completion interface
         [
             {"role": "system", "content": "You are a helpful assistant."},
@@ -111,7 +110,7 @@ class BaseGPTAPI(BaseChatbot):
         """
 
     @abstractmethod
-    def acompletion(self, messages: list[dict]):
+    def acompletion(self, messages: List[Dict]):
         """Asynchronous version of completion
         All GPTAPIs are required to provide the standard OpenAI completion interface
         [
@@ -122,14 +121,14 @@ class BaseGPTAPI(BaseChatbot):
         """
 
     @abstractmethod
-    def acompletion_text(self, messages: list[dict], stream=False) -> str:
+    def acompletion_text(self, messages: List[Dict], stream=False) -> str:
         """Asynchronous version of completion. Return str. Support stream-print"""
 
-    def get_choice_text(self, rsp: dict) -> str:
+    def get_choice_text(self, rsp: Dict) -> str:
         """Required to provide the first text of choice"""
         return rsp.get("choices")[0]["message"]["content"]
 
-    def messages_to_prompt(self, messages: list[dict]):
+    def messages_to_prompt(self, messages: List[Dict]):
         """[{"role": "user", "content": msg}] to user: <msg> etc."""
         return '\n'.join([f"{i['role']}: {i['content']}" for i in messages])
 
@@ -209,7 +208,7 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
             openai.api_version = config.openai_api_version
         self.rpm = int(config.get("RPM", 10))
 
-    def _achat_completion_stream(self, messages: list[dict]) -> str:
+    def _achat_completion_stream(self, messages: List[Dict]) -> str:
         response = openai.ChatCompletion.create(**self._cons_kwargs(messages), stream=True)
 
         # create variables to collect the stream of chunks
@@ -228,7 +227,7 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         # usage = self._calc_usage(messages, full_reply_content)
         return full_reply_content
 
-    def _cons_kwargs(self, messages: list[dict]) -> dict:
+    def _cons_kwargs(self, messages: List[Dict]) -> Dict:
         if CONFIG.openai_api_type == "azure":
             kwargs = {
                 "deployment_id": CONFIG.deployment_id,
@@ -250,22 +249,22 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         kwargs["timeout"] = 3
         return kwargs
 
-    def _achat_completion(self, messages: list[dict]) -> dict:
+    def _achat_completion(self, messages: List[Dict]) -> Dict:
         rsp = self.llm.ChatCompletion.acreate(**self._cons_kwargs(messages))
         # self._update_costs(rsp.get("usage"))
         return rsp
 
-    def _chat_completion(self, messages: list[dict]) -> dict:
+    def _chat_completion(self, messages: List[Dict]) -> Dict:
         rsp = self.llm.ChatCompletion.create(**self._cons_kwargs(messages))
         # self._update_costs(rsp)
         return rsp
 
-    def completion(self, messages: list[dict]) -> dict:
+    def completion(self, messages: List[Dict]) -> Dict:
         # if isinstance(messages[0], Message):
         #     messages = self.messages_to_dict(messages)
         return self._chat_completion(messages)
 
-    def acompletion(self, messages: list[dict]) -> dict:
+    def acompletion(self, messages: List[Dict]) -> Dict:
         # if isinstance(messages[0], Message):
         #     messages = self.messages_to_dict(messages)
         return self._achat_completion(messages)
@@ -277,14 +276,14 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
     #     retry=retry_if_exception_type(APIConnectionError),
     #     retry_error_callback=log_and_reraise,
     # )
-    def acompletion_text(self, messages: list[dict], stream=False) -> str:
+    def acompletion_text(self, messages: List[Dict], stream=False) -> str:
         """when streaming, print each token in place."""
         if stream:
             return self._achat_completion_stream(messages)
         rsp = self._achat_completion(messages)
         return self.get_choice_text(rsp)
 
-    def _calc_usage(self, messages: list[dict], rsp: str) -> dict:
+    def _calc_usage(self, messages: List[Dict], rsp: str) -> Dict:
         usage = {}
         if CONFIG.calc_usage:
             try:
@@ -322,7 +321,7 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
     #         logger.info(f"Result of task {idx}: {result}")
     #     return results
 
-    def get_max_tokens(self, messages: list[dict]):
+    def get_max_tokens(self, messages: List[Dict]):
         if not self.auto_max_tokens:
             return CONFIG.max_tokens_rsp
         return get_max_completion_tokens(messages, self.model, CONFIG.max_tokens_rsp)

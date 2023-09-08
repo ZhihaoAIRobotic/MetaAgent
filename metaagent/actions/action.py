@@ -1,6 +1,5 @@
-from __future__ import annotations
 from abc import ABC
-from typing import Optional
+from typing import Optional, List, Dict
 
 from tenacity import retry, stop_after_attempt, wait_fixed
 
@@ -34,7 +33,7 @@ class Action(ABC):
     def __repr__(self):
         return self.__str__()
 
-    def _aask(self, prompt: str, system_msgs: Optional[list[str]] = None) -> str:
+    def _aask(self, prompt: str, system_msgs: Optional[List[str]] = None) -> str:
         """Append default prefix"""
         if not system_msgs:
             system_msgs = []
@@ -43,8 +42,8 @@ class Action(ABC):
 
     # @retry(stop=stop_after_attempt(2), wait=wait_fixed(1))
     def _aask_v1(self, prompt: str, output_class_name: str,
-                       output_data_mapping: dict,
-                       system_msgs: Optional[list[str]] = None) -> ActionOutput:
+                       output_data_mapping: Dict,
+                       system_msgs: Optional[List[str]] = None) -> ActionOutput:
         """Append default prefix"""
         if not system_msgs:
             system_msgs = []

@@ -1,4 +1,4 @@
-from __future__ import annotations
+
 from docarray import BaseDoc
 
 

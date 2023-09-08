@@ -1,6 +1,3 @@
-
-from __future__ import annotations
-
 from typing import Iterable
 
 from jina import Executor, requests
@@ -13,12 +10,13 @@ from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
 from metaagent.information import Info
 from metaagent.environment.env_info import EnvInfo
-from metaagent.agents.agent_info import AgentInfo
+from metaagent.agents.agent_info import AgentInfo, InteractionInfo
 from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE 
 
 
 class Agent(Executor):
     def __init__(self, name="", profile="", goal="", constraints="", desc="", **kwargs):
+        super().__init__(**kwargs)
         self._llm = OpenAIGPTAPI()
         self.agent_info = AgentInfo(name=name, profile=profile, goal=goal, constraints=constraints, desc=desc)
         self.all_states = []
@@ -47,7 +45,6 @@ class Agent(Executor):
         print('######################################')
         print(self.agent_info.watch_action_results)
         print('######################################')
-
 
     def _set_state(self, state):
         """Update the current state."""
@@ -114,23 +111,25 @@ class Agent(Executor):
         return self._act()
     
     @requests
-    def run(self, env_info: EnvInfo, agents_infos: DocList[AgentInfo], **kwargs):
+    def run(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]:
         """观察，并基于观察的结果思考、行动"""
         # if agents_info.name == self.name:
-        if self._role_id in [agent_info.role_id for agent_info in agents_infos]:
-            for agent_info in agents_infos:
+        if self._role_id in [agent_info.role_id for agent_info in docs[0].agents_info]:
+            for agent_info in docs[0].agents_info:
                 if agent_info.role_id == self._role_id:
                     self.agent_info = agent_info
+        else:
+            docs[0].agents_info.append(self.agent_info)
 
-        if not self._observe(env_info):
+        if not self._observe(docs[0].env_info):
             # if no news, do nothing
             logger.debug(f"{self._setting}: no news. waiting.")
             return
 
         rsp = self._react()
         # 将回复发布到环境，等待下一个订阅者处理
-        env_info.env_memory.add(rsp)
-        env_info.history += f"\n{rsp.Info_str}"
+        docs[0].env_info.env_memory.add(rsp)
+        docs[0].env_info.history += f"\n{rsp.Info_str}"
 
     def recv(self, msg: Info) -> None:
         """add message to memory."""
@@ -144,5 +143,3 @@ class Agent(Executor):
         self.recv(info)
 
         return self._react()
-
-

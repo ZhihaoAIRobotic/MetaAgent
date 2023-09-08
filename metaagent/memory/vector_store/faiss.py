@@ -1,7 +1,6 @@
-from __future__ import annotations
 import pickle
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 import faiss
 from langchain.embeddings import OpenAIEmbeddings
@@ -63,7 +62,7 @@ class FaissStore(LocalStore):
         self.persist()
         return self.store
 
-    def add(self, texts: list[str], *args, **kwargs) -> list[str]:
+    def add(self, texts: List[str], *args, **kwargs) -> List[str]:
         """FIXME: 目前add之后没有更新store"""
         return self.store.add_texts(texts)
 

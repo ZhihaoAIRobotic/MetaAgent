@@ -1,10 +1,9 @@
-from __future__ import annotations
 import sys
 import abc
 import ast
 import contextlib
 import re
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, List
 import tiktoken
 
 
@@ -70,11 +69,11 @@ class OutputParser:
         return text
 
     @classmethod
-    def parse_file_list(cls, text: str) -> list[str]:
-        # Regular expression pattern to find the tasks list.
+    def parse_file_list(cls, text: str) -> List[str]:
+        # Regular expression pattern to find the tasks List.
         pattern = r'\s*(.*=.*)?(\[.*\])'
 
-        # Extract tasks list string using regex.
+        # Extract tasks List string using regex.
         match = re.search(pattern, text, re.DOTALL)
         if match:
             tasks_list_str = match.group(2)
@@ -241,7 +240,7 @@ def count_string_tokens(string: str, model_name: str) -> int:
     return len(encoding.encode(string))
 
 
-def get_max_completion_tokens(messages: list[dict], model: str, default: int) -> int:
+def get_max_completion_tokens(messages: List[Dict], model: str, default: int) -> int:
     """Calculate the maximum number of completion tokens for a given model and list of messages.
 
     Args:

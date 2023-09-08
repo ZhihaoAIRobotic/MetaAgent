@@ -5,10 +5,9 @@
 @Author  : alexanderwu
 @File    : search_engine.py
 """
-from __future__ import annotations
 
 import importlib
-from typing import Callable, Coroutine, Literal, overload
+from typing import Callable, Coroutine, Literal, overload, List, Dict
 
 from metaagent.config import CONFIG
 # from metaagent.tools import SearchEngineType
@@ -34,8 +33,7 @@ class SearchEngine:
     """
     def __init__(
         self,
-        engine: SearchEngineType | None = None,
-        run_func: Callable[[str, int, bool], Coroutine[None, None, str | list[str]]] = None,
+        engine: SearchEngineType = None, run_func=None
     ):
         engine = SearchEngineType.SERPAPI_GOOGLE
         module = "metaagent.tools.search_engine_serpapi"
@@ -59,10 +57,10 @@ class SearchEngine:
         query: str,
         max_results: int = 8,
         as_string: Literal[False] = False,
-    ) -> list[dict[str, str]]:
+    ) -> List[Dict[str, str]]:
         ...
 
-    def run(self, query: str, max_results: int = 8, as_string: bool = True) -> str | list[dict[str, str]]:
+    def run(self, query: str, max_results: int = 8, as_string: bool = True):
         """Run a search query.
 
         Args:

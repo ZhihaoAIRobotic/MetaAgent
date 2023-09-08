@@ -1,4 +1,4 @@
-from __future__ import annotations
+from typing import List, Dict
 
 from metaagent.logs import logger
 from metaagent.memory.shortterm_memory import Memory
@@ -40,7 +40,7 @@ class LongTermMemory(Memory):
                 # and ignore adding messages from recover repeatedly
                 self.memory_storage.add(message)
 
-    def remember(self, observed: list[Message], k=0) -> list[Message]:
+    def remember(self, observed: List[Message], k=0) -> List[Message]:
         """
         remember the most similar k memories from observed Messages, return all when k=0
             1. remember the short-term memory(stm) news
@@ -51,7 +51,7 @@ class LongTermMemory(Memory):
             # memory_storage hasn't initialized, use default `remember` to get stm_news
             return stm_news
 
-        ltm_news: list[Message] = []
+        ltm_news: List[Message] = []
         for mem in stm_news:
             # integrate stm & ltm
             mem_searched = self.memory_storage.search(mem)

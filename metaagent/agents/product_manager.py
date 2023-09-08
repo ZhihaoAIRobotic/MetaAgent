@@ -282,7 +282,7 @@ class ProductManager(Agent):
             goal (str): Goal of the product manager.
             constraints (str): Constraints or limitations for the product manager.
         """
-        super().__init__(name, profile, goal, constraints)
+        super().__init__(name, profile, goal, constraints, **kwargs)
         self._init_actions(['WritePRD'])
         self._watch(['BossRequirement'])
 

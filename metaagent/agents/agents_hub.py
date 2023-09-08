@@ -1,33 +1,35 @@
-from __future__ import annotations
 
-from enum import Enum
+from typing import Dict, Union, TypeVar
 
 from jina import Executor, requests, Flow
-from docarray import DocList, BaseDoc
+from docarray import DocList
 
 from metaagent.information import Info
 from metaagent.environment.env_info import EnvInfo
-from metaagent.agents.agent_info import AgentInfo
+from metaagent.agents.agent_info import AgentInfo, InteractionInfo
+from metaagent.agents.product_manager import ProductManager
+from metaagent.memory.shortterm_memory import ShortTermMemory
 
+
+# InteractionInfoType = TypeVar('InteractionInfoType', bound='InteractionInfo')
 
 class HubStart(Executor):
-    def __init__(self) -> None:
-        pass
-
     @requests
-    def sendto_agents(self, env_info: EnvInfo, agents_info: DocList[AgentInfo], **kwargs):
+    def sendto_agents(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]:
         # Send environment info to agents
-        pass
+        print('env_info', docs[0].env_info.env_memory)
+
 
 
 class HubEnd(Executor):
-    def __init__(self) -> None:
-        pass
-
     @requests
-    def recievefrom_agents(self, env_info: EnvInfo, agents_info: DocList[AgentInfo], **kwargs):
+    def recievefrom_agents(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]: 
         # Recieve new environment info from agents
-        pass
+        # docs[0].env_info.env_shorterm_memory.add(Info(content='doc1', cause_by='Agent'))
+        # print(docs[0].env_info.env_shorterm_memory.remember_by_actions(['Agent'])[0].content)
+        print('env_info', docs[0].env_info.env_memory)
+
+        
 
 
 class AgentsHub():
@@ -41,12 +43,29 @@ class AgentsHub():
     def delete_agent(self):
         pass
 
-    def run(self):
-        workflow = Flow.load_config('agentshub.yml')
+    def interacte(self, interactioninfo: InteractionInfo, **kwargs):
+        # workflow = Flow.load_config('agentshub.yml')
+        workflow = Flow().add(name='start', uses='HubStart').add(name='pm', uses=ProductManager, needs='start').add(name='end', uses='HubEnd', needs='pm')
+        # workflow.plot()
+        interactioninfo_list = DocList[InteractionInfo]([interactioninfo])
+        print('InteractionInfo', interactioninfo)
         with workflow:
-            pass
+            feedback = workflow.post('/', inputs=interactioninfo_list, return_type=DocList[InteractionInfo])
+        return feedback[0]
+            #block()  #, return_type=InteractionInfo
+        # print('######################################')
+        # print(agents_feedback[0])
+        # return agents_feedback
 
-    def interacte(self, env_info: DocList[Info]) -> DocList[Info]:
-        # Recieve info from agents
+#, return_type=(EnvInfo, DocList[AgentInfo]
 
-        pass
+# workflow = Flow().add(name='startsss', uses='HubEnd')#.add(name='pm', uses=ProductManager, needs='start').add(name='end', uses='HubEnd', needs='pm')
+# workflow = Deployment(name='startsss', uses='HubEnd')
+# interactioninfo = DocList[AgentInfo]([AgentInfo()])
+# print('InteractionInfo', interactioninfo)
+# b = DocList[Info]([Info(content='doc1', action='b'), Info(content='doc2', action='b')])
+# interactioninfo = ShortTermMemory(storage=b)
+# with workflow:
+#     agents_feedback = workflow.post('/', inputs=interactioninfo, return_type=DocList[ShortTermMemory])
+# print('######################################')
+# print(agents_feedback[0])

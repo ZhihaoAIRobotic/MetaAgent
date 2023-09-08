@@ -1,6 +1,6 @@
-from __future__ import annotations
 import pydantic
 from docarray import DocList
+from typing import List
 
 from metaagent.actions.action import Action
 from metaagent.config import Config
@@ -108,7 +108,7 @@ class SearchAndSummarize(Action):
         self.result = ""
         super().__init__(name, context, llm)
 
-    def run(self, context: list[str], system_text=SEARCH_AND_SUMMARIZE_SYSTEM) -> str:
+    def run(self, context: List[str], system_text=SEARCH_AND_SUMMARIZE_SYSTEM) -> str:
         if self.search_engine is None:
             logger.warning("Configure one of SERPAPI_API_KEY, SERPER_API_KEY, GOOGLE_API_KEY to unlock full feature")
             return ""
