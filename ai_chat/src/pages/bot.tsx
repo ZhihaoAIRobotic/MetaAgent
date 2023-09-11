@@ -122,9 +122,9 @@ export default function Bot() {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
-      <button onClick={fetchChat} className="text-white">
+      {/* <button onClick={fetchChat} className="text-white">
         click
-      </button>
+      </button> */}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => void onSubmit(data))}
