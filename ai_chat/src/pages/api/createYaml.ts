@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const { text, parameters } = req.body as Data;
-  writeYamlFile("./bot.yaml", { foo: true })
+  await writeYamlFile("./bot.yaml", { foo: true })
     .then(() => {
       console.log("done");
     })
