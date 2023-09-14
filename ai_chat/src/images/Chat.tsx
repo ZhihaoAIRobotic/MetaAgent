@@ -5,7 +5,7 @@ export const Chat = () => (
     height="32"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke="#EDEDEC"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
