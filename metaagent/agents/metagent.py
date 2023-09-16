@@ -19,7 +19,7 @@ class MyAgent(Metagent):
     """"
         to do: add mutli_actions inference
     """
-    def __init__(self,
+    def __init__(self, tool_cfg: Optional[Dict] = {},
             multi_actions: Optional[MultiActions] = None,
             knowledge_retrieval: Optional[KnowledgeRetrieval] = None,   
             **kwargs):
@@ -94,9 +94,9 @@ class MyAgent(Metagent):
 
         # obtain useful knowledge
         knowledge_str = self.get_knowledge_str(self.agent_info.news)
-        # state_template 
+        # state_template, add knowledge and tools_description to prompt
         prompt += STATE_TEMPLATE.format(history=history_str, states="\n".join(self.all_states),
-                                        n_states=len(self.all_states) - 1, knowledge=knowledge_str)
+                                        n_states=len(self.all_states) - 1, knowledge=knowledge_str, tools_description=tool_cfg)
         # current user input information
         prompt += f"user input: '{self.agent_info.news}'. "
 
