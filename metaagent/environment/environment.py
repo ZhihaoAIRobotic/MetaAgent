@@ -25,6 +25,7 @@ class Environment():
             self.add_agents()
 
     def add_task(self, task: str) -> None:
+        # TODO: Change action name
         self.info.env_info.env_memory.add(Info(content=task, cause_by='BossRequirement'))
         self.info.env_info.history += f"\n{Info(content=task, cause_by='BossRequirement').Info_str}"
 
@@ -35,8 +36,10 @@ class Environment():
         return self.agents_name
 
     def run(self):
-        self.add_task('Write a paper')
+        self.add_task('give me a picture of musk')
         self.newinfo = self.agents.interacte(self.info)
+        print('######################################')
+        print(self.newinfo)
 
 
 env = Environment()

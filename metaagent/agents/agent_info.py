@@ -12,7 +12,7 @@ class AgentInfo(BaseDoc):
     profile: str = ''
     goal: str = ''
     constraints: str = ''
-    memory: ShortTermMemory = ShortTermMemory()
+    memory: ShortTermMemory = ShortTermMemory()  # 
     news: DocList[Info] = DocList[Info]()
     watch_action_results: List[str] = []
 

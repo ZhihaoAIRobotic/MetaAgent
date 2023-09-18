@@ -8,7 +8,7 @@ Tools:
 
 OPENAI_API_BASE: "https://api.openai.com/v1"
 #OPENAI_PROXY: "http://127.0.0.1:8118"
-OPENAI_API_KEY: "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"
+OPENAI_API_KEY: "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"
 OPENAI_API_MODEL: "gpt-3.5-turbo"
 MAX_TOKENS: 1500
 RPM: 10

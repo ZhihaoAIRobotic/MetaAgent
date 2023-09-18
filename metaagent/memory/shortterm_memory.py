@@ -9,10 +9,6 @@ from docarray.index import InMemoryExactNNIndex
 from metaagent.information import Info
 
 
-class SimpleDoc(BaseDoc):
-    text: str
-
-
 class ShortTermMemory(DocList[Info]):
 
     def add(self, info: Info):
@@ -42,10 +38,8 @@ class ShortTermMemory(DocList[Info]):
         """Return all messages triggered by a specified Action"""
         storage_index = InMemoryExactNNIndex[Info]()
         storage_index.index(self)
-        print(action)
         query = {'cause_by': {'$eq': action}}
         content = storage_index.filter(query)
-        print(content.content)
         return content
 
     def remember_by_actions(self, actions: Iterable[str]) -> DocList[Info]:
@@ -55,7 +49,7 @@ class ShortTermMemory(DocList[Info]):
             storage_index = InMemoryExactNNIndex[Info]()
             storage_index.index(self)
             query = {'cause_by': {'$eq': action}}
-            contents = contents + storage_index.filter(query)
+            contents = contents + storage_index.filter(query) # become a list after + operation
         return DocList[Info](contents)
 
 

@@ -1,10 +1,7 @@
 from typing import Iterable
-
 from jina import Executor, requests
 from docarray import DocList
 from metaagent.utils import get_class
-
-# from metagpt.environment import Environment
 from metaagent.actions.action import ActionOutput
 from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
@@ -69,7 +66,9 @@ class Agent(Executor):
         prompt = self._get_prefix()
         prompt += STATE_TEMPLATE.format(history=self.agent_info.history, states="\n".join(self.all_states),
                                         n_states=len(self.all_states) - 1)
+        print(prompt)
         next_state = self._llm.aask(prompt)
+        print('next_state', next_state)
         logger.debug(f"{prompt=}")
         if not next_state.isdigit() or int(next_state) not in range(len(self.all_states)):
             logger.warning(f'Invalid answer of state, {next_state=}')
@@ -105,7 +104,7 @@ class Agent(Executor):
         return len(self.agent_info.news)
     
     def _react(self) -> Info:
-        """先想，然后再做"""
+        """Think first, then do."""
         self._think()
         logger.debug(f"{self._role_id}: {self.state}, will do {self.todo}")
         return self._act()

@@ -8,6 +8,7 @@ from metaagent.information import Info
 from metaagent.environment.env_info import EnvInfo
 from metaagent.agents.agent_info import AgentInfo, InteractionInfo
 from metaagent.agents.product_manager import ProductManager
+from metaagent.agents.multi_modal_agent import MultiModelAgent
 from metaagent.memory.shortterm_memory import ShortTermMemory
 
 
@@ -20,7 +21,6 @@ class HubStart(Executor):
         print('env_info', docs[0].env_info.env_memory)
 
 
-
 class HubEnd(Executor):
     @requests
     def recievefrom_agents(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]: 
@@ -28,8 +28,6 @@ class HubEnd(Executor):
         # docs[0].env_info.env_shorterm_memory.add(Info(content='doc1', cause_by='Agent'))
         # print(docs[0].env_info.env_shorterm_memory.remember_by_actions(['Agent'])[0].content)
         print('env_info', docs[0].env_info.env_memory)
-
-        
 
 
 class AgentsHub():
@@ -45,20 +43,19 @@ class AgentsHub():
 
     def interacte(self, interactioninfo: InteractionInfo, **kwargs):
         # workflow = Flow.load_config('agentshub.yml')
-        workflow = Flow().add(name='start', uses='HubStart').add(name='pm', uses=ProductManager, needs='start').add(name='end', uses='HubEnd', needs='pm')
+        workflow = Flow().add(name='start', uses='HubStart').add(name='mma', uses=MultiModelAgent, needs='start').add(name='end', uses='HubEnd', needs='pm')
         # workflow.plot()
         interactioninfo_list = DocList[InteractionInfo]([interactioninfo])
         print('InteractionInfo', interactioninfo)
         with workflow:
             feedback = workflow.post('/', inputs=interactioninfo_list, return_type=DocList[InteractionInfo])
+        print(feedback)
         return feedback[0]
-            #block()  #, return_type=InteractionInfo
+        # block()  #, return_type=InteractionInfo
         # print('######################################')
         # print(agents_feedback[0])
         # return agents_feedback
-
 #, return_type=(EnvInfo, DocList[AgentInfo]
-
 # workflow = Flow().add(name='startsss', uses='HubEnd')#.add(name='pm', uses=ProductManager, needs='start').add(name='end', uses='HubEnd', needs='pm')
 # workflow = Deployment(name='startsss', uses='HubEnd')
 # interactioninfo = DocList[AgentInfo]([AgentInfo()])
