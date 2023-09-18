@@ -40,7 +40,6 @@ class Action(ABC):
         system_msgs.append(self.prefix)
         return self.llm.aask(prompt, system_msgs)
 
-    # @retry(stop=stop_after_attempt(2), wait=wait_fixed(1))
     def _aask_v1(self, prompt: str, output_class_name: str,
                        output_data_mapping: Dict,
                        system_msgs: Optional[List[str]] = None) -> ActionOutput:

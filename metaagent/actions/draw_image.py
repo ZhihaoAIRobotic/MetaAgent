@@ -8,8 +8,8 @@
 from typing import List, Tuple
 
 from metaagent.actions.action import Action, ActionOutput
-from metaagent.actions.search_and_summarize import SearchAndSummarize, SEARCH_AND_SUMMARIZE_SYSTEM_EN_US
 from metaagent.logs import logger
+from metaagent.tools.text2image import TextToImage
 
 
 class DrawImage(Action):
@@ -17,7 +17,9 @@ class DrawImage(Action):
         super().__init__(name, context, llm)
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
-        print('Draw image######################################')
         logger.debug(requirements)
+        processor = TextToImage()
+        image = processor.process_image(requirements)
+        image.save("geeks.jpg")
         # prd = self._aask_v1(prompt, "prd", OUTPUT_MAPPING)
-        return 0
+        return "geeks.jpg"

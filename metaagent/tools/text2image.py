@@ -3,7 +3,7 @@ from diffusers import DiffusionPipeline
 from PIL import Image 
 
 
-class TextToImageProcessor():
+class TextToImage():
     def __init__(self):
         self.base = DiffusionPipeline.from_pretrained(
             "stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, variant="fp16", use_safetensors=True
@@ -37,7 +37,7 @@ class TextToImageProcessor():
 
 if __name__ == '__main__':
     text = 'Elon Musk is the CEO of Tesla.'
-    processor = TextToImageProcessor()
+    processor = TextToImage()
     image = processor.process_image(text)
     print(type(image))
     image.save("geeks.jpg")

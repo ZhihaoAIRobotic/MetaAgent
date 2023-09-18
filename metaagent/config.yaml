@@ -8,7 +8,7 @@ Tools:
 
 OPENAI_API_BASE: "https://api.openai.com/v1"
 #OPENAI_PROXY: "http://127.0.0.1:8118"
-OPENAI_API_KEY: "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"
+OPENAI_API_KEY: "your_api_key"
 OPENAI_API_MODEL: "gpt-3.5-turbo"
 MAX_TOKENS: 1500
 RPM: 10
@@ -30,7 +30,7 @@ RPM: 10
 #SEARCH_ENGINE: serpapi
 
 ## Visit https://serpapi.com/ to get key.
-SERPAPI_API_KEY: "8dab4998fa3a8721045e2717465e6689f5dd9a9dd3d365868e99748baa01ab0d"
+SERPAPI_API_KEY: "your_api_key"
 
 ## Visit https://console.cloud.google.com/apis/credentials to get key.
 #GOOGLE_API_KEY: "YOUR_API_KEY"

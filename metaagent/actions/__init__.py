@@ -1,11 +1,13 @@
 # from metaagent.actions.action import Action
 # from metaagent.actions.action_output import ActionOutput
 from metaagent.actions.write_prd import WritePRD
-from metaagent.actions.text2audio import GenerateAudio
-from metaagent.actions.text2image import DrawImage
+from metaagent.actions.say import Say
+from metaagent.actions.draw_image import DrawImage
+from metaagent.actions.make_videos import MakeVideos
 
 action_dict = {
     'WritePRD': WritePRD,
-    'GenerateAudio': GenerateAudio,
-    'DrawImage': DrawImage
+    'Say': Say,
+    'DrawImage': DrawImage,
+    'MakeVideos': MakeVideos
               }

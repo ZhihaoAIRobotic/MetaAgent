@@ -6,7 +6,7 @@ from torchaudio.utils import download_asset
 from docarray.typing import AudioBytes, AudioTensor
 
 
-class TextToSpeechProcessor:
+class TextToSpeech:
     def __init__(self):
         self.processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
         self.model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
@@ -21,7 +21,7 @@ class TextToSpeechProcessor:
 
 
 if __name__ == '__main__':
-    text2speach = TextToSpeechProcessor()
+    text2speach = TextToSpeech()
     text = 'Elon Musk is the CEO of Tesla.'
     ids = 0
     speech = text2speach.generate_speech(text, ids)

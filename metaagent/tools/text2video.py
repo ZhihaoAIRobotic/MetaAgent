@@ -5,7 +5,7 @@ from diffusers import DiffusionPipeline, DPMSolverMultistepScheduler
 from diffusers.utils import export_to_video
 
 
-class TextTovideoProcessor:
+class TextToVideo:
     def __init__(self):
         self.pipeline = DiffusionPipeline.from_pretrained("cerspense/zeroscope_v2_576w")
 
@@ -18,7 +18,7 @@ class TextTovideoProcessor:
 
 
 if __name__ == '__main__':
-    text2video = TextTovideoProcessor()
+    text2video = TextToVideo()
     text = 'Elon Musk with his SpaceX.'
     output_file_path = 'output.mp4'
     text2video.process_text_to_video(text, output_file_path)

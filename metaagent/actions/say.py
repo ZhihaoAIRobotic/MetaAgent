@@ -6,18 +6,23 @@
 @File    : write_prd.py
 """
 from typing import List, Tuple
-
 from metaagent.actions.action import Action, ActionOutput
 from metaagent.actions.search_and_summarize import SearchAndSummarize, SEARCH_AND_SUMMARIZE_SYSTEM_EN_US
 from metaagent.logs import logger
+from metaagent.tools.text2audio import TextToSpeech
+import torchaudio
 
 
-class GenerateAudio(Action):
+class Say(Action):
     def __init__(self, name="", context=None, llm=None):
         super().__init__(name, context, llm)
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
-        print('GenerateAudio######################################')
         logger.debug(requirements)
-        # prd = self._aask_v1(prompt, "prd", OUTPUT_MAPPING)
-        return 1
+        response = self._aask(requirements)
+        text2speach = TextToSpeech()
+        speech = text2speach.generate_speech(response, 0)
+        speech = speech.unsqueeze(0)
+        path1 = "speech.wav"
+        torchaudio.save(path1, speech, sample_rate=16000)
+        return path1
