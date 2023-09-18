@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -51,8 +50,6 @@ export default async function handler(
   } as ResData;
 
   const axiosRes = await axios.post<ApiRes>(`${DOMAIN}/chat`, data);
-
-  // console.log(axiosRes.data);
 
   return res.status(200).json(axiosRes.data);
 }

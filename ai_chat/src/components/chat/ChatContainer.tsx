@@ -122,54 +122,58 @@ export const ChatContainer = () => {
   };
 
   return (
-    <div className="relative h-screen w-full max-w-2xl overflow-y-scroll rounded-md bg-gray-400/20 shadow-lg scrollbar-thin scrollbar-thumb-gray-400/50">
-      {/* Avatar */}
-      <div className="sticky top-0 h-60 w-full py-5 shadow-sm backdrop-blur-sm">
-        <BotAvatar isLoading={isLoading} />
-      </div>
+    <div className="relative flex w-full justify-center rounded-md">
+      <div className="h-full w-full max-w-3xl overflow-y-scroll bg-gray-400/20 shadow-lg scrollbar-thin scrollbar-thumb-gray-400/50">
+        {/* Avatar */}
+        <div className="sticky top-0 h-60 w-full py-5 shadow-sm backdrop-blur-sm">
+          <BotAvatar isLoading={isLoading} />
+        </div>
 
-      {/* Message Container */}
-      <div className="space-y-4 px-10 pb-24 pt-5 ">
-        {chat.map((msg, index) => {
-          const { message } = msg;
-          const msgTime = new Date(msg.createAt);
-          const prevTime = chat[index - 1]
-            ? new Date(chat[index - 1]?.createAt)
-            : undefined;
-          return (
-            <div key={index} className="flex flex-col">
-              {getDate(msgTime, prevTime)}
-              {msg.senderId === userId ? (
-                <UserMsgBox msg={message} />
-              ) : (
-                <BotMsgBox msg={message} />
+        {/* Message Container */}
+        <div className="h-fit min-h-full space-y-4 pt-5">
+          {chat.map((msg, index) => {
+            const { message } = msg;
+            const msgTime = new Date(msg.createAt);
+            const prevTime = chat[index - 1]
+              ? new Date(chat[index - 1]?.createAt)
+              : undefined;
+            return (
+              <div key={index} className="flex flex-col">
+                {getDate(msgTime, prevTime)}
+                {msg.senderId === userId ? (
+                  <UserMsgBox msg={message} />
+                ) : (
+                  <BotMsgBox msg={message} />
+                )}
+              </div>
+            );
+          })}
+        </div>
+        {/* Scroll ref */}
+        <div ref={chatRef} />
+
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit((data) => void onSubmit(data))}
+            className="sticky bottom-0 flex h-16 w-full items-center space-x-2 bg-black/10 px-4 shadow-sm backdrop-blur-sm"
+          >
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormControl>
+                    <Input {...field} className="h-10" />
+                  </FormControl>
+                </FormItem>
               )}
-            </div>
-          );
-        })}
+            />
+            <Button type="submit" className="h-fit px-2 py-2">
+              <PaperPlaneIcon className="h-6 w-6" />
+            </Button>
+          </form>
+        </Form>
       </div>
-      <div ref={chatRef}></div>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit((data) => void onSubmit(data))}
-          className="fixed bottom-0 flex h-16 w-full max-w-2xl items-center space-x-2 bg-black/10 px-4 shadow-sm backdrop-blur-sm"
-        >
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Input {...field} className="h-10" />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <Button type="submit" className="h-fit px-2 py-2">
-            <PaperPlaneIcon className="h-6 w-6" />
-          </Button>
-        </form>
-      </Form>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
@@ -16,8 +17,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -39,8 +40,9 @@ type ApiRes = {
   data: Response;
 };
 
-const doamin = "http://localhost:3000/api";
-const model = ["ChatGLM2-6B","Llama2-7B","GPT2"];
+const inter = Inter({ subsets: ["latin"] });
+const doamin = "http://localhost:3001/api";
+const model = ["ChatGLM2-6B", "Llama2-7B", "GPT2"];
 
 const tools = [
   {
@@ -50,47 +52,51 @@ const tools = [
 ];
 
 const FormSchema = z.object({
-  model: z.enum(["ChatGLM2-6B","Llama2-7B","GPT2"], {
+  model: z.enum(["ChatGLM2-6B", "Llama2-7B", "GPT2"], {
     required_error: "You need to select a model",
   }),
   tool: z.enum(["faceswapgan"], {
     required_error: "You need to select a Tool",
   }),
+  filePath: z.string(),
 });
 
 export default function Bot() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Do something with the files
-  }, []);
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({ onDrop });
-  const files = acceptedFiles.map((file) => (
-    <span key={file.name}>
-      {file.name}
-      <br />
-    </span>
-  ));
+
+  //@todo: drag and drop file here
+  // const onDrop = useCallback((acceptedFiles: File[]) => {
+  //   // Do something with the files
+  // }, []);
+  // const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+  //   useDropzone({ onDrop });
+  // const files = acceptedFiles.map((file) => (
+  //   <span key={file.name}>
+  //     {file.name}
+  //     <br />
+  //   </span>
+  // ));
 
   const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (data) => {
     console.log(data);
+    const { model, tool, filePath } = data;
 
     // application/pdf
   };
 
-  const fetchChat = async (msg: string) => {
+  const fetchChat = async () => {
     try {
       const apiRes = await axios
         .post(`${doamin}/createYaml`, {
-          text: msg,
+          // text: msg,
           parameters: "hello world",
         })
         .then((response) => {
           const { data } = response as ApiRes;
           console.log("success");
-          const { data: chatRes } = data;
+          // const { data: chatRes } = data;
           // const { text, blob } = chatRes[0];
           // const newChat = {
           //   message: text,
@@ -111,137 +117,111 @@ export default function Bot() {
 
   // const onFileUpload = (event:) => {
   //   // const file = document.getElementById("picture") as HTMLInputElement;
-
   //   console.log(event);
   // };
 
   return (
-    <div className="bg-gray-900">
-      <div className="fixed left-10 top-4 flex h-fit flex-col gap-4 rounded-full bg-gray-100/80 p-2">
-        <Link href={"/"} className="rounded-full p-2 hover:bg-gray-500/50">
-          <Chat />
-        </Link>
-        <Link href={"/bot"} className="rounded-full p-2 hover:bg-gray-500/50">
-          <BotIcon />
-        </Link>
-      </div>
-      <main
-        className={`flex min-h-screen flex-col items-center justify-between p-12`}
-      >
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit((data) => void onSubmit(data))}
-            className="w-full max-w-xl space-y-6 rounded-md bg-gray-800/50 p-10 shadow-md"
-          >
-            <FormField
-              control={form.control}
-              name="model"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Model</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a Model" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {model.map((item) => (
-                        <SelectItem key={item} value={item}>
-                          {item}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="tool"
-              render={() => (
-                <FormItem>
-                  <div className="mb-4">
-                    <FormLabel className="text-base">Tools</FormLabel>
-                  </div>
-                  {tools.map((item) => (
-                    <FormField
-                      key={item.name}
-                      control={form.control}
-                      name="tool"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={item.name}
-                            className="flex flex-row items-start space-x-3 space-y-0"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(item.name)}
-                                // onCheckedChange={(checked) => {
-                                //   return checked
-                                //     ? field.onChange([
-                                //         ...field.value,
-                                //         item.name,
-                                //       ])
-                                //     : field.onChange(
-                                //         field.value?.filter(
-                                //           (value) => value !== item.id,
-                                //         ),
-                                //       );
-                                // }}
-                              />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              {item.name}
-                            </FormLabel>
-                          </FormItem>
-                        );
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            {/* <FormField
-              control={form.control}
-              name="tool"
-              render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel className="font-semibold">Tools</FormLabel>
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      {/* <button onClick={fetchChat} className="text-white">
+        click
+      </button> */}
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit((data) => void onSubmit(data))}
+          className="flex w-full flex-col space-y-6 rounded-md bg-gray-600/20 p-10 shadow-md "
+        >
+          <FormField
+            control={form.control}
+            name="model"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Model</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-col space-y-1"
-                    >
-                      {tools.map((item) => (
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a Model" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {model.map((item) => (
+                      <SelectItem key={item} value={item}>
+                        {item}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="tool"
+            render={() => (
+              <FormItem>
+                <div className="mb-4">
+                  <FormLabel className="text-base">Tools</FormLabel>
+                </div>
+                {tools.map((item) => (
+                  <FormField
+                    key={item.name}
+                    control={form.control}
+                    name="tool"
+                    render={({ field }) => {
+                      return (
                         <FormItem
-                          className="flex items-center space-x-3 space-y-0"
                           key={item.name}
+                          className="flex flex-row items-start space-x-3 space-y-0"
                         >
                           <FormControl>
-                            <RadioGroupItem value={item.name} />
+                            <Checkbox
+                              checked={field.value?.includes(item.name)}
+                              // onCheckedChange={(checked) => {
+                              //   return checked
+                              //     ? field.onChange([
+                              //         ...field.value,
+                              //         item.name,
+                              //       ])
+                              //     : field.onChange(
+                              //         field.value?.filter(
+                              //           (value) => value !== item.id,
+                              //         ),
+                              //       );
+                              // }}
+                            />
                           </FormControl>
                           <FormLabel className="font-normal">
                             {item.name}
                           </FormLabel>
                         </FormItem>
-                      ))}
-                    </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
+                      );
+                    }}
+                  />
+                ))}
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="filePath"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input placeholder="Path" {...field} />
+                </FormControl>
 
-            <div className="grid w-full max-w-sm items-center gap-1.5">
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="file" className="font-semibold">
                 File
               </Label>
@@ -261,8 +241,8 @@ export default function Bot() {
                   </p>
                 )}
               </div>
-            </div>
-            {/* <div className="grid w-full max-w-sm items-center gap-1.5">
+            </div> */}
+          {/* <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="file" className="font-semibold">
                 File
               </Label>
@@ -274,16 +254,15 @@ export default function Bot() {
                 className="w-full bg-gray-800/50 text-gray-50"
               />
             </div> */}
-            <Separator />
-            <Button variant={"secondary"} asChild>
-              <a download href={"/bot.yaml"}>
-                Download Bot
-              </a>
-            </Button>
-            {/* <Button type="submit">Download bot file</Button> */}
-          </form>
-        </Form>
-      </main>
+          <Separator />
+          <Button variant={"outline"} asChild className="self-center">
+            <a download href={"/bot.yaml"}>
+              Download Bot
+            </a>
+          </Button>
+          {/* <Button type="submit">Download bot file</Button> */}
+        </form>
+      </Form>
     </div>
   );
 }
