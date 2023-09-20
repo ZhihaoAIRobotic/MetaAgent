@@ -4,7 +4,8 @@
 
 
 ### Minio S3
-For sending multi-modal messages to frontend, we use Minio S3. More information about Minio S3 can be found : https://min.io/
+we use Minio S3 for sending multi-modal messages to frontend. More information about Minio S3 can be found : https://min.io/. 
+
 The service is provided on 192.168.0.20:9000. We use the default access_key and secret_key: "minioadmin:minioadmin". The bucket_name is metaagent.
 
 ### Http Service
