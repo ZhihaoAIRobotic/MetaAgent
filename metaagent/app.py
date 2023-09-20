@@ -18,14 +18,13 @@
 
 # # with f:
 #     # f.block()
-# # 
-from metaagent.agents.base_agent import Role
 
-def test_role_desc():
-    i = Role(profile='Sales', desc='Best Seller')
-    # assert i.profile == 'Sales'
-    # assert i._setting.desc == 'Best Seller'
+from metaagent.environment.environment import Environment
+from metaagent.agents.multi_modal_agent import MultiModelAgent
 
 
 if __name__ == '__main__':
-    test_role_desc()
+    workflow = '/home/lzh/CodeProject/DIMA/metaagent/workflow.yml'
+    env = Environment(workflow)
+    env.agents.add_agents(MultiModelAgent)
+    env.run()

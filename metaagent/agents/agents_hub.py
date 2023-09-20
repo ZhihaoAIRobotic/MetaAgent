@@ -1,5 +1,9 @@
 
 from typing import Dict, Union, TypeVar
+import os
+import sys
+import yaml
+from collections import OrderedDict
 
 from jina import Executor, requests, Flow
 from docarray import DocList
@@ -7,6 +11,7 @@ from docarray.documents import TextDoc
 
 from metaagent.information import Info, Response
 from metaagent.environment.env_info import EnvInfo
+from metaagent.agents.base_agent import Agent
 from metaagent.agents.agent_info import AgentInfo, InteractionInfo
 from metaagent.agents.product_manager import ProductManager
 from metaagent.agents.multi_modal_agent import MultiModelAgent
@@ -17,8 +22,6 @@ from metaagent.minio_bucket import MINIO_OBJ
 class HubStart(Executor):
     @requests(request_schema=DocList[TextDoc], response_schema=DocList[InteractionInfo])
     def sendto_agents(self, docs, **kwargs):
-        # Send environment info to agents
-        # print('env_info', docs[0].env_info.env_memory)
         return DocList[InteractionInfo]([InteractionInfo(env_info=EnvInfo(env_memory=ShortTermMemory([Info(content=docs[0].text, cause_by='UserInput')])))])
 
 
@@ -29,44 +32,33 @@ class HubEnd(Executor):
         response_image = docs[0].env_info.env_memory.remember_by_actions(['DrawImage']).content
         response_videos = docs[0].env_info.env_memory.remember_by_actions(['MakeVideos']).content
         response_text = docs[0].env_info.env_memory.remember_by_actions(['WriteText']).content
-        response = Response(audio=DocList[TextDoc]([TextDoc(text=audio_url) for audio_url in response_audio]), image=DocList[TextDoc]([TextDoc(text=image_url) for image_url in response_image]), text=DocList[TextDoc]([TextDoc(text=text) for text in response_text]), videos=DocList[TextDoc]([TextDoc(text=video_url) for video_url in response_videos]))
-                                                                
+        response = Response(audio=DocList[TextDoc]([TextDoc(text=audio_url) for audio_url in response_audio]), image=DocList[TextDoc]([TextDoc(text=image_url) for image_url in response_image]), text=DocList[TextDoc]([TextDoc(text=text) for text in response_text]), video=DocList[TextDoc]([TextDoc(text=video_url) for video_url in response_videos]))                                             
         return DocList[Response]([response])
 
 
 class AgentsHub():
-    def __init__(self) -> None:
-        pass
+    def __init__(self, workflow: str) -> None:
+        self.workflow = workflow
+        self.jian_dict = {'jtype': 'Flow', 'with': {'protocol': 'http', 'port': 60066}, 'executors': [{'name': 'start', 'py_modules': './agents/agents_hub.py', 'uses': 'HubStart'}, {'name': 'end', 'py_modules': './agents/agents_hub.py', 'uses': 'HubEnd'}]}
 
-    def add_agents(self):
+    def add_agents(self, agent: Agent, needs=None, **kwargs):
         # Write YAML file
-        pass
+        with open(self.workflow, 'w') as file:
+            py_path = os.path.abspath(sys.modules[agent.__module__].__file__)
 
-    def delete_agent(self):
-        pass
+            if needs:
+                self.jian_dict['executors'].insert(-1, {'name': str(agent.__name__), 'uses': str(agent.__name__), 'py_modules': py_path, 'needs': needs})
+            else:
+                self.jian_dict['executors'].insert(-1, {'name': str(agent.__name__), 'uses': str(agent.__name__), 'py_modules': py_path})
+            yaml.dump(self.jian_dict, file, sort_keys=False)
 
-    def interacte(self, input: DocList[TextDoc], **kwargs):
-        # workflow = Flow.load_config('agentshub.yml')
-        workflow = (Flow(protocol='http', port=60596).add(name='start', uses=HubStart).add(name='mma', uses=MultiModelAgent).add(name='end', uses=HubEnd))
-        with workflow:
-        #     agents_feedback = workflow.post('/', inputs=input, return_type=DocList[TextDoc])
-        # return agents_feedback
-            feedback = workflow.block()
-        # return agents_feedback[0]
-        # print(feedback)
-        # return feedback[0]
-        # block()  #, return_type=InteractionInfo
-        # print('######################################')
-        # print(agents_feedback[0])
-        # return agents_feedback
-#, return_type=(EnvInfo, DocList[AgentInfo]
-# workflow = Flow().add(name='startsss', uses='HubEnd')#.add(name='pm', uses=ProductManager, needs='start').add(name='end', uses='HubEnd', needs='pm')
-# workflow = Deployment(name='startsss', uses='HubEnd')
-# interactioninfo = DocList[AgentInfo]([AgentInfo()])
-# print('InteractionInfo', interactioninfo)
-# b = DocList[Info]([Info(content='doc1', action='b'), Info(content='doc2', action='b')])
-# interactioninfo = ShortTermMemory(storage=b)
-# with workflow:
-#     agents_feedback = workflow.post('/', inputs=interactioninfo, return_type=DocList[ShortTermMemory])
-# print('######################################')
-# print(agents_feedback[0])
+    def interacte(self):
+        print('##################workflow####################')
+        print(self.workflow)
+        flow = Flow.load_config(self.workflow)
+        with flow:
+            flow.block()
+        # workfrow = (Flow(protocol='http', port=60066).add(name='start', uses='HubStart').add(name='end', uses='HubEnd'))
+        # workfrow = workfrow.extend_yaml(self.workflow)
+        # with workfrow:
+        #     workfrow.block()

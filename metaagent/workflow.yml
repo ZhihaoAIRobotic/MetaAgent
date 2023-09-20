@@ -1,0 +1,14 @@
+jtype: Flow
+with:
+  protocol: http
+  port: 60066
+executors:
+- name: start
+  py_modules: ./agents/agents_hub.py
+  uses: HubStart
+- name: MultiModelAgent
+  uses: MultiModelAgent
+  py_modules: /home/lzh/CodeProject/DIMA/metaagent/agents/multi_modal_agent.py
+- name: end
+  py_modules: ./agents/agents_hub.py
+  uses: HubEnd

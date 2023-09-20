@@ -1,9 +1,12 @@
 # MetaAgent
-:robot: A platform to build, manage and deploy your customized digital humans and AI agent. :space_invader: :unicorn: :crystal_ball:
+:unicorn:A platform to build, manage and deploy your customized digital humans  and AI agent:robot:. 
 
+## Installation
+#### 1. 
 
+#### 2. Minio S3
 
-### Minio S3
+## Deployment
 we use Minio S3 for sending multi-modal messages to frontend. More information about Minio S3 can be found : https://min.io/. 
 
 The service is provided on 192.168.0.20:9000. We use the default access_key and secret_key: "minioadmin:minioadmin". The bucket_name is metaagent.

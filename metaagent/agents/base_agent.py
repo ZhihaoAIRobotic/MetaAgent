@@ -15,6 +15,7 @@ class Agent(Executor):
     def __init__(self, name="", profile="", goal="", constraints="", desc="", **kwargs):
         super().__init__(**kwargs)
         self._llm = OpenAIGPTAPI()
+        self.name = name
         self.agent_info = AgentInfo(name=name, profile=profile, goal=goal, constraints=constraints, desc=desc)
         self.all_states = []
         self.all_actions = []
