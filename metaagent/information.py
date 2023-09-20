@@ -1,6 +1,6 @@
 
-from docarray import BaseDoc
-
+from docarray import BaseDoc, DocList
+from docarray.documents import TextDoc
 
 class Info(BaseDoc):
     """list[<role>: <content>]"""
@@ -24,3 +24,9 @@ class Info(BaseDoc):
             "role": self.role,
             "content": self.content
         }
+
+class Response(BaseDoc):
+    image: DocList[TextDoc] = DocList[TextDoc]()
+    text: DocList[TextDoc] = DocList[TextDoc]()
+    audio: DocList[TextDoc] = DocList[TextDoc]()
+    video: DocList[TextDoc] = DocList[TextDoc]()

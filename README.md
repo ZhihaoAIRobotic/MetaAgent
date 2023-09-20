@@ -15,4 +15,5 @@ Header: 'Content-Type: application/json'
 
 Request: {"data": [{"text": "draw a picture of Elon"}]}
 
-Response: {"data": [{"text": "response"}]}
+Response: 
+{"data":[{"id":"id_number","text":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}],"image":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}],"video":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}],"audio":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}]}],"parameters":{}}

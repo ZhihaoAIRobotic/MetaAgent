@@ -9,7 +9,7 @@ from metaagent.information import Message
 from metaagent.utils import serialize_message, deserialize_message
 from metaagent.memory.vector_store.faiss import FaissStore
 
-     
+
 class MemoryStorage(FaissStore):
     """
     The memory storage with Faiss as ANN search engine

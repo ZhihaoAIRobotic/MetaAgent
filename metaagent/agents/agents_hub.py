@@ -5,7 +5,7 @@ from jina import Executor, requests, Flow
 from docarray import DocList
 from docarray.documents import TextDoc
 
-from metaagent.information import Info
+from metaagent.information import Info, Response
 from metaagent.environment.env_info import EnvInfo
 from metaagent.agents.agent_info import AgentInfo, InteractionInfo
 from metaagent.agents.product_manager import ProductManager
@@ -13,8 +13,6 @@ from metaagent.agents.multi_modal_agent import MultiModelAgent
 from metaagent.memory.shortterm_memory import ShortTermMemory
 from metaagent.minio_bucket import MINIO_OBJ
 
-
-# InteractionInfoType = TypeVar('InteractionInfoType', bound='InteractionInfo')
 
 class HubStart(Executor):
     @requests(request_schema=DocList[TextDoc], response_schema=DocList[InteractionInfo])
@@ -25,13 +23,15 @@ class HubStart(Executor):
 
 
 class HubEnd(Executor):
-    @requests(request_schema=DocList[InteractionInfo], response_schema=DocList[TextDoc])
+    @requests(request_schema=DocList[InteractionInfo], response_schema=DocList[Response])
     def recievefrom_agents(self, docs, **kwargs):
-        # Recieve new environment info from agents
-        # docs[0].env_info.env_shorterm_memory.add(Info(content='doc1', cause_by='Agent'))
-        # print(docs[0].env_info.env_shorterm_memory.remember_by_actions(['Agent'])[0].content)
-        # print('env_info', docs[0].env_info.env_memory)
-        return DocList[TextDoc]([TextDoc(text=docs[0].env_info.env_memory.content[-1])])
+        response_audio = docs[0].env_info.env_memory.remember_by_actions(['Say']).content
+        response_image = docs[0].env_info.env_memory.remember_by_actions(['DrawImage']).content
+        response_videos = docs[0].env_info.env_memory.remember_by_actions(['MakeVideos']).content
+        response_text = docs[0].env_info.env_memory.remember_by_actions(['WriteText']).content
+        response = Response(audio=DocList[TextDoc]([TextDoc(text=audio_url) for audio_url in response_audio]), image=DocList[TextDoc]([TextDoc(text=image_url) for image_url in response_image]), text=DocList[TextDoc]([TextDoc(text=text) for text in response_text]), videos=DocList[TextDoc]([TextDoc(text=video_url) for video_url in response_videos]))
+                                                                
+        return DocList[Response]([response])
 
 
 class AgentsHub():

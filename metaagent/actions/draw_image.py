@@ -6,7 +6,6 @@
 @File    : write_prd.py
 """
 from typing import List, Tuple
-
 from metaagent.actions.action import Action, ActionOutput
 from metaagent.logs import logger
 from metaagent.tools.text2image import TextToImage
