@@ -12,8 +12,11 @@ The service is provided on 192.168.0.20:9000. We use the default access_key and 
 IP address: http://localhost:60596/default
 
 Header: 'Content-Type: application/json'
-
+```
 Request: {"data": [{"text": "draw a picture of Elon"}]}
+```
 
 Response: 
+```
 {"data":[{"id":"id_number","text":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}],"image":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}],"video":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}],"audio":[{"id":"id_number","text":"url","bytes_":null,"embedding":null,"url":null}]}],"parameters":{}}
+```
