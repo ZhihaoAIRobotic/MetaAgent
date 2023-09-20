@@ -10,6 +10,7 @@ from typing import List, Tuple
 from metaagent.actions.action import Action, ActionOutput
 from metaagent.logs import logger
 from metaagent.tools.text2image import TextToImage
+from metaagent.minio_bucket import MINIO_OBJ
 
 
 class DrawImage(Action):
@@ -19,7 +20,8 @@ class DrawImage(Action):
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
         logger.debug(requirements)
         processor = TextToImage()
-        image = processor.process_image(requirements)
+        image = processor.process_image(requirements[-1])
         image.save("geeks.jpg")
-        # prd = self._aask_v1(prompt, "prd", OUTPUT_MAPPING)
-        return "geeks.jpg"
+        MINIO_OBJ.fput_file('metaagent', "geeks.jpg", "geeks.jpg")
+        url = MINIO_OBJ.presigned_get_file('metaagent', "geeks.jpg")
+        return url

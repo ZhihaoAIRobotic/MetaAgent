@@ -32,7 +32,7 @@ class MultiModelAgent(Agent):
         """
         super().__init__(name, profile, goal, constraints, **kwargs)
         self._init_actions(['Say', 'DrawImage', 'MakeVideos'])
-        self._watch(['BossRequirement'])
+        self._watch(['UserInput'])
 
     def _init_actions(self, actions: Iterable[str]):
         """Put actions into all_states and all_actions, and set prefix for actions."""

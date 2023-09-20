@@ -11,6 +11,7 @@ from metaagent.actions.search_and_summarize import SearchAndSummarize, SEARCH_AN
 from metaagent.logs import logger
 from metaagent.tools.text2audio import TextToSpeech
 import torchaudio
+from metaagent.minio_bucket import MINIO_OBJ
 
 
 class Say(Action):
@@ -19,10 +20,13 @@ class Say(Action):
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
         logger.debug(requirements)
-        response = self._aask(requirements)
+        response = self._aask(requirements[-1])
         text2speach = TextToSpeech()
         speech = text2speach.generate_speech(response, 0)
         speech = speech.unsqueeze(0)
         path1 = "speech.wav"
         torchaudio.save(path1, speech, sample_rate=16000)
-        return path1
+        MINIO_OBJ.fput_file('metaagent', path1, path1)
+
+        url = MINIO_OBJ.presigned_get_file('metaagent', path1)
+        return url

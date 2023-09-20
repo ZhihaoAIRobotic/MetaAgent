@@ -127,6 +127,7 @@ class Agent(Executor):
 
         rsp = self._react()
         # 将回复发布到环境，等待下一个订阅者处理
+        print('rsp', rsp)
         docs[0].env_info.env_memory.add(rsp)
         docs[0].env_info.history += f"\n{rsp.Info_str}"
 
