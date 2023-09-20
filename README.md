@@ -9,9 +9,15 @@ we use Minio S3 for sending multi-modal messages to frontend. More information a
 The service is provided on 192.168.0.20:9000. We use the default access_key and secret_key: "minioadmin:minioadmin". The bucket_name is metaagent.
 
 ### Http Service
-IP address: http://localhost:60596/default
+IP address:
+```
+ http://localhost:60596/default
+```
 
-Header: 'Content-Type: application/json'
+Header: 
+```
+'Content-Type: application/json'
+```
 
 Request: 
 ```
