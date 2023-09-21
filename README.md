@@ -1,7 +1,7 @@
 
-![](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/a68be88e-baee-415e-a4c6-ee5ae3dcc9b6#gh-light-mode-only)
+![](Docs/resource/MetaAgent-logo-black.png#gh-light-mode-only)
 
-![](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/afcf8c11-4634-4495-b0ba-54ecc5be942e#gh-light-mode-only)
+![](Docs/resource/MetaAgent-logo-black.png#gh-light-mode-only)
 
 
 <p align="center"><i>:unicorn:A platform to build, manage and deploy your customized digital humans  and AI agent:robot:. </i></p>
