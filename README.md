@@ -8,10 +8,10 @@
 
 <p align="center">
   <a href="https://github.com/ZhihaoAIRobotic/MetaAgent//#gh-light-mode-only">
-    <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/4fae92de-f817-4d0f-9f51-a4c8c1c94c3f" width="318px" alt="SuperAGI logo" />
+    <img src="Docs/resource/MetaAgent-logo-black.png" width="318px" alt="SuperAGI logo" />
   </a>
   <a href="https://github.com/ZhihaoAIRobotic/MetaAgent//#gh-dark-mode-only">
-    <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/5094fa11-2e00-4f47-b1ae-12aa275c49c2" width="318px" alt="SuperAGI logo" />
+    <img src="Docs/resource/MetaAgent-logo-white.png" width="318px" alt="SuperAGI logo" />
   </a>
 </p>
 
