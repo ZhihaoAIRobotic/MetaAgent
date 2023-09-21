@@ -23,3 +23,4 @@
 2023-09-21 14:04:16.876 | DEBUG    | metaagent.agents.base_agent:_set_state:50 - [Say, DrawImage, MakeVideos]
 2023-09-21 14:04:16.877 | DEBUG    | metaagent.agents.base_agent:_react:110 - Alice(MultiModelAgent): 2, will do MakeVideos
 2023-09-21 14:04:16.877 | INFO     | metaagent.agents.base_agent:_act:80 - Alice(MultiModelAgent): ready to MakeVideos
+2023-09-21 14:35:29.454 | INFO     | metaagent.config:__init__:43 - Config loading done.
