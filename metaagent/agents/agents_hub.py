@@ -58,7 +58,3 @@ class AgentsHub():
         flow = Flow.load_config(self.workflow)
         with flow:
             flow.block()
-        # workfrow = (Flow(protocol='http', port=60066).add(name='start', uses='HubStart').add(name='end', uses='HubEnd'))
-        # workfrow = workfrow.extend_yaml(self.workflow)
-        # with workfrow:
-        #     workfrow.block()

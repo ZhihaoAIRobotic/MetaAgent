@@ -61,7 +61,6 @@ class Agent(Executor):
     def _think(self) -> None:
         """Think for the next action"""
         if len(self.all_actions) == 1:
-            # 如果只有一个动作，那就只能做这个
             self._set_state(0)
             return
         prompt = self._get_prefix()
@@ -78,7 +77,6 @@ class Agent(Executor):
 
     def _act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
-        # requirment = self.agent_info.important_memory.
         response = self.todo.run(self.agent_info.important_memory)
         if isinstance(response, ActionOutput):
             msg = Info(content=response.content, instruct_content=response.instruct_content, role=self.profile, cause_by=str(self.todo))
@@ -88,7 +86,6 @@ class Agent(Executor):
         return msg
 
     def _observe(self, env_info: EnvInfo) -> int:
-        """从环境中观察，获得重要信息，并加入记忆"""
 
         env_msgs = env_info.env_memory.remember()
         
@@ -105,15 +102,12 @@ class Agent(Executor):
         return len(self.agent_info.news)
     
     def _react(self) -> Info:
-        """Think first, then do."""
         self._think()
         logger.debug(f"{self._role_id}: {self.state}, will do {self.todo}")
         return self._act()
     
     @requests
     def run(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]:
-        """观察，并基于观察的结果思考、行动"""
-        # if agents_info.name == self.name:
         if self._role_id in [agent_info.role_id for agent_info in docs[0].agents_info]:
             for agent_info in docs[0].agents_info:
                 if agent_info.role_id == self._role_id:
@@ -122,25 +116,20 @@ class Agent(Executor):
             docs[0].agents_info.append(self.agent_info)
 
         if not self._observe(docs[0].env_info):
-            # if no news, do nothing
             logger.debug(f"{self._setting}: no news. waiting.")
             return
 
         rsp = self._react()
-        # 将回复发布到环境，等待下一个订阅者处理
         print('rsp', rsp)
         docs[0].env_info.env_memory.add(rsp)
         docs[0].env_info.history += f"\n{rsp.Info_str}"
 
     def recv(self, msg: Info) -> None:
-        """add message to memory."""
         if msg in self.agent_info.memory.remember():
             return
         self.agent_info.memory.add(msg)
 
     def handle(self, info: Info) -> Info:
-        """接收信息，并用行动回复"""
-        # logger.debug(f"{self.name=}, {self.profile=}, {message.role=}")
         self.recv(info)
 
         return self._react()

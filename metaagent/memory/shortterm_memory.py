@@ -29,7 +29,7 @@ class ShortTermMemory(DocList[Info]):
         already_observed = self.remember(k)
         news = DocList[Info]()
         for i in observed:
-            if i in already_observed:
+            if i.id in already_observed.id:
                 continue
             news.append(i)
         return news
