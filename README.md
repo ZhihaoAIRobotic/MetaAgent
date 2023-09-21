@@ -1,5 +1,6 @@
 # MetaAgent
 :unicorn:A platform to build, manage and deploy your customized digital humans  and AI agent:robot:. 
+![MetaAgent-logo](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/a68be88e-baee-415e-a4c6-ee5ae3dcc9b6)
 
 ## Installation
 #### 1. Python Environment
