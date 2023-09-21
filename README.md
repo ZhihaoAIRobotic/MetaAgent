@@ -40,7 +40,8 @@ SD_T2I_API: "/sdapi/v1/txt2img"
 
 >Tip: In the usage of the first time, it takes some time to load the model.
 
-![Elon](Docs/resource/elon.jpg)
+
+<img src="Docs/resource/elon.jpg" width="250" height="180">
 
 ![Elon](Docs/resource/output.gif)
 
