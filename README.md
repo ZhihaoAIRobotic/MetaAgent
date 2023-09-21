@@ -1,11 +1,6 @@
 <p align="center">
-  <a href="#gh-light-mode-only">
-    <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/a68be88e-baee-415e-a4c6-ee5ae3dcc9b6" width="318px" alt="SuperAGI logo" />
-  </a>
-  <a href="#gh-dark-mode-only">
-    <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/afcf8c11-4634-4495-b0ba-54ecc5be942e" width="318px" alt="SuperAGI logo" />
-  </a>
-
+  <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/a68be88e-baee-415e-a4c6-ee5ae3dcc9b6#gh-light-mode-only" width="318px" alt="SuperAGI logo" />
+  <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/afcf8c11-4634-4495-b0ba-54ecc5be942e#gh-dark-mode-only" width="318px" alt="SuperAGI logo" />
 </p>
 
 <p align="center"><i>:unicorn:A platform to build, manage and deploy your customized digital humans  and AI agent:robot:. </i></p>
