@@ -56,7 +56,7 @@ There is a demo video of old version:
 ### Http Service
 IP address:
 ```
- http://localhost:60596/default
+ http://localhost:60066/default
 ```
 
 Header: 
