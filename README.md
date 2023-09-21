@@ -1,5 +1,5 @@
 
-![](Docs/resource/MetaAgent-logo-black.png#gh-light-mode-only)
+![](Docs/resource/MetaAgent-logo-white.png#gh-dark-mode-only)
 
 ![](Docs/resource/MetaAgent-logo-black.png#gh-light-mode-only)
 
