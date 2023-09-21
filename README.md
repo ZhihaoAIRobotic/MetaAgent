@@ -1,11 +1,8 @@
-<p align="center">
-  <a href="https://github.com/ZhihaoAIRobotic/MetaAgent#gh-light-mode-only">
-    <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/a68be88e-baee-415e-a4c6-ee5ae3dcc9b6#gh-light-mode-only" width="358px" alt="logo" />
-  </a>
-  <a href="https://github.com/ZhihaoAIRobotic/MetaAgent#gh-light-mode-only">
-    <img src="https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/afcf8c11-4634-4495-b0ba-54ecc5be942e#gh-light-mode-only" width="358px" alt="logo" />
-  </a>
-</p>
+
+![](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/a68be88e-baee-415e-a4c6-ee5ae3dcc9b6#gh-light-mode-only)
+
+![](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/afcf8c11-4634-4495-b0ba-54ecc5be942e#gh-light-mode-only)
+
 
 <p align="center"><i>:unicorn:A platform to build, manage and deploy your customized digital humans  and AI agent:robot:. </i></p>
 
