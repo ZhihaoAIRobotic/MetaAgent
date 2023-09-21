@@ -47,7 +47,7 @@ SD_T2I_API: "/sdapi/v1/txt2img"
 
 
 ### With GUI
->UPCOMMING
+>UPCOMING
 
 There is a demo video of old version:
 
