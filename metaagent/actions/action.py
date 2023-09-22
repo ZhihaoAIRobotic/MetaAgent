@@ -10,7 +10,7 @@ from metaagent.logs import logger
 
 
 class Action(ABC):
-    def __init__(self, name: str = '', context=None, llm=None):
+    def __init__(self, name: str = '', desc: str = '', context=None, llm=None):
         self.name: str = name
         if llm is None:
             llm = OpenAIGPTAPI()
@@ -18,7 +18,7 @@ class Action(ABC):
         self.context = context
         self.prefix = ""
         self.profile = ""
-        self.desc = ""
+        self.desc = desc
         self.content = ""
         self.instruct_content = None
 
