@@ -1,10 +1,10 @@
 
 <p align="center">
   <a href="https://github.com/ZhihaoAIRobotic/MetaAgent//#gh-light-mode-only">
-    <img src="Docs/resource/MetaAgent-logo-black.png" width="418px" alt="SuperAGI logo" />
+    <img src="Docs/resource/MetaAgent-logo-black.png" width="418px" alt="logo" />
   </a>
   <a href="https://github.com/ZhihaoAIRobotic/MetaAgent//#gh-dark-mode-only">
-    <img src="Docs/resource/MetaAgent-logo-white.png" width="418px" alt="SuperAGI logo" />
+    <img src="Docs/resource/MetaAgent-logo-white.png" width="418px" alt="logo" />
   </a>
 </p>
 
