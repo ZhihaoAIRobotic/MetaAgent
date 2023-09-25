@@ -6,6 +6,7 @@ from metaagent.minio_bucket import MINIO_OBJ
 class MakeVideos(Action):
     def __init__(self, name="", context=None, llm=None):
         super().__init__(name, context, llm)
+        self.desc = "Make videos for the user."
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
         processor = TextToVideo()

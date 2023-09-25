@@ -1,0 +1,10 @@
+jtype: Agent
+with:
+  id: 'multi_modal_agent'
+  profile: 'helpful assistant that can generate images, audios, and videos.'
+  goal: "Choose and Take actions according to human's input."
+  actions: ['Say','DrawImage']
+  watch: ['UserInput']
+py_modules:
+  - base_agent.py
+

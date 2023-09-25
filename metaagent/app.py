@@ -20,11 +20,11 @@
 #     # f.block()
 
 from metaagent.environment.environment import Environment
-from metaagent.agents.multi_modal_agent import MultiModelAgent
+# from metaagent.agents.multi_modal_agent import MultiModelAgent
 
 
 if __name__ == '__main__':
     workflow = '/home/lzh/CodeProject/DIMA/metaagent/workflow.yml'
     env = Environment(workflow)
-    env.agents.add_agents(MultiModelAgent)
+    env.agents.add_agents('multi_modal_agent', '/home/lzh/CodeProject/DIMA/metaagent/agents/multi_modal_agent.yml')
     env.run()

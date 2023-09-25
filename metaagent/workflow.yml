@@ -6,9 +6,8 @@ executors:
 - name: start
   py_modules: ./agents/agents_hub.py
   uses: HubStart
-- name: MultiModelAgent
-  uses: MultiModelAgent
-  py_modules: /home/lzh/CodeProject/DIMA/metaagent/agents/multi_modal_agent.py
+- name: multi_modal_agent
+  uses: /home/lzh/CodeProject/DIMA/metaagent/agents/multi_modal_agent.yml
 - name: end
   py_modules: ./agents/agents_hub.py
   uses: HubEnd

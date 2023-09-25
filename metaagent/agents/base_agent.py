@@ -1,27 +1,30 @@
-from typing import Iterable
+from typing import Iterable, List
 from jina import Executor, requests
 from docarray import DocList
-from metaagent.utils import get_class
 from metaagent.actions.action import ActionOutput
 from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
 from metaagent.information import Info
 from metaagent.environment.env_info import EnvInfo
 from metaagent.agents.agent_info import AgentInfo, InteractionInfo
-from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE 
+from metaagent.agents.prompt_template import PREFIX_TEMPLATE, STATE_TEMPLATE, ACTION_DESCRIPTION
+from metaagent.actions import action_dict
 
 
 class Agent(Executor):
-    def __init__(self, name="", profile="", goal="", constraints="", desc="", **kwargs):
+    def __init__(self, id="", profile="", goal="", constraints="", actions: List = [], watch: List = [], **kwargs):
         super().__init__(**kwargs)
         self._llm = OpenAIGPTAPI()
-        self.name = name
-        self.agent_info = AgentInfo(name=name, profile=profile, goal=goal, constraints=constraints, desc=desc)
+        self.name = id
+        self.agent_info = AgentInfo(name=id, profile=profile, goal=goal, constraints=constraints)
         self.all_states = []
         self.all_actions = []
-        self._role_id = f"{name}({profile})"
+        self._role_id = f"{id}({profile})"
         self.todo = None  # action to do now
         self.state: int = 0  # index of action to do
+        self.action_descs = ''
+        self._init_actions(actions)
+        self._watch(watch)
 
     def _reset(self):
         self.all_states = []
@@ -31,7 +34,9 @@ class Agent(Executor):
         """Put actions into all_states and all_actions, and set prefix for actions."""
         self._reset()
         for idx, action_name in enumerate(actions):
-            i = get_class(action_name)()
+            print(action_name)
+            i = action_dict[action_name]()
+            self.action_descs += ACTION_DESCRIPTION.format(action_name=action_name, state=idx, desc=i.desc)
             i.set_prefix(self._get_prefix(), self.profile)
             self.all_actions.append(i)
             self.all_states.append(f"{idx}. {action_name}")
@@ -65,7 +70,7 @@ class Agent(Executor):
             return
         prompt = self._get_prefix()
         prompt += STATE_TEMPLATE.format(history=self.agent_info.history, states="\n".join(self.all_states),
-                                        n_states=len(self.all_states) - 1)
+                                        n_states=len(self.all_states) - 1, action_descriptions=self.action_descs)
         print(prompt)
         next_state = self._llm.aask(prompt)
         print('next_state', next_state)
@@ -86,6 +91,7 @@ class Agent(Executor):
         return msg
 
     def _observe(self, env_info: EnvInfo) -> int:
+        print(env_info)
 
         env_msgs = env_info.env_memory.remember()
         
@@ -116,7 +122,7 @@ class Agent(Executor):
             docs[0].agents_info.append(self.agent_info)
 
         if not self._observe(docs[0].env_info):
-            logger.debug(f"{self._setting}: no news. waiting.")
+            logger.debug("no news. waiting.")
             return
 
         rsp = self._react()

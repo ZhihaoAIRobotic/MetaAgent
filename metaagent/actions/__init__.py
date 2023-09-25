@@ -6,7 +6,6 @@ from metaagent.actions.draw_image import DrawImage
 from metaagent.actions.make_videos import MakeVideos
 
 action_dict = {
-    'WritePRD': WritePRD,
     'Say': Say,
     'DrawImage': DrawImage,
     'MakeVideos': MakeVideos
