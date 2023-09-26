@@ -1,10 +1,12 @@
 
+from typing import List
 from docarray import BaseDoc, DocList
 from docarray.documents import TextDoc
 
+
 class Info(BaseDoc):
     """list[<role>: <content>]"""
-    content: str = ''
+    content: List = []
     instruction: str = ''
     role: str = 'user'  # system / user / assistant
     cause_by: str = ''
@@ -25,8 +27,15 @@ class Info(BaseDoc):
             "content": self.content
         }
 
+
+class ResponseListDoc(BaseDoc):
+    response_list: List[str] = []
+
+
 class Response(BaseDoc):
-    image: DocList[TextDoc] = DocList[TextDoc]()
-    text: DocList[TextDoc] = DocList[TextDoc]()
-    audio: DocList[TextDoc] = DocList[TextDoc]()
-    video: DocList[TextDoc] = DocList[TextDoc]()
+    image: DocList[ResponseListDoc] = DocList[ResponseListDoc]()
+    text: DocList[ResponseListDoc] = DocList[ResponseListDoc]()
+    audio: DocList[ResponseListDoc] = DocList[ResponseListDoc]()
+    video: DocList[ResponseListDoc] = DocList[ResponseListDoc]()
+
+

@@ -202,4 +202,4 @@ class Bucket(object):
 
 
 MINIO_OBJ = Bucket(service="192.168.0.20:9000", access_key="minioadmin:minioadmin", secret_key="minioadmin:minioadmin", secure=False)
-MINIO_OBJ.create_bucket(bucket_name="metaagent")
+MINIO_OBJ.create_bucket(bucket_name="cartoonist")

@@ -1,17 +1,12 @@
 import asyncio
 import time
 from typing import NamedTuple, Optional, Dict, List
-
 import openai
 from openai.error import APIConnectionError
 from tenacity import retry, stop_after_attempt, after_log, wait_fixed, retry_if_exception_type
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-
-
-
 from metaagent.logs import logger
-
 
 
 @dataclass
@@ -62,8 +57,6 @@ class BaseGPTAPI(BaseChatbot):
         else:
             message = [self._default_system_msg(), self._user_msg(msg)]
         rsp = self.acompletion_text(message, stream=True)
-        logger.debug(message)
-        # logger.debug(rsp)
         return rsp
 
     def _extract_assistant_rsp(self, context):

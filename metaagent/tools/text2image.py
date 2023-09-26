@@ -3,6 +3,7 @@ from diffusers import DiffusionPipeline
 from PIL import Image 
 
 
+# lpw_stable_diffusion
 class TextToImage():
     def __init__(self):
         self.base = DiffusionPipeline.from_pretrained(
@@ -42,3 +43,12 @@ if __name__ == '__main__':
     print(type(image))
     image.save("geeks.jpg")
     
+# pipe = DiffusionPipeline.from_pretrained(
+#     "hakurei/waifu-diffusion", custom_pipeline="lpw_stable_diffusion", torch_dtype=torch.float16, use_safetensors=True
+# )
+# pipe = pipe.to("cuda")
+
+# prompt = "best_quality (1girl:1.3) bow bride brown_hair closed_mouth frilled_bow frilled_hair_tubes frills (full_body:1.3) fox_ear hair_bow hair_tubes happy hood japanese_clothes kimono long_sleeves red_bow smile solo tabi uchikake white_kimono wide_sleeves cherry_blossoms"
+# neg_prompt = "lowres, bad_anatomy, error_body, error_hair, error_arm, error_hands, bad_hands, error_fingers, bad_fingers, missing_fingers, error_legs, bad_legs, multiple_legs, missing_legs, error_lighting, error_shadow, error_reflection, text, error, extra_digit, fewer_digits, cropped, worst_quality, low_quality, normal_quality, jpeg_artifacts, signature, watermark, username, blurry"
+
+# pipe.text2img(prompt, negative_prompt=neg_prompt, width=512, height=512, max_embeddings_multiples=3).images[0]

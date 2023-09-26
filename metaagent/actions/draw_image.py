@@ -16,12 +16,21 @@ class DrawImage(Action):
     def __init__(self, name="", context=None, llm=None):
         super().__init__(name, context, llm)
         self.desc = "Draw image for the user."
+        self.processor = TextToImage()
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
-        logger.debug(requirements)
-        processor = TextToImage()
-        image = processor.process_image(requirements[-1])
-        image.save("geeks.jpg")
-        MINIO_OBJ.fput_file('metaagent', "geeks.jpg", "geeks.jpg")
-        url = MINIO_OBJ.presigned_get_file('metaagent', "geeks.jpg")
-        return url
+        # logger.debug(requirements)
+        responses = []
+        number = 0
+        for i in requirements[-1]:
+            print('$$$$$$$$$$$$$$$InputForImage$$$$$$$$$$$$$$$$')
+            print(i)
+            number += 1
+            image = self.processor.process_image(i)
+            image.save("geeks.jpg")
+            print(f"geeks{number}.jpg")
+            MINIO_OBJ.fput_file('cartoonist', f"geeks{number}.jpg", "geeks.jpg")
+            url = MINIO_OBJ.presigned_get_file('cartoonist', f"geeks{number}.jpg")
+            print(url)
+            responses.append(url)
+        return responses
