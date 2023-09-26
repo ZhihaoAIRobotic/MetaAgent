@@ -1,0 +1,12 @@
+jtype: Agent
+with:
+  id: 'writer_agent'
+  profile: 'writer agent that can generate a humorous and creative script based on the input prompt.'
+  goal: "1. You will write a humorous and creative script based on the input prompt.
+  2. First come up with interesting characters, story background, dialogue between characters, etc.
+  3. Once your character development is complete - create a humorous and hilarious storyline that will keep the audience laughing until the end.
+  4. Your output serves a painting AI, which can only understand concrete descriptions rather than abstract concepts, and optimize the storyline based on your understanding of the painting AI."
+  actions: ['WriteScript']
+  watch: ['UserInput']
+py_modules:
+  - base_agent.py

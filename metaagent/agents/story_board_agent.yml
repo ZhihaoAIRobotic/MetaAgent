@@ -1,0 +1,10 @@
+jtype: Agent
+with:
+  id: 'storyboard_agent'
+  profile: 'storyboard artist to create comics.'
+  goal: " Through the lens language description, you can depict a richer character's emotions and emotional state. After you understand it, you can generate a new description through sentences."
+  actions: ['StoryBoard']
+  watch: ['WriteScript']
+py_modules:
+  - base_agent.py
+  

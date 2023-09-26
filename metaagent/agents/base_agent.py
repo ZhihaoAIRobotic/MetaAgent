@@ -34,7 +34,7 @@ class Agent(Executor):
         """Put actions into all_states and all_actions, and set prefix for actions."""
         self._reset()
         for idx, action_name in enumerate(actions):
-            print(action_name)
+            # print(action_name)
             i = action_dict[action_name]()
             self.action_descs += ACTION_DESCRIPTION.format(action_name=action_name, state=idx, desc=i.desc)
             i.set_prefix(self._get_prefix(), self.profile)
@@ -45,9 +45,9 @@ class Agent(Executor):
         """Watch the results by actions"""
         for i in actions:
             self.agent_info.watch_action_results.append(i)
-        print('######################################')
-        print(self.agent_info.watch_action_results)
-        print('######################################')
+        # print('######################################')
+        # print(self.agent_info.watch_action_results)
+        # print('######################################')
 
     def _set_state(self, state):
         """Update the current state."""
@@ -71,9 +71,9 @@ class Agent(Executor):
         prompt = self._get_prefix()
         prompt += STATE_TEMPLATE.format(history=self.agent_info.history, states="\n".join(self.all_states),
                                         n_states=len(self.all_states) - 1, action_descriptions=self.action_descs)
-        print(prompt)
+        # print(prompt)
         next_state = self._llm.aask(prompt)
-        print('next_state', next_state)
+        # print('next_state', next_state)
         logger.debug(f"{prompt=}")
         if not next_state.isdigit() or int(next_state) not in range(len(self.all_states)):
             logger.warning(f'Invalid answer of state, {next_state=}')
@@ -91,7 +91,7 @@ class Agent(Executor):
         return msg
 
     def _observe(self, env_info: EnvInfo) -> int:
-        print(env_info)
+        # print(env_info)
 
         env_msgs = env_info.env_memory.remember()
         
@@ -126,7 +126,7 @@ class Agent(Executor):
             return
 
         rsp = self._react()
-        print('rsp', rsp)
+        # print('rsp', rsp)
         docs[0].env_info.env_memory.add(rsp)
         docs[0].env_info.history += f"\n{rsp.Info_str}"
 
