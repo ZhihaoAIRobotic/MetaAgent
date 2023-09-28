@@ -90,16 +90,6 @@ IP address:
 ```
  http://localhost:60066/default
 ```
-Comics Company:
-
-![图片9](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/fb37f50a-b325-4747-82ed-a968ec030112)
-
-
-Multi-modal agent:
-
-<img src="Docs/resource/elon.jpg" width="256" height="260">
-
-![Elon](Docs/resource/output.gif)
 Header: 
 ```
 'Content-Type: application/json'
