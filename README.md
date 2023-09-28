@@ -8,7 +8,31 @@
   </a>
 </p>
 
-<p align="center"><i>:unicorn:A platform to build, manage and deploy your customized digital humans  and AI agent:robot:. </i></p>
+<p align="center"><i>:unicorn: A multi-agent collaboration platform to build, manage and deploy your multi-modal AI Agents. :robot:. </i></p>
+
+## Introduction
+We create a  Multi-modal Multi-agent Collaboration Platform, and you can use this platform to create your own AI agent easily. You don't even need to write python code, the agent can be created by editing a yml file or using UI. 
+Our platform have many features:
+#### :lamp:Features
+- Build, manage and deploy your LLM-based AI agents without code.
+- Multi-modal agents, agents can interact with users using texts, audios, images, and videos. 
+- Multi-agent collaboration, you can create a agents company for complex tasks, such as draw comics.
+- Vector database and knowledge embeddings
+- UI for create and usage for AI agents. (Coming soon)
+- Fine-tuning (Coming soon)
+
+#### Examples
+Comics Company, create a comic about Elon lands on mars.
+
+![图片9](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/fb37f50a-b325-4747-82ed-a968ec030112)
+
+
+Multi-modal agent, draw images and make videos for you.
+
+<img src="Docs/resource/elon.jpg" width="256" height="260">
+
+![Elon](Docs/resource/output.gif)
+
 
 ## Installation
 #### 1. Python Environment
@@ -54,18 +78,6 @@ python EXAMPLE.py
 >Tip: In the usage of the first time, it takes some time to load the model.
 
 
-Comics Company:
-
-![图片9](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/fb37f50a-b325-4747-82ed-a968ec030112)
-
-
-Multi-modal agent:
-
-<img src="Docs/resource/elon.jpg" width="256" height="260">
-
-![Elon](Docs/resource/output.gif)
-
-
 ### With GUI
 >UPCOMING
 
@@ -78,7 +90,16 @@ IP address:
 ```
  http://localhost:60066/default
 ```
+Comics Company:
 
+![图片9](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/fb37f50a-b325-4747-82ed-a968ec030112)
+
+
+Multi-modal agent:
+
+<img src="Docs/resource/elon.jpg" width="256" height="260">
+
+![Elon](Docs/resource/output.gif)
 Header: 
 ```
 'Content-Type: application/json'
