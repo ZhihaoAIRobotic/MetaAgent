@@ -13,7 +13,7 @@
 ## Introduction
 We create a  Multi-modal Multi-agent Collaboration Platform, and you can use this platform to create your own AI agent easily. You don't even need to write python code, the agent can be created by editing a yml file or using UI. 
 Our platform have many features:
-#### :lamp:Features
+#### :fire: Features
 - Build, manage and deploy your LLM-based AI agents without code.
 - Multi-modal agents, agents can interact with users using texts, audios, images, and videos. 
 - Multi-agent collaboration, you can create a agents company for complex tasks, such as draw comics.
@@ -21,7 +21,7 @@ Our platform have many features:
 - UI for create and usage for AI agents. (Coming soon)
 - Fine-tuning (Coming soon)
 
-#### Examples
+#### :page_with_curl: Examples
 Comics Company, create a comic about Elon lands on mars.
 
 ![图片9](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/fb37f50a-b325-4747-82ed-a968ec030112)
