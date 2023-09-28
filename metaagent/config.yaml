@@ -1,5 +1,5 @@
 OPENAI_API_BASE: "https://api.openai.com/v1"
-OPENAI_API_KEY: "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"
+OPENAI_API_KEY: "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"
 OPENAI_API_MODEL: "gpt-3.5-turbo"
 MAX_TOKENS: 1500
 RPM: 10

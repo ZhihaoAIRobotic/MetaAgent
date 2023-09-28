@@ -20,8 +20,9 @@ class Say(Action):
         self.desc = "Speak to the user."
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
+        responses = []
         logger.debug(requirements)
-        response = self._aask(requirements[-1])
+        response = self._aask(requirements[-1][-1])
         text2speach = TextToSpeech()
         speech = text2speach.generate_speech(response, 0)
         speech = speech.unsqueeze(0)
@@ -30,4 +31,5 @@ class Say(Action):
         MINIO_OBJ.fput_file('metaagent', path1, path1)
 
         url = MINIO_OBJ.presigned_get_file('metaagent', path1)
-        return url
+        responses.append(url)
+        return responses

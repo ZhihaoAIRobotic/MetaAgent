@@ -9,9 +9,11 @@ class MakeVideos(Action):
         self.desc = "Make videos for the user."
 
     def run(self, requirements, *args, **kwargs) -> ActionOutput:
+        responses = []
         processor = TextToVideo()
         output_file_path = 'output.mp4'
-        processor.process_text_to_video(requirements[-1], output_file_path)
+        processor.process_text_to_video(requirements[-1][-1], output_file_path)
         MINIO_OBJ.fput_file('metaagent', output_file_path, output_file_path)
         url = MINIO_OBJ.presigned_get_file('metaagent', output_file_path)
-        return url
+        responses.append(url)
+        return responses
