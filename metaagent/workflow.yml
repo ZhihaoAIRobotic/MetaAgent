@@ -6,16 +6,8 @@ executors:
 - name: start
   py_modules: ./agents/agents_hub.py
   uses: HubStart
-- name: writer_agent
-  uses: /home/lzh/CodeProject/DIMA/metaagent/agents/writer_agent.yml
-- name: story_board_agent
-  uses: /home/lzh/CodeProject/DIMA/metaagent/agents/story_board_agent.yml
-  needs:
-  - writer_agent
-- name: cartoonist_agent
-  uses: /home/lzh/CodeProject/DIMA/metaagent/agents/cartoonist_agent.yml
-  needs:
-  - story_board_agent
+- name: multimodal_agent
+  uses: /home/lzh/CodeProject/DIMA/metaagent/agents/multi_modal_agent.yml
 - name: end
   py_modules: ./agents/agents_hub.py
   uses: HubEnd

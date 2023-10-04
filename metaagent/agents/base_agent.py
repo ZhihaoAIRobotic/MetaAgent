@@ -63,7 +63,7 @@ class Agent(Executor):
         """Get the prefix of the agent."""
         return PREFIX_TEMPLATE.format(**self.agent_info.dict())
 
-    def _think(self) -> None:
+    def plan(self) -> None:
         """Think for the next action"""
         if len(self.all_actions) == 1:
             self._set_state(0)
@@ -80,7 +80,7 @@ class Agent(Executor):
             next_state = "0"
         self._set_state(int(next_state))
 
-    def _act(self) -> Info:
+    def act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
         response = self.todo.run(self.agent_info.important_memory)
         if isinstance(response, ActionOutput):
@@ -107,10 +107,10 @@ class Agent(Executor):
             logger.debug(f'{self._role_id} observed: {news_text}')
         return len(self.agent_info.news)
     
-    def _react(self) -> Info:
-        self._think()
+    def step(self) -> Info:
+        self.plan()
         logger.debug(f"{self._role_id}: {self.state}, will do {self.todo}")
-        return self._act()
+        return self.act()
     
     @requests
     def run(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]:
@@ -125,7 +125,7 @@ class Agent(Executor):
             logger.debug("no news. waiting.")
             return
 
-        rsp = self._react()
+        rsp = self.step()
         # print('rsp', rsp)
         docs[0].env_info.env_memory.add(rsp)
         docs[0].env_info.history += f"\n{rsp.Info_str}"
@@ -138,4 +138,4 @@ class Agent(Executor):
     def handle(self, info: Info) -> Info:
         self.recv(info)
 
-        return self._react()
+        return self.step()
