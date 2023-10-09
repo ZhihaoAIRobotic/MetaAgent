@@ -1,5 +1,4 @@
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document
+from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.actions.action import Action
 
 
@@ -28,15 +27,12 @@ The script is as follows:
 
 
 class StoryBoard(Action):
-    def __init__(self, name="", context=None, llm=None):
-        super().__init__(name, context, llm)
-
-        self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=200,
-            chunk_overlap=10,
-            length_function=len,
-            separators=["\n\n", "\n", " ", ""],
-        )
+    def __init__(self, llm=None):
+        super().__init__()
+        self.llm = llm
+        if self.llm is None:
+            self.llm = OpenAIGPTAPI()
+        self.desc = "Based on the script, write text storyboard to create comics."
 
     def run(self, requirements, *args, **kwargs):
         scene_list = requirements[-1][0].split('Scene')
@@ -45,7 +41,7 @@ class StoryBoard(Action):
         i2 = 0
         for scene in scene_list[1:]:
             i += 1
-            storyboards = self._aask(PREFIX_SETTINGS + OUTPUT_DESCRIPTION.format(script=scene))
+            storyboards = self.llm.aask(PREFIX_SETTINGS + OUTPUT_DESCRIPTION.format(script=scene))
             # print('###############PREFIX_SETTINGS OUTPUT_DESCRIPTION######################')
             storyboards_list = storyboards.split('Storyboard')
             for storyboard in storyboards_list[1:]:

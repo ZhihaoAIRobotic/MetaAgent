@@ -1,5 +1,3 @@
-# from metaagent.actions.action import Action
-# from metaagent.actions.action_output import ActionOutput
 from metaagent.actions.say import Say
 from metaagent.actions.draw_image import DrawImage
 from metaagent.actions.make_videos import MakeVideos

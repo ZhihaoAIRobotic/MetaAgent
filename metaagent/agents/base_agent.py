@@ -1,7 +1,6 @@
 from typing import Iterable, List
 from jina import Executor, requests
 from docarray import DocList
-from metaagent.actions.action import ActionOutput
 from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
 from metaagent.information import Info
@@ -37,7 +36,7 @@ class Agent(Executor):
             # print(action_name)
             i = action_dict[action_name]()
             self.action_descs += ACTION_DESCRIPTION.format(action_name=action_name, state=idx, desc=i.desc)
-            i.set_prefix(self._get_prefix(), self.profile)
+            # i.set_prefix(self._get_prefix(), self.profile)
             self.all_actions.append(i)
             self.all_states.append(f"{idx}. {action_name}")
 
@@ -83,10 +82,9 @@ class Agent(Executor):
     def act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
         response = self.todo.run(self.agent_info.important_memory)
-        if isinstance(response, ActionOutput):
-            msg = Info(content=response.content, instruct_content=response.instruct_content, role=self.profile, cause_by=str(self.todo))
-        else:
-            msg = Info(content=response, role=self.profile, cause_by=str(self.todo))
+        msg = Info(content=response, role=self.profile, cause_by=str(self.todo))
+        print('######################################')
+        print(msg)
         self.agent_info.memory.add(msg)
         return msg
 
@@ -137,5 +135,4 @@ class Agent(Executor):
 
     def handle(self, info: Info) -> Info:
         self.recv(info)
-
         return self.step()

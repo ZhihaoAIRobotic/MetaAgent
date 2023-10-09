@@ -1,14 +1,14 @@
 from metaagent.tools.text2video import TextToVideo
-from metaagent.actions.action import Action, ActionOutput
 from metaagent.minio_bucket import MINIO_OBJ
+from metaagent.actions.action import Action
 
 
 class MakeVideos(Action):
-    def __init__(self, name="", context=None, llm=None):
-        super().__init__(name, context, llm)
-        self.desc = "Make videos for the user."
+    def __init__(self):
+        super().__init__()
+        self.desc = "Make videos. If the user need a video, then use this action."
 
-    def run(self, requirements, *args, **kwargs) -> ActionOutput:
+    def run(self, requirements, *args, **kwargs):
         responses = []
         processor = TextToVideo()
         output_file_path = 'output.mp4'

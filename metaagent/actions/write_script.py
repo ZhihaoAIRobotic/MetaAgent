@@ -1,4 +1,4 @@
-
+from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.actions.action import Action
 
 GOAL = """1. You will write a creative script based on the input prompt.
@@ -35,12 +35,15 @@ Now, for requirement:{user_input}. Please write a script for the user.
 
 
 class WriteScript(Action):
-    def __init__(self, name="", context=None, llm=None):
-        super().__init__(name, context, llm)
+    def __init__(self, llm=None):
+        super().__init__()
+        self.llm = llm
+        if self.llm is None:
+            self.llm = OpenAIGPTAPI()
         self.desc = "Write script for the user."
 
     def run(self, requirements, *args, **kwargs):
         responses = []
-        response = self._aask(GOAL + OUTPUT_DESCRIPTION.format(user_input=requirements[-1]))
+        response = self.llm.aask(GOAL + OUTPUT_DESCRIPTION.format(user_input=requirements[-1]))
         responses.append(response)
         return responses
