@@ -1,7 +1,7 @@
 from typing import Iterable, List
 from jina import Executor, requests
 from docarray import DocList
-from metaagent.models.openai_llm import OpenAIGPTAPI
+from metaagent.LLMs.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
 from metaagent.information import Info
 from metaagent.environment.env_info import EnvInfo
@@ -44,9 +44,6 @@ class Agent(Executor):
         """Watch the results by actions"""
         for i in actions:
             self.agent_info.watch_action_results.append(i)
-        # print('######################################')
-        # print(self.agent_info.watch_action_results)
-        # print('######################################')
 
     def _set_state(self, state):
         """Update the current state."""

@@ -14,7 +14,6 @@ DEFAULT_QUERY_INSTRUCTION = (
 class HuggingFaceEmbeddings(BaseModel, Embeddings):
     client: Any  #: :meta private:
     model_name: str = DEFAULT_MODEL_NAME
-    """Model name to use."""
 
     def __init__(self, **kwargs: Any):
         """Initialize the sentence_transformer."""

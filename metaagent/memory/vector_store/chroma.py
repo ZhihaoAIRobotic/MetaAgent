@@ -6,6 +6,7 @@ from metaagent.config import CHROMA_HOST_NAME, CHROMA_PORT
 from metaagent.memory.vector_store.base import VectorStore
 from metaagent.memory.embedding.base import Embeddings
 from metaagent.memory.base import Memory
+# TODO: 1. add a test for this. 2. integrated into longterm memory 3. Confirm functions: init, save, load, add texts, add documents, query
 
 
 def _build_chroma_client():

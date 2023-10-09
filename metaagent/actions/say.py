@@ -2,7 +2,7 @@ from typing import List
 from metaagent.logs import logger
 from metaagent.tools.text2audio import TextToSpeech
 import torchaudio
-from metaagent.models.openai_llm import OpenAIGPTAPI
+from metaagent.LLMs.openai_llm import OpenAIGPTAPI
 from metaagent.minio_bucket import MINIO_OBJ
 from metaagent.actions.action import Action
 

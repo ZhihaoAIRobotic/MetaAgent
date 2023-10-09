@@ -1,4 +1,4 @@
-from metaagent.models.openai_llm import OpenAIGPTAPI
+from metaagent.LLMs.openai_llm import OpenAIGPTAPI
 from metaagent.actions.action import Action
 
 
