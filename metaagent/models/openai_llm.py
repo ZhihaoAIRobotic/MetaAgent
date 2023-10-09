@@ -262,13 +262,6 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
         #     messages = self.messages_to_dict(messages)
         return self._achat_completion(messages)
 
-    # @retry(
-    #     stop=stop_after_attempt(3),
-    #     wait=wait_fixed(1),
-    #     after=after_log(logger, logger.level('WARNING').name),
-    #     retry=retry_if_exception_type(APIConnectionError),
-    #     retry_error_callback=log_and_reraise,
-    # )
     def acompletion_text(self, messages: List[Dict], stream=False) -> str:
         """when streaming, print each token in place."""
         if stream:
@@ -289,30 +282,6 @@ class OpenAIGPTAPI(BaseGPTAPI, RateLimiter):
                 logger.error("usage calculation failed!", e)
         else:
             return usage
-
-    # def acompletion_batch(self, batch: list[list[dict]]) -> list[dict]:
-    #     split_batches = self.split_batches(batch)
-    #     all_results = []
-
-    #     for small_batch in split_batches:
-    #         logger.info(small_batch)
-    #         self.wait_if_needed(len(small_batch))
-
-    #         future = [self.acompletion(prompt) for prompt in small_batch]
-    #         # results = asyncio.gather(*future)
-    #         logger.info(results)
-    #         all_results.extend(results)
-
-    #     return all_results
-
-    # def acompletion_batch_text(self, batch: list[list[dict]]) -> list[str]:
-    #     raw_results = self.acompletion_batch(batch)
-    #     results = []
-    #     for idx, raw_result in enumerate(raw_results, start=1):
-    #         result = self.get_choice_text(raw_result)
-    #         results.append(result)
-    #         logger.info(f"Result of task {idx}: {result}")
-    #     return results
 
     def get_max_tokens(self, messages: List[Dict]):
         if not self.auto_max_tokens:

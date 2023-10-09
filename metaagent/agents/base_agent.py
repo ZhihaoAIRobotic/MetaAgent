@@ -1,7 +1,6 @@
 from typing import Iterable, List
 from jina import Executor, requests
 from docarray import DocList
-from metaagent.actions.action import ActionOutput
 from metaagent.models.openai_llm import OpenAIGPTAPI
 from metaagent.logs import logger
 from metaagent.information import Info
@@ -37,7 +36,7 @@ class Agent(Executor):
             # print(action_name)
             i = action_dict[action_name]()
             self.action_descs += ACTION_DESCRIPTION.format(action_name=action_name, state=idx, desc=i.desc)
-            i.set_prefix(self._get_prefix(), self.profile)
+            # i.set_prefix(self._get_prefix(), self.profile)
             self.all_actions.append(i)
             self.all_states.append(f"{idx}. {action_name}")
 
@@ -63,7 +62,7 @@ class Agent(Executor):
         """Get the prefix of the agent."""
         return PREFIX_TEMPLATE.format(**self.agent_info.dict())
 
-    def _think(self) -> None:
+    def plan(self) -> None:
         """Think for the next action"""
         if len(self.all_actions) == 1:
             self._set_state(0)
@@ -80,13 +79,12 @@ class Agent(Executor):
             next_state = "0"
         self._set_state(int(next_state))
 
-    def _act(self) -> Info:
+    def act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
         response = self.todo.run(self.agent_info.important_memory)
-        if isinstance(response, ActionOutput):
-            msg = Info(content=response.content, instruct_content=response.instruct_content, role=self.profile, cause_by=str(self.todo))
-        else:
-            msg = Info(content=response, role=self.profile, cause_by=str(self.todo))
+        msg = Info(content=response, role=self.profile, cause_by=str(self.todo))
+        print('######################################')
+        print(msg)
         self.agent_info.memory.add(msg)
         return msg
 
@@ -107,10 +105,10 @@ class Agent(Executor):
             logger.debug(f'{self._role_id} observed: {news_text}')
         return len(self.agent_info.news)
     
-    def _react(self) -> Info:
-        self._think()
+    def step(self) -> Info:
+        self.plan()
         logger.debug(f"{self._role_id}: {self.state}, will do {self.todo}")
-        return self._act()
+        return self.act()
     
     @requests
     def run(self, docs: DocList[InteractionInfo], **kwargs) -> DocList[InteractionInfo]:
@@ -125,7 +123,7 @@ class Agent(Executor):
             logger.debug("no news. waiting.")
             return
 
-        rsp = self._react()
+        rsp = self.step()
         # print('rsp', rsp)
         docs[0].env_info.env_memory.add(rsp)
         docs[0].env_info.history += f"\n{rsp.Info_str}"
@@ -137,5 +135,4 @@ class Agent(Executor):
 
     def handle(self, info: Info) -> Info:
         self.recv(info)
-
-        return self._react()
+        return self.step()

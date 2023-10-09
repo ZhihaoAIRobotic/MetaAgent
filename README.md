@@ -18,8 +18,8 @@ Our platform have many features:
 - Multi-modal agents, agents can interact with users using texts, audios, images, and videos. 
 - Multi-agent collaboration, you can create a agents company for complex tasks, such as draw comics.
 - Vector database and knowledge embeddings
-- UI for create and usage for AI agents. (Coming soon)
-- Fine-tuning (Coming soon)
+- UI for creating and usage of AI agents. (Coming soon)
+- Fine-tuning and RLHF (Coming soon)
 
 #### :page_with_curl: Examples
 Comics Company, create a comic about Elon lands on mars.

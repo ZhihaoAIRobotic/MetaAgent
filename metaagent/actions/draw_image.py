@@ -1,24 +1,15 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-@Time    : 2023/5/11 17:45
-@Author  : alexanderwu
-@File    : write_prd.py
-"""
-from typing import List, Tuple
-from metaagent.actions.action import Action, ActionOutput
-from metaagent.logs import logger
 from metaagent.tools.text2image import TextToImage
 from metaagent.minio_bucket import MINIO_OBJ
+from metaagent.actions.action import Action
 
 
 class DrawImage(Action):
-    def __init__(self, name="", context=None, llm=None):
-        super().__init__(name, context, llm)
-        self.desc = "Draw image for the user."
+    def __init__(self):
+        super().__init__()
+        self.desc = "Draw images. If the user need a image, then use this action."
         self.processor = TextToImage()
 
-    def run(self, requirements, *args, **kwargs) -> ActionOutput:
+    def run(self, requirements, *args, **kwargs):
         # logger.debug(requirements)
         responses = []
         number = 0
