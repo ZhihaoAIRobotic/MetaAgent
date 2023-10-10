@@ -2,67 +2,61 @@ from typing import List, Dict
 
 from metaagent.logs import logger
 from metaagent.memory.shortterm_memory import Memory
-from metaagent.memory.memory_storage import MemoryStorage
+# from metaagent.memory.memory_storage import MemoryStorage
 from metaagent.information import Message
+from metaagent.memory.vector_store.chroma import ChromaVS
 
 
-class LongTermMemory(Memory):
+class LongTermMemory():
     """
     The Long-term memory for Roles
     - recover memory when it staruped
     - update memory when it changed
     """
 
-    def __init__(self):
-        self.memory_storage: MemoryStorage = MemoryStorage()
-        super(LongTermMemory, self).__init__()
-        self.rc = None  # RoleContext
-        self.msg_from_recover = False
+    def __init__(self, workid, embedding_model: str = None):
+        self.rc = None
+        self.memory_storage = ChromaVS(workid, embedding_model)
 
-    def recover_memory(self, role_id: str, rc: "RoleContext"):
-        messages = self.memory_storage.recover_memory(role_id)
-        self.rc = rc
-        if not self.memory_storage.is_initialized:
-            logger.warning(f"It may the first time to run Agent {role_id}, the long-term memory is empty")
-        else:
-            logger.warning(
-                f"Agent {role_id} has existed memory storage with {len(messages)} messages " f"and has recovered them."
-            )
-        self.msg_from_recover = True
-        self.add_batch(messages)
-        self.msg_from_recover = False
+    def remember_infos(self, message: Message):
+        """
+        remember the message into memory_storage
+        """
+        # TODO add message to memory_storage
+        self.memory_storage.add(message)
 
-    def add(self, message: Message):
-        super(LongTermMemory, self).add(message)
-        for action in self.rc.watch:
-            if message.cause_by == action and not self.msg_from_recover:
-                # currently, only add role's watching messages to its memory_storage
-                # and ignore adding messages from recover repeatedly
-                self.memory_storage.add(message)
+    def remember_knowledge(self, message: Message):
+        """
+        remember the message into memory_storage
+        """
+        # TODO add message to memory_storage
+        self.memory_storage.add(message)
 
-    def remember(self, observed: List[Message], k=0) -> List[Message]:
+    def recall_from_infors(self, observed: List[Message], k=0) -> List[Message]:
         """
         remember the most similar k memories from observed Messages, return all when k=0
             1. remember the short-term memory(stm) news
             2. integrate the stm news with ltm(long-term memory) news
         """
-        stm_news = super(LongTermMemory, self).remember(observed, k=k)  # shot-term memory news
-        if not self.memory_storage.is_initialized:
-            # memory_storage hasn't initialized, use default `remember` to get stm_news
-            return stm_news
+        return
 
-        ltm_news: List[Message] = []
-        for mem in stm_news:
-            # integrate stm & ltm
-            mem_searched = self.memory_storage.search(mem)
-            if len(mem_searched) > 0:
-                ltm_news.append(mem)
-        return ltm_news[-k:]
-
-    def delete(self, message: Message):
-        super(LongTermMemory, self).delete(message)
+    def recall_from_knowledge(self, observed: List[Message], k=0) -> List[Message]:
+        """
+        remember the most similar k memories from observed Messages, return all when k=0
+            1. remember the short-term memory(stm) news
+            2. integrate the stm news with ltm(long-term memory) news
+        """
+        return 
+    
+    def forget(self, message: Message):
+        '''
+        delete specific content in memory_storage
+        '''
         # TODO delete message in memory_storage
 
     def clear(self):
-        super(LongTermMemory, self).clear()
-        self.memory_storage.clean()
+        '''
+        clear all content in memory_storage
+        '''
+        # TODO delete message in memory_storage
+

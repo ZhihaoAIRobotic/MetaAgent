@@ -3,95 +3,116 @@ from typing import Any, Optional, Iterable, List
 import chromadb
 from chromadb import Settings
 from metaagent.config import CHROMA_HOST_NAME, CHROMA_PORT
-from metaagent.memory.vector_store.base import VectorStore
-from metaagent.memory.embedding.base import Embeddings
-from metaagent.memory.base import Memory
-# TODO: 1. add a test for this. 2. integrated into longterm memory 3. Confirm functions: init, save, load, add texts, add documents, query
+from chromadb.utils import embedding_functions
+# TODO: 1. add a test for this. 2. integrated into longterm memory 3. Confirm functions: init, save, delete, load, add texts, add documents, query
+SUPPORTED_EMBEDDING_FUNCTION = ['OpenAI', 'huggingface']
 
 
-def _build_chroma_client():
-    return chromadb.Client(Settings(chroma_api_impl="rest", chroma_server_host=CHROMA_HOST_NAME,
-                                    chroma_server_http_port=CHROMA_PORT))
-
-
-class ChromaVS(VectorStore):
+class ChromaVS():
     def __init__(
             self,
             collection_name: str,
-            embedding_model: Embeddings,
-            text_field: str,
-            namespace: Optional[str] = "",
+            embedding_model: str,
+            ApiKey: Optional[str] = None,
     ):
-        self.client = _build_chroma_client()
+        """Initialize the Chroma Vector Store.
+        Args:
+            collection_name: The name of the collection to create.
+            embedding_model: The name of the embedding model to use, now support ['OpenAI', 'huggingface'].
+            ApiKey: The api key to use for the embedding model.
+        """
+        embedding_model = None
+        if (embedding_model is not None) and (embedding_model not in SUPPORTED_EMBEDDING_FUNCTION):
+            raise ValueError(
+                f"embedding_model {embedding_model} is not supported. "
+                f"Supported embedding_model: {SUPPORTED_EMBEDDING_FUNCTION}"
+            )
+        
+        print(f"Using {embedding_model} as embedding function.")
+        if embedding_model == 'OpenAI':
+            self.embedding_model = embedding_functions.OpenAIEmbeddingFunction(
+                api_key=ApiKey,
+                model_name="text-embedding-ada-002"
+            )
+        elif embedding_model == 'huggingface':
+            self.embedding_model = embedding_functions.HuggingFaceEmbeddingFunction(
+                api_key=ApiKey,
+                model_name="sentence-transformers/all-MiniLM-L6-v2"
+                )
+
+        self.client = chromadb.PersistentClient(path='./chroma.db')
         self.collection_name = collection_name
         self.embedding_model = embedding_model
-        self.text_field = text_field
-        self.namespace = namespace
 
-    @classmethod
-    def create_collection(cls, collection_name):
+    def create_collection(self):
         """Create a Chroma Collection.
         Args:
         collection_name: The name of the collection to create.
         """
-        chroma_client = _build_chroma_client()
-        return chroma_client.get_or_create_collection(name=collection_name)
+        if self.embedding_model is None:
+            self.collection = self.client.create_collection(name=self.collection_name)  # Use the default embedding function
+        else:
+            self.collection = self.client.create_collection(name=self.collection_name, embedding_function=self.embedding_model)
+        return self.collection
+     
+    def load_collection(self):
+        """Load a Chroma Collection.
+        Args:
+        collection_name: The name of the collection to load.
+        """
+        if self.embedding_model is None:
+            self.collection = self.client.get_collection(name=self.collection_name)  # Use the default embedding function
+        else:
+            self.collection = self.client.get_collection(name=self.collection_name, embedding_function=self.embedding_model)
+        return self.collection
+    
+    def clear_collection(self):
+        """Clear a Chroma Collection.
+        Args:
+        collection_name: The name of the collection to clear.
+        """
+        self.collection.clear()
+        return self.collection
 
     def add_texts(
             self,
             texts: Iterable[str],
             metadatas: Optional[List[dict]] = None,
             ids: Optional[List[str]] = None,
-            namespace: Optional[str] = None,
-            batch_size: int = 32,
             **kwargs: Any,
     ) -> List[str]:
         """Add texts to the vector store."""
-        if namespace is None:
-            namespace = self.namespace
-
-        metadatas = []
         ids = ids or [str(uuid.uuid4()) for _ in texts]
         if len(ids) < len(texts):
             raise ValueError("Number of ids must match number of texts.")
 
-        for text, id in zip(texts, ids):
-            metadata = metadatas.pop(0) if metadatas else {}
-            metadata[self.text_field] = text
-            metadatas.append(metadata)
-        collection = self.client.get_collection(name=self.collection_name)
-        collection.add(
+        self.collection.add(
             documents=texts,
             metadatas=metadatas,
             ids=ids
         )
         return ids
 
-    def get_matching_text(self, query: str, top_k: int = 5, metadata: Optional[dict] = {}, **kwargs: Any) -> List[Memory]:
+    def query_text(self, query: str, top_k: int = 1, metadata: Optional[dict] = {}, **kwargs: Any):
         """Return docs most similar to query using specified search type."""
-        embedding_vector = self.embedding_model.embed_query(query)
-        collection = self.client.get_collection(name=self.collection_name)
         filters = {}
         for key in metadata.keys():
             filters[key] = metadata[key]
-        results = collection.query(
-            query_embeddings=embedding_vector,
-            include=["documents"],
+        results = self.collection.query(
+            query_texts=query,
             n_results=top_k,
             where=filters
         )
-
+        print(results)
         documents = []
 
-        for node_id, text, metadata in zip(
-                results["ids"][0],
-                results["documents"][0],
-                results["metadatas"][0]):
-            documents.append(
-                Memory(
-                    text_content=text,
-                    metadata=metadata
-                )
-            )
-
         return documents
+
+
+if __name__ == '__main__':
+    collection_name = 'test'
+    embedding_model = 'OpenAI'
+    chroma = ChromaVS(collection_name, embedding_model)
+    chroma.load_collection()
+    chroma.add_texts(['apple', 'water'])
+    chroma.query_text('cup')

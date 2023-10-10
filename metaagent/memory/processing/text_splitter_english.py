@@ -1,27 +1,3 @@
-# SoMaJo is a state-of-the-art tokenizer and sentence splitter for German and English web and social media texts.
-# It won the EmpiriST 2015 shared task on automatic linguistic annotation of computer-mediated communication / social media.
-# As such, it is particularly well-suited to perform tokenization on all kinds of written discourse,
-# for example chats, forums, wiki talk pages, tweets, blog comments, social networks, SMS and WhatsApp dialogues.
-# In addition to tokenizing the input text, SoMaJo can also output token class information for each token,
-# i.e. if it is a number, an emoticon, an abbreviation, etc.:
-# echo 'Wow, superTool!;)' | somajo-tokenizer -c -t -
-# Wow	regular
-# ,	symbol
-# super	regular
-# Tool	regular
-# !	symbol
-# ;)	emoticon
-
-# somoja api https://github.com/tsproisl/SoMaJo/blob/master/doc/build/markdown/somajo.md
-# SoMaJo can be easily installed using pip (pip3 in some distributions):
-#
-# pip install -U SoMaJo
-# Alternatively, you can download and decompress the latest release or clone the git repository:
-#
-# git clone https://github.com/tsproisl/SoMaJo.git
-# 
-
-
 from somajo import SoMaJo
 import re
 

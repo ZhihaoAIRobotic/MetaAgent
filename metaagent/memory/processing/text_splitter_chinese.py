@@ -61,10 +61,7 @@ class Chinese_text_Splitter(object):
         self.punches_fine_grained = None
 
     def _prepare(self):
-        self.punches_fine_grained = {'…', '...', '\r\n', '，', ',', '。', '.', ';',  '；', ':', '：', '…', '！', '!', '=',
-                           '?', '？', '\r', '\n', '“', '”', '‘', '’', '——', '-', '(', ')', '（', '）',
-                            '[', ']', '【', '】', '{', '}', '《', '》', '<', '>',
-                           }
+        self.punches_fine_grained = {'…', '...', '\r\n', '，', ',', '。', '.', ';',  '；', ':', '：', '…', '！', '!', '=', '?', '？', '\r', '\n', '“', '”', '‘', '’', '——', '-', '(', ')', '（', '）', '[', ']', '【', '】', '{', '}', '《', '》', '<', '>'}
         self.punches_coarse_grained = {'…',  '。', '.', '！', '!', '？', '?', '\n', '“', '”', '‘', '’'}
         self.front_quote_list = {'“', '‘'}
         self.back_quote_list = {'”', '’'}
@@ -198,7 +195,6 @@ def merge_short_sentences(sentences, chunk_size):
 
 def textsplitter_with_overlap(sentences, chunk_size=64, chunk_overlap_rate=0.1):
     """
-
     : param sentences: sentences = split_sentence(text)
     : param chunk_size:
     : param chunk_overlap_rate:
@@ -222,6 +218,7 @@ def textsplitter_with_overlap(sentences, chunk_size=64, chunk_overlap_rate=0.1):
 
         sentences = overlap_sentences + sentences  # new sentences set
     return result
+
 
 split_sentence = Chinese_text_Splitter()
 

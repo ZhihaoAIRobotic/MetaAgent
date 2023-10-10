@@ -24,7 +24,6 @@ from langchain.document_loaders import (
     WebBaseLoader,
 )
 from langchain.document_loaders.base import BaseLoader
-from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from tqdm import tqdm
 
@@ -74,11 +73,7 @@ class Dataloader(ABC):
                 pbar.update()
         return results
 
-    def load_document(self,
-            file_path: str,
-            mapping: dict = FILE_LOADER_MAPPING,
-            default_loader: BaseLoader = UnstructuredFileLoader,
-    ):
+    def load_document(self, file_path: str, mapping: dict = FILE_LOADER_MAPPING, default_loader: BaseLoader = UnstructuredFileLoader):
         # Choose loader from mapping, load default if no match found
         ext = "." + file_path.rsplit(".", 1)[-1]
         if ext in mapping:
@@ -87,7 +82,6 @@ class Dataloader(ABC):
         else:
             loader = default_loader(file_path)
         return loader.load()
-
 
     def load_data_source(self, data_source: str):
         is_web = data_source.startswith("http")
@@ -111,6 +105,7 @@ class Dataloader(ABC):
     def __call__(self, file_path: str):
         docs = self.load_data_source(file_path)
         doc_text = ""
+
         def length_function(text: str) -> int:
             # count chunks like the embeddings model tokenizer does
             return len(self.tokenizer.encode(text, disallowed_special=()))
@@ -129,9 +124,9 @@ class Dataloader(ABC):
 
         return doc_text
 
+
 def main():
-    parser = argparse.ArgumentParser(
-    description='Start LLM and Embeddings models as a service.')
+    parser = argparse.ArgumentParser(description='Start LLM and Embeddings models as a service.')
     parser.add_argument('--file_path', type=str, default='/home/lzh/核心技术及创新点.pdf')
     args, _ = parser.parse_known_args()
 
@@ -140,6 +135,6 @@ def main():
     docs = dataloader(args.file_path)
     print(docs)
 
+
 if __name__ == '__main__':
     main()
-

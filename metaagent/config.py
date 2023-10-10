@@ -2,15 +2,13 @@ import yaml
 import openai
 import os
 
-from metaagent.const import PROJECT_ROOT
 from metaagent.logs import logger
 from metaagent.tools import SearchEngineType, WebBrowserEngineType
 from metaagent.utils import Singleton
 
 CHROMA_PORT = 8000
-CHROMA_HOST_NAME = "localhost"
+CHROMA_HOST_NAME = "127.0.0.1"
 JINA_AUTH_TOKEN = "1"
-
 
 
 class NotConfiguredException(Exception):
@@ -27,7 +25,6 @@ class NotConfiguredException(Exception):
 
 class Config(metaclass=Singleton):
     """
-    常规使用方法：
     config = Config("config.yaml")
     secret_key = config.get_key("MY_SECRET_KEY")
     print("Secret key:", secret_key)

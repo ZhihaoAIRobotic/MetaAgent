@@ -23,7 +23,7 @@ class KnowledgeDatabase(Executor):
         results = self.vector_store.get_matching_text(query)
         results = DocumentArray([Jocument(text=results)])
         return results
-    
+
 
 def main():
     parser = argparse.ArgumentParser(
