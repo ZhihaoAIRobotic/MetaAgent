@@ -36,16 +36,12 @@ def textsplitter_with_overlap(sentences, chunk_size=64, chunk_overlap_rate=0.1):
         sentences = overlap_sentences + sentences  # 新句子集合
     return result
 
-# language ({'de_CMC', 'en_PTB'}) – Language-specific tokenization rules.
-# split_camel_case (bool, (default=False)) – Split words written in camelCase (excluding established names and terms).
-# split_sentences (bool, (default=True)) – Perform sentence splitting in addition to tokenization.
-# xml_sentences (str, (default=None)) – Delimit sentences by XML tags of this name (xml_sentences='s' → <s>…</s>). When used with XML input, this might lead to minor changes to the original tags to guarantee well-formed output (tags might need to be closed and re-opened at sentence boundaries).
 
-class SoMaJo_Text_Splitter(object):
+class English_Text_Splitter(object):
     def __init__(self, split_sentences=True):
         self.split_sentences = split_sentences
         self.front_brackets_list = {"(", "（", "<", "《", "{", "[", "【"}
-        self.back_brackets_list  = {")", "）", ">", "》", "}", "]", "】"}
+        self.back_brackets_list = {")", "）", ">", "》", "}", "]", "】"}
         self.quote_list = {"'", "“"}
         self.punches_fine_grained = {",", ";", ".", "!", "?", "\r", "\n"}
 
@@ -112,13 +108,12 @@ class SoMaJo_Text_Splitter(object):
         return final_sentences
 
 
-
-
-split_sentence = SoMaJo_Text_Splitter()
-
 if __name__ == '__main__':
-    text =" Uncle Tom's Cabin; or, Life Among the Lowly is an anti-slavery novel by American author Harriet Beecher Stowe. Published in two volumes in 1852, the novel had a profound effect on attitudes toward African Americans and slavery in the U.S., and is said to have helped lay the groundwork\
+    text = " Uncle Tom's Cabin; or, Life Among the Lowly is an anti-slavery novel by American author Harriet Beecher Stowe. Published in two volumes in 1852, the novel had a profound effect on attitudes toward African Americans and slavery in the U.S., and is said to have helped lay the groundwork\
  for the [American Civil[] War]. In the same month, American singer (Madonna) released the single 'Hung Up Song', which contains a sample of the keyboard melody from ABBA's 1979 song 'Gimme! Gimme! Gimme!'"
+    
+    split_sentence = English_Text_Splitter()
+    # sentences = split_sentence(text, criterion='fine')
+    sentences = split_sentence(text)
 
-    sentences = split_sentence(text, criterion='fine')
     print(sentences)

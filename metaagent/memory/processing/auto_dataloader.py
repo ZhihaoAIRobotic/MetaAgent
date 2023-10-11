@@ -126,13 +126,9 @@ class Dataloader(ABC):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Start LLM and Embeddings models as a service.')
-    parser.add_argument('--file_path', type=str, default='/home/lzh/核心技术及创新点.pdf')
-    args, _ = parser.parse_known_args()
-
-    # init_formats = Init_Formats()
     dataloader = Dataloader()
-    docs = dataloader(args.file_path)
+    docs = dataloader('https://github.com/ZhihaoAIRobotic/MetaAgent')
+    print(type(docs))
     print(docs)
 
 

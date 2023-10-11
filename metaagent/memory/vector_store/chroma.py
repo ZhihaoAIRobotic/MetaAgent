@@ -28,7 +28,6 @@ class ChromaVS():
                 f"Supported embedding_model: {SUPPORTED_EMBEDDING_FUNCTION}"
             )
         
-        print(f"Using {embedding_model} as embedding function.")
         if embedding_model == 'OpenAI':
             self.embedding_model = embedding_functions.OpenAIEmbeddingFunction(
                 api_key=ApiKey,
@@ -44,6 +43,17 @@ class ChromaVS():
         self.collection_name = collection_name
         self.embedding_model = embedding_model
 
+    def create_load_collection(self):
+        """Create or load a Chroma Collection.
+        Args:
+        collection_name: The name of the collection to create.
+        """
+        if self.embedding_model is None:
+            self.collection = self.client.get_or_create_collection(name=self.collection_name)  # Use the default embedding function
+        else:
+            self.collection = self.client.get_or_create_collection(name=self.collection_name, embedding_function=self.embedding_model)
+        return self.collection
+    
     def create_collection(self):
         """Create a Chroma Collection.
         Args:
@@ -54,7 +64,7 @@ class ChromaVS():
         else:
             self.collection = self.client.create_collection(name=self.collection_name, embedding_function=self.embedding_model)
         return self.collection
-     
+
     def load_collection(self):
         """Load a Chroma Collection.
         Args:
@@ -65,7 +75,7 @@ class ChromaVS():
         else:
             self.collection = self.client.get_collection(name=self.collection_name, embedding_function=self.embedding_model)
         return self.collection
-    
+
     def clear_collection(self):
         """Clear a Chroma Collection.
         Args:
@@ -93,7 +103,7 @@ class ChromaVS():
         )
         return ids
 
-    def query_text(self, query: str, top_k: int = 1, metadata: Optional[dict] = {}, **kwargs: Any):
+    def query_text(self, query: str, top_k: int = 1, metadata: Optional[dict] = {}, **kwargs: Any) -> List[str]:
         """Return docs most similar to query using specified search type."""
         filters = {}
         for key in metadata.keys():
@@ -103,9 +113,9 @@ class ChromaVS():
             n_results=top_k,
             where=filters
         )
-        print(results)
-        documents = []
-
+        # TODO Check if the query is empty
+        # TODO Check the results['documents'] 
+        documents = results['documents'][0]
         return documents
 
 

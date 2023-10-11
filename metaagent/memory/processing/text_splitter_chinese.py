@@ -3,6 +3,7 @@ from typing import List
 import torch
 from tqdm import tqdm
 
+
 class Chinese_AliText_Splitter(object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -35,7 +36,8 @@ class Chinese_AliText_Splitter(object):
 
         return sent_list
 
-class Chinese_text_Splitter(object):
+
+class Chinese_Text_Splitter(object):
     """ Divide the text into several sentences, mainly considering some logical situations in dealing with quotation marks
 
     Args:
@@ -95,7 +97,7 @@ class Chinese_text_Splitter(object):
         else:
             raise ValueError('The parameter `criterion` must be '
                              '`coarse` or `fine`.')
-        print(tmp_list)
+        # print(tmp_list)
         final_sentences = []
         quote_flag = False
 
@@ -193,6 +195,7 @@ def merge_short_sentences(sentences, chunk_size):
             return sentences[:i], sentences[i:]
     return sentences, []
 
+
 def textsplitter_with_overlap(sentences, chunk_size=64, chunk_overlap_rate=0.1):
     """
     : param sentences: sentences = split_sentence(text)
@@ -220,14 +223,13 @@ def textsplitter_with_overlap(sentences, chunk_size=64, chunk_overlap_rate=0.1):
     return result
 
 
-split_sentence = Chinese_text_Splitter()
 
 if __name__ == '__main__':
-    text =  '她轻轻地哼起了《摇篮曲》：“月儿明，风儿静，树叶儿遮窗棂啊……”' \
+    text = '她轻轻地哼起了《摇篮曲》：“月儿明，风儿静，树叶儿遮窗棂啊……”' \
             '迈进金黄色的大门，穿过宽阔的风门厅和衣帽厅，就到了大会堂建筑的枢纽部分——中央大厅. JAVA語言比C++語言好。' \
             '中国猿人（全名为“中国猿人北京种”，或简称“北京人”）在我国的发现，是对古人类学的一个重大***^贡献。央视新闻消息，近日，特朗普老友皮尔斯·摩根喊话特朗普：“美国人的生命比你的选举更重要。如果你继续以自己为中心，继续玩弄愚蠢的政治……如果你意识不到自己>的错误，你就做不对!”。目前，特朗普已“取关”了这位老友。' \
            '张华考上了北京大学，在化学系学习：李萍进了中等技术学校，读机械制造专业；我在百货公司当售货员：我们都有光明的前途。爱因斯坦说："想象力比知识更重要，因为知识是有限的，而想象力概括着世界上的一切，推动着进步，并且是知识进化的源泉。“'
-
+    split_sentence = Chinese_Text_Splitter()
     sentences = split_sentence(text, criterion='coarse')
     print(sentences)
     print(textsplitter_with_overlap(sentences))

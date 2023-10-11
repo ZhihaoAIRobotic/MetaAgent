@@ -79,7 +79,7 @@ class Agent(Executor):
     def act(self) -> Info:
         logger.info(f"{self._role_id}: ready to {self.todo}")
         response = self.todo.run(self.agent_info.important_memory)
-        msg = Info(content=response, role=self.profile, cause_by=str(self.todo))
+        msg = Info(content=response, agent_id=id, role=self.profile, cause_by=str(self.todo))
         print('######################################')
         print(msg)
         self.agent_info.memory.add(msg)
