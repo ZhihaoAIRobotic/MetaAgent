@@ -1,3 +1,5 @@
-**/__pycache__
-
+/metaagent/config.yaml
 metaagent/config.yaml
+app.sh
+
+__pycache__
