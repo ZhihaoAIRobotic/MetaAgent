@@ -8,7 +8,7 @@
   </a>
 </p>
 
-<p align="center"><i>:unicorn: A multi-agent collaboration platform to build, manage and deploy your multi-modal AI Agents. :robot:. </i></p>
+<p align="center"><i>:unicorn: The next generation of Multi-Modal Multi-Agent platform. :robot:. </i></p>
 
 ## Introduction
 We create a  Multi-modal Multi-agent Collaboration Platform, and you can use this platform to create your own AI agent easily. You don't even need to write python code, the agent can be created by editing a yml file or using UI. 
