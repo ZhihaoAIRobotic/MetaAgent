@@ -1309,3 +1309,722 @@
 2023-10-10 13:59:52.624 | INFO     | metaagent.config:__init__:40 - Config loading done.
 2023-10-10 14:00:06.399 | INFO     | metaagent.config:__init__:40 - Config loading done.
 2023-10-10 14:04:16.890 | INFO     | metaagent.config:__init__:40 - Config loading done.
+2024-09-29 15:57:23.402 | DEBUG    | __main__:<module>:21 - Hello
+2024-09-30 20:03:42.417 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 20:03:42.695 | ERROR    | metaagent.LLMs.llmapi:log_failure_event:30 - Error: None
+2024-09-30 20:03:42.695 | ERROR    | metaagent.LLMs.llmapi:log_failure_event:30 - Error: None
+2024-09-30 20:09:31.505 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 20:09:31.793 | ERROR    | metaagent.LLMs.llmapi:log_failure_event:30 - Error: None
+2024-09-30 20:09:31.793 | ERROR    | metaagent.LLMs.llmapi:log_failure_event:30 - Error: None
+2024-09-30 20:59:44.658 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 20:59:46.051 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 20:59:46.051 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 20:59:46.117 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 20:59:46.117 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 20:59:46.449 | ERROR    | metaagent.LLMs.llmapi:log_failure_event:30 - Error: None
+2024-09-30 20:59:46.449 | ERROR    | metaagent.LLMs.llmapi:log_failure_event:30 - Error: None
+2024-09-30 21:01:30.803 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:01:32.136 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:01:32.136 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:01:32.200 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:01:32.200 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:01:34.479 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:01:34.479 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:01:34.480 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:01:34.480 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:06:46.722 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:06:47.948 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:06:47.949 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:06:47.959 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:06:47.959 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:06:50.080 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:06:50.081 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:06:50.081 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:06:50.081 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:08:08.030 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:08:09.423 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:08:09.423 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:08:09.431 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:08:09.431 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:08:10.812 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:08:10.813 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:08:10.814 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:08:10.814 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:08:10.817 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:08:10.818 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:08:10.818 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:08:13.023 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:08:13.023 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:08:13.023 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:08:13.023 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:08:13.023 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:08:13.023 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:09:03.135 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:09:04.258 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:09:04.258 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:09:04.271 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:09:04.271 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:09:05.390 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:09:05.391 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:09:05.392 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:09:05.392 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:09:05.449 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:09:05.450 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:09:05.450 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:09:07.602 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:09:07.603 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:09:07.603 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:09:07.603 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:09:07.603 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:09:07.603 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:09:11.395 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:09:13.375 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:09:13.375 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:09:13.379 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:09:13.379 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:09:14.668 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:09:14.669 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:09:14.669 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:09:14.669 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:09:14.729 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:09:14.729 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:09:14.729 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:09:16.819 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:09:16.819 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:09:16.819 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:09:16.819 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:09:16.819 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:09:16.819 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:10:01.488 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:10:02.801 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:10:02.801 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:10:02.806 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:10:02.806 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:10:04.128 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:10:04.137 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:10:04.137 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:10:04.137 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:10:04.197 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:10:04.197 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:10:04.197 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:10:06.366 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:10:06.367 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:10:06.367 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:10:06.367 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:10:06.367 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:10:06.367 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:15:26.940 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:15:28.232 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:15:28.232 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:15:28.237 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:15:28.237 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:15:29.456 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:15:29.458 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:15:29.458 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:15:29.458 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:15:29.517 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:15:29.517 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:15:29.517 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:15:31.709 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:15:31.710 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:15:31.710 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:15:31.710 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:15:31.710 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:15:31.710 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:16:43.858 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:16:45.237 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:16:45.238 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:16:45.242 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:16:45.242 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:16:46.365 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:16:46.366 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:16:46.366 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:16:46.366 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:16:46.368 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:46.368 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:46.368 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:46.374 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:16:46.374 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:16:46.374 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:16:46.853 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:46.853 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:46.853 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:46.853 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:16:48.817 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:16:48.818 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:16:48.818 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:16:48.823 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:16:48.832 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:16:48.832 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:16:48.832 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:16:48.832 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:17:16.744 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:17:18.210 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:17:18.210 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:17:18.215 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:17:18.215 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:17:19.435 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:17:19.435 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:17:19.435 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:17:19.435 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:17:19.437 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:19.437 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:19.437 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:19.442 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:17:19.442 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:17:19.442 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:17:19.931 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:19.931 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:19.931 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:19.931 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:17:22.318 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:17:22.318 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:17:22.318 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:17:22.318 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:17:22.319 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:17:22.319 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:17:22.319 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:17:22.319 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:21.190 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:19:22.411 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:19:22.411 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:19:22.419 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:22.419 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:24.567 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 67
+2024-09-30 21:19:24.567 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:24.567 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 67
+2024-09-30 21:19:24.567 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:24.568 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:24.568 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:24.568 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:26.614 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:26.615 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:26.615 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:26.615 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:26.615 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:26.615 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:43.335 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:19:44.646 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:19:44.647 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:19:44.658 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:19:44.658 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:19:45.866 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:19:45.875 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:19:45.875 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:19:45.875 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:19:45.877 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:45.878 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:45.878 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:45.889 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:19:45.889 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:19:45.889 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:19:46.359 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:46.359 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:46.359 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:46.359 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:19:48.530 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:48.531 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:48.531 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:48.531 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:48.531 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:48.531 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:19:48.532 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:19:48.533 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:20:03.083 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:20:04.419 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:20:04.419 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:20:04.426 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:20:04.426 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:20:05.610 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:20:05.612 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:20:05.613 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:20:05.613 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:20:05.616 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:20:05.617 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:20:05.617 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:20:07.679 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:20:07.680 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:20:07.680 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:20:07.681 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:20:07.681 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:20:07.682 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:29:38.158 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:29:39.805 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:29:39.806 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:29:39.822 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:29:39.822 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:29:41.017 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:29:41.018 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:29:41.019 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:29:41.019 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:29:41.024 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:41.025 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:41.025 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:41.039 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:29:41.039 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:29:41.039 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:29:41.056 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:41.056 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:41.056 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:43.241 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:43.241 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:43.241 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:43.241 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:29:45.238 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:29:45.239 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:29:45.240 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:29:45.240 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:29:45.240 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:29:45.241 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:29:45.241 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:29:45.242 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:30:07.740 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:30:09.190 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:30:09.190 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:30:09.196 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:30:09.196 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:30:10.431 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:30:10.432 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:30:10.433 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:30:10.433 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:30:10.438 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:10.439 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:10.439 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:10.453 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:30:10.453 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:30:10.453 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:30:10.461 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:10.461 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:10.461 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:12.791 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:12.791 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:12.791 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:12.791 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:30:15.202 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:30:15.204 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:30:15.204 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:30:15.204 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:30:15.204 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:30:15.205 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:30:15.206 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:30:15.206 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:33:02.240 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:33:03.572 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:33:03.572 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:33:03.579 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:33:03.579 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:33:04.793 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:33:04.793 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:33:04.793 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:33:04.793 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:33:04.797 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:04.797 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:04.798 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:04.807 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:33:04.807 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:33:04.807 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:33:04.815 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:04.815 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:04.815 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:07.152 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:07.153 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:07.153 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:07.153 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:33:09.606 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:33:09.607 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:33:09.608 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:33:09.608 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:33:09.608 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:33:09.608 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:33:09.609 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:33:09.609 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:34:12.680 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:34:14.237 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:34:14.237 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:34:14.244 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:34:14.244 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:34:15.342 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:34:15.343 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:34:15.343 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:34:15.343 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:34:15.348 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:15.349 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:15.349 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:15.362 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:34:15.362 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:34:15.363 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:34:15.370 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:15.370 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:15.370 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:17.664 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:17.665 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:17.665 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:17.665 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:34:19.853 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:34:19.855 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:34:19.856 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:34:19.856 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:34:19.857 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:34:19.858 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:34:19.858 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:34:19.858 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:35:14.880 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:16.088 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:35:16.088 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:16.095 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:16.095 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:17.313 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:35:17.314 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:17.314 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:35:17.314 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:17.319 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:17.320 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:17.320 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:17.334 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:35:17.334 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:35:17.334 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:35:17.341 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:17.341 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:17.341 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:19.578 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:19.578 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:19.578 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:19.578 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:35:21.703 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:35:21.704 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:35:21.705 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:35:21.705 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:35:21.706 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:35:21.706 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:35:21.707 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:35:21.707 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:35:21.711 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:21.711 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:21.712 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:21.712 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:21.712 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:35:22.936 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:35:22.936 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:22.936 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:35:22.937 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:22.937 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:35:22.937 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:22.937 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:35:22.937 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:35:22.938 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:35:22.938 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:05.756 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:07.182 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:07.183 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:07.193 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:07.193 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:08.398 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:36:08.398 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:08.398 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:36:08.399 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:08.405 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:08.405 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:08.405 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:08.423 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:36:08.423 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:36:08.423 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:36:08.432 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:08.432 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:08.432 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:10.749 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:10.749 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:10.749 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:10.749 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:12.903 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:12.904 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:12.904 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:12.905 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:12.906 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:12.906 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:12.907 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:12.907 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:25.915 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:27.147 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:27.147 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:27.155 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:27.155 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:28.501 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:36:28.502 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:28.502 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:36:28.502 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:28.511 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:28.512 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:28.512 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:28.530 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:36:28.530 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:36:28.530 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:36:28.542 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:28.542 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:28.542 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:30.781 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:30.782 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:30.782 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:30.782 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:36:32.871 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:32.872 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:32.873 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:32.873 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:32.874 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:32.874 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:32.875 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:36:32.875 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:36:32.879 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:32.879 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:32.880 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:32.880 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:32.880 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:36:34.057 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:34.058 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:36:34.059 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:36:34.059 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:47.142 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:48.469 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:40:48.469 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:48.476 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:48.477 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:49.692 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:40:49.693 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:49.693 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:40:49.694 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:49.699 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:49.700 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:49.700 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:49.721 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:40:49.722 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:40:49.722 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:40:49.731 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:49.731 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:49.731 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:52.051 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:52.051 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:52.051 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:52.051 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:40:54.300 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:40:54.300 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:40:54.302 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:40:54.302 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:40:54.302 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:40:54.303 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:40:54.303 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:40:54.303 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:40:54.308 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:54.309 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:54.309 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:54.309 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:54.309 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:40:55.624 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:40:55.624 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:55.625 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:40:55.625 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:55.625 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:40:55.625 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:55.625 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:40:55.626 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:40:55.626 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:40:55.626 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:13.151 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:14.374 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:41:14.375 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:14.379 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:14.379 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:15.497 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:41:15.498 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:15.498 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 13
+2024-09-30 21:41:15.499 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:15.504 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:15.504 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:15.504 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:15.514 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:41:15.514 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:41:15.514 | ERROR    | metaagent.LLMs.llmapi:async_log_failure_event:43 - Error: None
+2024-09-30 21:41:15.521 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:15.521 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:15.521 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:17.780 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:17.780 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:17.781 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:17.781 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'system', 'content': 'You are a helpful assistant designed to output JSON.'}, {'role': 'user', 'content': 'Who won the world series in 2020?'}]
+2024-09-30 21:41:20.309 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:41:20.310 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:41:20.311 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:41:20.312 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:41:20.312 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:41:20.312 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:41:20.312 | INFO     | metaagent.LLMs.llmapi:log_success_event:23 - Total Tokens: 67
+2024-09-30 21:41:20.313 | INFO     | metaagent.LLMs.llmapi:log_success_event:27 - Output Messages: {
+  "response": "The Los Angeles Dodgers won the World Series in 2020."
+}
+2024-09-30 21:41:20.320 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:20.320 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:20.321 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:20.321 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:20.321 | INFO     | metaagent.LLMs.llmapi:log_pre_api_call:17 - Model: deepseek-chat Input Messages: [{'role': 'user', 'content': 'Hello'}]
+2024-09-30 21:41:21.658 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:41:21.659 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:21.659 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:41:21.659 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:21.659 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:41:21.660 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:21.660 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:41:21.660 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
+2024-09-30 21:41:21.660 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:36 - Total Tokens: 13
+2024-09-30 21:41:21.660 | INFO     | metaagent.LLMs.llmapi:async_log_success_event:40 - Output Messages: Hello! How can I assist you today?
