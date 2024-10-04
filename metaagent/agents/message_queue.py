@@ -1,60 +1,61 @@
-import queue
-import threading
-import logging
+from typing import List
+import asyncio
+
 from datetime import datetime
+
+from metaagent.logs import logger
 
 
 class MessageQueue:
-    def __init__(self):
-        self.queue = queue.Queue()
-        self.lock = threading.Lock()
-        self.setup_logging()
+    # TODO: Add message id for each message to support dividing messages into different sessions in the user interface
+    def __init__(self, receivers: List[str] = None):
+        if receivers is None:
+            self.receivers = ['env']
+        elif 'env' not in receivers:
+            receivers.append('env')
+            self.receivers = receivers
+        else:
+            self.receivers = receivers
+        self.queue = {}
+        # every receiver has its own queue
+        for receiver in self.receivers:
+            self.queue[receiver] = asyncio.Queue()
 
-    def setup_logging(self):
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            filename='message_queue.log',
-            filemode='a'
-        )
-        self.logger = logging.getLogger(__name__)
+    async def send_message(self, sender, recipient: str, message): # TODO: add message id
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        await self.queue[recipient].put((timestamp, sender, recipient, message)) # TODO: add message id
 
-    def send_message(self, sender, recipient, message):
-        with self.lock:
-            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            self.queue.put((timestamp, sender, recipient, message))
-            self.logger.info(f"Message sent: {sender} -> {recipient}: {message}")
+    async def astream_receive_message(self, recipient):
+        # while not self.queue[recipient].empty():
+            # to prevent the message being unconsistently received by different agents
+            # Lock the queue to prevent concurrent access
+        timestamp, sender, msg_recipient, message = await self.queue[recipient].get()
+        if msg_recipient == recipient:
+            # logger.info(f"Message received: {sender} -> {recipient}: {message}")
+            yield timestamp, sender, message
+        else:
+            logger.error("Message received by wrong recipient")
+            raise Exception("Message received by wrong recipient")
 
-    def receive_message(self, recipient):
-        with self.lock:
-            if not self.queue.empty():
-                timestamp, sender, msg_recipient, message = self.queue.get()
-                if msg_recipient == recipient:
-                    self.logger.info(f"Message received: {sender} -> {recipient}: {message}")
-                    return timestamp, sender, message
-                else:
-                    self.queue.put((timestamp, sender, msg_recipient, message))
-            return None
+    async def receive_message(self, recipient):
+        # logger.error(f"receive_message: {recipient}")
+        # while not self.queue[recipient].empty():
+        timestamp, sender, msg_recipient, message = await self.queue[recipient].get()
+        if msg_recipient == recipient:
+                # logger.info(f"Message received: {sender} -> {recipient}: {message}")
+            return timestamp, sender, message
+        else:
+            logger.error("Message received by wrong recipient")
+            raise Exception("Message received by wrong recipient")
 
-    def get_queue_size(self):
+    async def get_queue_size(self):
         return self.queue.qsize()
+    
+    async def cleanup(self):
+        for receiver in self.receivers:
+            while not self.queue[receiver].empty():
+                await self.queue[receiver].get()
 
 
-# Example usage
-if __name__ == "__main__":
-    mq = MessageQueue()
+# class SharedMessageQueue:
 
-    # Simulating multiple agents
-    mq.send_message("Agent1", "Agent2", "Hello from Agent1")
-    mq.send_message("Agent3", "Agent1", "Hello from Agent3")
-
-    # Receiving messages
-    message = mq.receive_message("Agent2")
-    if message:
-        print(f"Agent2 received: {message}")
-
-    message = mq.receive_message("Agent1")
-    if message:
-        print(f"Agent1 received: {message}")
-
-    print(f"Messages in queue: {mq.get_queue_size()}")

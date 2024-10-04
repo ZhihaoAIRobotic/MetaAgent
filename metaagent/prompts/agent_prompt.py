@@ -1,4 +1,4 @@
-AGENT_TEMPLATE = '''
+ACTION_AGENT_TEMPLATE = '''
 You are an AI Agent. You have the following goals:
 {agent_goal}
 
@@ -34,3 +34,16 @@ OBSERVATION_TEMPLATE_DICT = {
     "single_round_observation": single_round_observation,
 }
 
+
+EXAMPLE_TEMPLATE = '''
+Here is an example:
+{example}
+'''
+
+CONVERSATIONAL_AGENT_TEMPLATE = '''
+You are an AI Agent. You have the following goals:
+{agent_goal}
+{agent_example}
+Now, please follow the goals to chat with the user.
+Here is the history of the conversation:
+'''

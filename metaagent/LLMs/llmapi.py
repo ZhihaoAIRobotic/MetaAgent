@@ -1,5 +1,5 @@
 import litellm
-import os
+from typing import Dict, List
 from litellm.integrations.custom_logger import CustomLogger
 from metaagent.logs import logger
 
@@ -44,42 +44,59 @@ class CustomHandler(CustomLogger):
 
 
 class LLM_API:
-    def __init__(self, model_name):
+    def __init__(self, model_name: str):
         self.model_name = model_name
         self.logger = CustomHandler()
 
-    def completion(self, messages, user_id: str = None):
+    def completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
         response = litellm.completion(model=self.model_name, messages=messages, num_retries=3)
-        return response
+        return response.choices[0].message.content
     
-    async def acompletion(self, messages, user_id: str = None):
+    async def acompletion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
         response = await litellm.acompletion(model=self.model_name, messages=messages, num_retries=3)
-        return response
+        return response.choices[0].message.content
 
-    def json_completion(self, messages, user_id: str = None):
+    def json_completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
         response = litellm.completion(model=self.model_name, response_format={ "type": "json_object" }, messages=messages, num_retries=3)
-        return response
+        return response.choices[0].message.content
     
-    async def ajson_completion(self, messages, user_id: str = None):
+    async def ajson_completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
         response = await litellm.acompletion(model=self.model_name, response_format={ "type": "json_object" }, messages=messages, num_retries=3)
-        return response
+        return response.choices[0].message.content
     
-    async def astream_completion(self, messages, user_id: str = None):
+    async def astream_completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
         response = await litellm.acompletion(model=self.model_name, messages=messages, stream=True, stream_options={"include_usage": True}, num_retries=3)
         async for chunk in response: 
-            yield chunk
+            if chunk['choices'][0]['delta']['content'] is None:
+                continue
+            yield chunk['choices'][0]['delta']['content']
+
+
+async def main():
+    llm = LLM_API("deepseek/deepseek-chat")
+    messages = [{"role": "user", "content": "Hello"}]
+    res = ''
+    async for chunk in llm.astream_completion(messages):
+        print(type(chunk))
+        if chunk is not None:
+            res += chunk
+    print(res)
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(main())

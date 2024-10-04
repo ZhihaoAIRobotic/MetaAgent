@@ -1,5 +1,4 @@
 import pytest
-import asyncio
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -12,18 +11,16 @@ async def test_acompletion():
     response = await llm.acompletion(messages)
     print(response)
     assert response is not None
-    assert isinstance(response.choices[0].message.content, str)
-    assert len(response.choices[0].message.content) > 0
-    assert response.usage.total_tokens > 0
+    assert isinstance(response, str)
+    assert len(response) > 0
 
 def test_completion():
     llm = LLM_API("deepseek/deepseek-chat")
     messages = [{"role": "user", "content": "Hello"}]
     response = llm.completion(messages)
     assert response is not None
-    assert isinstance(response.choices[0].message.content, str)
-    assert len(response.choices[0].message.content) > 0
-    assert response.usage.total_tokens > 0
+    assert isinstance(response, str)
+    assert len(response) > 0
 
 @pytest.mark.asyncio
 async def test_ajson_completion():
@@ -35,11 +32,10 @@ async def test_ajson_completion():
     response = await llm.ajson_completion(messages)
     import json
     try:
-        json.loads(response.choices[0].message.content)
+        json.loads(response)
     except json.JSONDecodeError:
         pytest.fail("Response is not a valid JSON")
-    assert len(response.choices[0].message.content) > 0
-    assert response.usage.total_tokens > 0
+    assert len(response) > 0
 
 
 def test_json_completion():
@@ -51,11 +47,10 @@ def test_json_completion():
     response = llm.json_completion(messages)
     import json
     try:
-        json.loads(response.choices[0].message.content)
+        json.loads(response)
     except json.JSONDecodeError:
         pytest.fail("Response is not a valid JSON")
-    assert len(response.choices[0].message.content) > 0
-    assert response.usage.total_tokens > 0
+    assert len(response) > 0
 
 @pytest.mark.asyncio
 async def test_astream_completion():
