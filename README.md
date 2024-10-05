@@ -11,7 +11,7 @@
 <p align="center"><i>:unicorn: The next generation of Multi-Modal Multi-Agent framework. :robot:. </i></p>
 
 ## Introduction
-We are dedicated to developing a universal **multi-modal multi-agent** framework. Multi-modal agents are very powerful agents capable of **understanding and generating** information **across various modalities**—including text, images, audio, and video. These agents are designed to **automatically completing complex tasks** that involve multiple modals of input and output. Our Framework also aims to support **multi-agent collaboration**. Multiple AI agents can collaborate, each specializing in different modalities such as text, images, audio, and video. This approach allows for a more comprehensive and nuanced understanding of complex scenarios, leading to more effective problem-solving and task completion. 
+We are dedicated to developing a universal **multi-modal multi-agent** framework. Multi-modal agents are very powerful agents capable of **understanding and generating** information **across various modalities**—including text, images, audio, and video. These agents are designed to **automatically completing complex tasks** that involve multiple modals of input and output. Our Framework also aims to support **multi-agent collaboration**. This approach allows for a more comprehensive and nuanced understanding of complex scenarios, leading to more effective problem-solving and task completion. 
 
 #### :fire: Features
 - Build, manage and deploy your AI agents.
