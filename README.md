@@ -20,6 +20,8 @@ We are dedicated to developing a universal **multi-modal multi-agent** framework
 - UI for chatting with AI agents.
 - Multi-agent collaboration, you can create a agents company for complex tasks, such as draw comics. (Coming soon)
 - Fine-tuning and RLHF (Coming soon)
+- ChatUI, support multiple sessions.
+![alt text](<Docs/resource/Multiple sessions.gif>)
 
 #### :fire: Framework
 ![alt text](<Docs/resource/MetaAgent Framewore.png>)

@@ -50,11 +50,13 @@ class ConversationalAgent:
         # save the observation to short memory
         observation = {"content": observation, "role": "user"}
          
-        db_search_results = self.short_memory.search((tinydb.Query().sid == self.sid) & (tinydb.Query().agent_name == self.agent_name)) # return a content role list
-        if len(db_search_results) == 0:
-            history_observation = []
+        # Get the existing document or create a new one if it doesn't exist
+        doc = self.short_memory.get((tinydb.Query().sid == self.sid) & (tinydb.Query().agent_name == self.agent_name))
+        if doc:
+            history_observation = doc['observation']
         else:
-            history_observation = db_search_results[0]['observation']
+            history_observation = []
+
         history_observation.append(observation)
 
         # delete the old observation 
@@ -83,8 +85,12 @@ class ConversationalAgent:
         history_observation.append({"content": response, "role": "assistant"})
         logger.info(f"history_observation {history_observation}")
 
-        # save the new observation to short memory
-        self.short_memory.insert({'sid': self.sid, 'agent_name': self.agent_name, 'observation': history_observation})
+        # Update the existing document or insert a new one
+        if doc:
+            self.short_memory.update({'observation': history_observation}, 
+                                     (tinydb.Query().sid == self.sid) & (tinydb.Query().agent_name == self.agent_name))
+        else:
+            self.short_memory.insert({'sid': self.sid, 'agent_name': self.agent_name, 'observation': history_observation})
 
     
     async def run(self, sid, message_queue):
