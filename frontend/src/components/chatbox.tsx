@@ -1,75 +1,8 @@
 "use client";
 
 import React, {useState, useCallback, useEffect} from 'react';
-import { Chat, Radio, RadioGroup} from '@douyinfe/semi-ui';
+import { Chat} from '@douyinfe/semi-ui';
 import io from 'socket.io-client';
-
-// const defaultMessage = [
-//     {
-//         role: 'user',
-//         id: '1',
-//         createAt: 1715676751919,
-//         content: [
-//             {
-//                 type: 'text',
-//                 text: '这张图片里有什么？'
-//             },
-//             {
-//                 type: 'image_url',
-//                 image_url: {
-//                     url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/edit-bag.jpeg'
-//                 }
-//             }
-//         ], 
-//     },
-//     {
-//         role: 'assistant',
-//         id: '2',
-//         createAt: 1715676751919,
-//         content: '图片中是一个有卡通画像装饰的黄色背包。'
-//     },
-//     {
-//         role: 'user',
-//         id: '3',
-//         createAt: 1715676751919,
-//         content: [
-//             {
-//                 type: 'text',
-//                 text: '这张图片里有什么？'
-//             },
-//             {
-//                 type: 'image_url',
-//                 image_url: {
-//                     url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/edit-bag.jpeg'
-//                 }
-//             }
-//         ], 
-//     },
-//     {
-//         role: 'assistant',
-//         id: '4',
-//         createAt: 1715676751919,
-//         content: '图片中是一个有卡通画像装饰的黄色背包。'
-//     },
-//     {
-//         role: 'user',
-//         id: '5',
-//         createAt: 1715676751919,
-//         content: [
-//             {
-//                 type: 'text',
-//                 text: '这张图片里有什么？'
-//             },
-//             {
-//                 type: 'image_url',
-//                 image_url: {
-//                     url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/edit-bag.jpeg'
-//                 }
-//             }
-//         ], 
-//     },
-
-// ];
 
 const roleInfo = {
     user:  {
