@@ -15,13 +15,21 @@ We are dedicated to developing a universal **multi-modal multi-agent** framework
 
 #### :fire: Features
 - Build, manage and deploy your AI agents.
+
 - Multi-modal agents, agents can interact with users using texts, audios, images, and videos. 
+
 - Vector database and knowledge embeddings
+
 - UI for chatting with AI agents.
+
 - Multi-agent collaboration, you can create a agents company for complex tasks, such as draw comics. (Coming soon)
+
 - Fine-tuning and RLHF (Coming soon)
+
 - ChatUI, support multiple sessions.
-![alt text](<Docs/resource/Multiple sessions.gif>)
+  ![alt text](<Docs/resource/Multiple sessions.gif>)
+
+  ![alt text](<Docs/resource/graph_demo.gif>)
 
 #### :fire: Framework
 ![alt text](<Docs/resource/MetaAgent Framewore.png>)
