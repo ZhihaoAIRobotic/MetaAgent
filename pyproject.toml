@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "metaagent"
+version = "0.1.0"
+description = "The next generation of Multi-Modal Multi-Agent framework."
+authors = ["Zhihao <zhihao.agi@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+litellm = "^1.53.9"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core", "wheel"]
+build-backend = "poetry.core.masonry.api"

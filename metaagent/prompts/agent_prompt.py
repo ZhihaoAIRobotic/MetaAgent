@@ -25,7 +25,7 @@ Now, for a new observation, please generate the json string, remember that the o
 
 '''
 
-single_round_observation = '''
+SINGLE_ROUND_OBSERVATION = '''
 human instruction: {instruction}
 Retrived text: {retrived_text}
 '''

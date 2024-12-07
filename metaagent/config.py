@@ -4,7 +4,7 @@ import os
 
 from metaagent.logs import logger
 from metaagent.tools import SearchEngineType, WebBrowserEngineType
-from metaagent.utils import Singleton
+from metaagent.utils.output_parser import Singleton
 
 CHROMA_PORT = 8000
 CHROMA_HOST_NAME = "127.0.0.1"
