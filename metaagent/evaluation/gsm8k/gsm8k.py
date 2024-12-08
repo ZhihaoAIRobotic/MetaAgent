@@ -1,4 +1,4 @@
-# modified from deepeval, rewritten to prevent the massive dependency and the unnecessary code. 
+# Modified from deepeval, rewritten to prevent the massive dependency and the unnecessary code. 
 # TODO: Add a base benchmark class that supports multi modal evaluation.
 
 from typing import List, Optional, Dict

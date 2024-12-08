@@ -11,6 +11,7 @@ python = "^3.8"
 litellm = "^1.53.9"
 requests = "^2.32.3"
 langid = "^1.1.6"
+opentelemetry-api = "^1.28.2"
 
 
 [build-system]
