@@ -10,6 +10,7 @@ readme = "README.md"
 python = "^3.8"
 litellm = "^1.53.9"
 requests = "^2.32.3"
+langid = "^1.1.6"
 
 
 [build-system]

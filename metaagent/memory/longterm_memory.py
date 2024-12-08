@@ -18,7 +18,7 @@ def check_language(string: str) -> str:
     """Check language
     :return zh: Chinese, en:English,
     """
-    new_string = re.sub(r'[0-9]+', '', string)  # 这一步剔除掉文本中包含的数字
+    new_string = re.sub(r'[0-9]+', '', string)  # remove numbers
     return langid.classify(new_string)[0]
 
 

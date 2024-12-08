@@ -4,6 +4,7 @@ from metaagent.prompts.g1_prompt import G1_SYSTEM_PROMPT, G1_FINAL_ANSWER_PROMPT
 from metaagent.LLMs.llmapi import LLM_API
 import json
 
+
 class G1:
     def __init__(self, model_name: str):
         self.llm = LLM_API(model_name)

@@ -50,4 +50,3 @@ class ShortTermMemory(DocList[Info]):
             query = {'cause_by': {'$eq': action}}
             contents = contents + storage_index.filter(query) # become a list after + operation
         return DocList[Info](contents)
-
