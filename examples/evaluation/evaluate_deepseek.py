@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from metaagent.LLMs.llmapi import LLM_API
+from metaagent.llms.llmapi import LLM_API
 from metaagent.evaluation.gsm8k import GSM8K
 # print("Hello")
 

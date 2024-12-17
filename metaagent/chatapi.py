@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from MetaAgent.metaagent.manager import AgentManager
 from metaagent.agents.agent import ConversationalAgent
-from metaagent.LLMs.llmapi import LLM_API
+from metaagent.llms.llmapi import LLM_API
 from metaagent.logs import logger
 
 class ChatAPI:

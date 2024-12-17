@@ -2,7 +2,7 @@ import pytest
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from metaagent.LLMs.llmapi import LLM_API
+from metaagent.llms.llmapi import LLM_API
 
 @pytest.mark.asyncio
 async def test_acompletion():

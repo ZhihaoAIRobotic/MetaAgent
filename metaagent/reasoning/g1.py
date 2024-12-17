@@ -1,7 +1,7 @@
 # g1: Using Llama-3.1 70b on Groq to create o1-like reasoning chains https://github.com/bklieger-groq/g1/tree/main
 
 from metaagent.prompts.g1_prompt import G1_SYSTEM_PROMPT, G1_FINAL_ANSWER_PROMPT
-from metaagent.LLMs.llmapi import LLM_API
+from metaagent.llms.llmapi import LLM_API
 import json
 
 
