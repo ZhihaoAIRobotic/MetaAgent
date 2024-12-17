@@ -12,6 +12,10 @@ litellm = "^1.53.9"
 requests = "^2.32.3"
 langid = "^1.1.6"
 opentelemetry-api = "^1.28.2"
+rouge-score = "^0.1.2"
+bert-score = "^0.3.13"
+loguru = "^0.7.3"
+tenacity = "^9.0.0"
 
 
 [build-system]

@@ -8,8 +8,7 @@ from tqdm import tqdm
 
 from metaagent.evaluation.golden import Golden
 from metaagent.evaluation.gsm8k.template import GSM8KTemplate
-from deepeval.scorer import Scorer
-from deepeval.telemetry import capture_benchmark_run
+from metaagent.evaluation.score import Scorer
 
 
 class GSM8K:
@@ -32,39 +31,38 @@ class GSM8K:
         self.predictions: Optional[pd.DataFrame] = None
         self.overall_score: Optional[float] = None
 
-    def evaluate(self, model) -> Dict:
-        with capture_benchmark_run("GSM8K", len(self.tasks)):
-            overall_correct_predictions = 0
-            overall_total_predictions = self.n_problems
-            predictions_row = []
+    def evaluate(self, agent) -> Dict:
+        overall_correct_predictions = 0
+        overall_total_predictions = self.n_problems
+        predictions_row = []
 
-            # Solving each problem
-            goldens = self.load_benchmark_dataset()[: self.n_problems]
-            for golden in tqdm(
-                goldens, desc=f"Processing {self.n_problems} problems"
-            ):
-                prediction, score = self.predict(model, golden).values()
-                if score:
-                    overall_correct_predictions += 1
-                predictions_row.append((golden.input, prediction, score))
+        # Solving each problem
+        goldens = self.load_benchmark_dataset()[: self.n_problems]
+        for golden in tqdm(
+            goldens, desc=f"Processing {self.n_problems} problems"
+        ):
+            prediction, score = self.predict(agent, golden).values()
+            if score:
+                overall_correct_predictions += 1
+            predictions_row.append((golden.input, prediction, score))
 
-            # Calculate overall accuracy
-            overall_accuracy = (
-                overall_correct_predictions / overall_total_predictions
-            )
-            print(f"Overall GSM8K Accuracy: {overall_accuracy}")
+        # Calculate overall accuracy
+        overall_accuracy = (
+            overall_correct_predictions / overall_total_predictions
+        )
+        print(f"Overall GSM8K Accuracy: {overall_accuracy}")
 
-            self.predictions = pd.DataFrame(
-                predictions_row, columns=["Input", "Prediction", "Correct"]
-            )
-            self.overall_score = overall_accuracy
+        self.predictions = pd.DataFrame(
+            predictions_row, columns=["Input", "Prediction", "Correct"]
+        )
+        self.overall_score = overall_accuracy
 
-            return overall_accuracy
+        return overall_accuracy
 
-    def predict(self, model, golden: Golden) -> Dict:
+    def predict(self, agent, golden: Golden) -> Dict:
         # Define prompt template
         assert (
-            self.shots_dataset != None
+            self.shots_dataset is not None
         ), "Example dataset is empty. Call load_benchmark."
         prompt: dict = GSM8KTemplate.generate_output(
             train_set=self.shots_dataset,
@@ -75,13 +73,13 @@ class GSM8K:
 
         # Enforced model generation
         try:
-            res: NumberSchema = model.generate(
-                prompt=prompt, schema=NumberSchema
+            res = agent.generate(
+                prompt=prompt
             )
-            prediction = str(res.answer)
+            prediction = res
         except TypeError:
             prompt += "Make sure to output only the numerical answer."
-            prediction = str(model.generate(prompt))
+            prediction = agent.generate(prompt)
 
         score = self.scorer.exact_match_score(
             golden.expected_output, prediction
@@ -91,11 +89,8 @@ class GSM8K:
 
     def load_benchmark_dataset(self) -> List[Golden]:
         # Load dataset
-        if self.dataset:
-            dataset = self.dataset
-        else:
-            dataset = load_dataset("gsm8k", "main", trust_remote_code=True)
-            self.dataset = dataset
+        dataset = load_dataset("gsm8k", "main", trust_remote_code=True)
+        self.dataset = dataset
 
         # Construct example dataset for n_shot inference
         if not self.shots_dataset:
