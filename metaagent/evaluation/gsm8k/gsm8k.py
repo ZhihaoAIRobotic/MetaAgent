@@ -72,14 +72,9 @@ class GSM8K:
         )
 
         # Enforced model generation
-        try:
-            res = agent.generate(
-                prompt=prompt
-            )
-            prediction = res
-        except TypeError:
-            prompt += "Make sure to output only the numerical answer."
-            prediction = agent.generate(prompt)
+ 
+        prompt += "Make sure to output only the numerical answer."
+        prediction = agent.generate(prompt)
 
         score = self.scorer.exact_match_score(
             golden.expected_output, prediction

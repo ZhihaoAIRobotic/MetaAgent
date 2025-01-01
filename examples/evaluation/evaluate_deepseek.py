@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 from metaagent.llms.llmapi import LLM_API
 from metaagent.evaluation.gsm8k import GSM8K
@@ -11,15 +11,13 @@ class Agent:
         self.llm = llm
 
     def generate(self, prompt: str):
-        llm_input = [{"role": "user", "content": prompt}]
+        llm_input = [{"role": "system", "content": "Please only output the final answer, it is a number."},{"role": "user", "content": prompt}]
         return self.llm.completion(llm_input)
     
 
 llm = LLM_API("deepseek/deepseek-chat")
 agent = Agent(llm)
 
-res = agent.generate("Hello")
-print(res)
-gsm8k = GSM8K(n_shots=3, enable_cot=True, n_problems=3)
+gsm8k = GSM8K(n_shots=5, enable_cot=True, n_problems=3)
 # gsm8k.load_benchmark_dataset()
 gsm8k.evaluate(agent)
