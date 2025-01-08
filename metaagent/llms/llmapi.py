@@ -44,43 +44,45 @@ class CustomHandler(CustomLogger):
 
 
 class LLM_API:
-    def __init__(self, model_name: str):
+    # this also support multi-modal language models, such as gpt-4o-mini and gpt-4o.
+    def __init__(self, model_name: str, base_url: str = None):
         self.model_name = model_name
         self.logger = CustomHandler()
+        self.base_url = base_url
 
     def completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
-        response = litellm.completion(model=self.model_name, messages=messages, num_retries=3)
+        response = litellm.completion(model=self.model_name, messages=messages, num_retries=3, base_url=self.base_url)
         return response.choices[0].message.content
     
     async def acompletion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
-        response = await litellm.acompletion(model=self.model_name, messages=messages, num_retries=3)
+        response = await litellm.acompletion(model=self.model_name, messages=messages, num_retries=3, base_url=self.base_url)
         return response.choices[0].message.content
 
     def json_completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
-        response = litellm.completion(model=self.model_name, response_format={ "type": "json_object" }, messages=messages, num_retries=3)
+        response = litellm.completion(model=self.model_name, response_format={ "type": "json_object" }, messages=messages, num_retries=3, base_url=self.base_url)
         return response.choices[0].message.content
     
     async def ajson_completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
-        response = await litellm.acompletion(model=self.model_name, response_format={ "type": "json_object" }, messages=messages, num_retries=3)
+        response = await litellm.acompletion(model=self.model_name, response_format={ "type": "json_object" }, messages=messages, num_retries=3, base_url=self.base_url)
         return response.choices[0].message.content
     
     async def astream_completion(self, messages: List[Dict[str, str]], user_id: str = None):
         if user_id:
             self.logger.user_id = user_id
         litellm.callbacks = [self.logger]
-        response = await litellm.acompletion(model=self.model_name, messages=messages, stream=True, stream_options={"include_usage": True}, num_retries=3)
+        response = await litellm.acompletion(model=self.model_name, messages=messages, stream=True, stream_options={"include_usage": True}, num_retries=3, base_url=self.base_url)
         async for chunk in response: 
             if chunk['choices'][0]['delta']['content'] is None:
                 continue
@@ -88,14 +90,34 @@ class LLM_API:
 
 
 async def main():
-    llm = LLM_API("deepseek/deepseek-chat")
-    messages = [{"role": "user", "content": "Hello"}]
+    llm = LLM_API("gpt-4o-mini", base_url="https://api.zhizengzeng.com/v1/chat/completions")
+#     messages = [
+#     {"role": "system", "content": "You are a helpful assistant. Help me with my math homework!"}, # <-- This is the system message that provides context to the model
+#     {"role": "user", "content": "Hello! Could you solve 2+2?"}  # <-- This is the user message for which the model will generate a response
+#   ]
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                            {
+                                "type": "text",
+                                "text": "What’s in this image?"
+                            },
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                "url": "https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/80b40164-bace-4d89-9f09-136e708e5e8e"
+                                }
+                            }
+                        ]
+        }
+    ]
     res = ''
+    
     async for chunk in llm.astream_completion(messages):
-        print(type(chunk))
         if chunk is not None:
             res += chunk
-    print(res)
+    print("res", res)
 
 if __name__ == "__main__":
     import asyncio
