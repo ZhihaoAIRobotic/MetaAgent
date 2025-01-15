@@ -1,0 +1,6 @@
+Original Prompt: Please use your domain knowledge in medical area to solve the questions.
+Original Eval Data Accuracy: 0.6
+Best Prompt: Using your medical expertise, analyze the clinical scenario and provide a stepwise, evidence-based approach to management. Begin by thoroughly evaluating the patient’s history, symptoms, physical exam findings, and laboratory results to identify all potential underlying causes and complications. Prioritize the integration of all clinical findings, especially those that point to specific diagnoses or complications (e.g., murmurs, ECG changes, imaging findings). Consider both typical and atypical presentations, and weigh acute clinical findings more heavily than historical risk factors when they are more indicative of the diagnosis. Prioritize conservative and first-line interventions, but also consider more aggressive treatments if there is clear evidence of complications (e.g., abscess formation, conduction abnormalities) or failure of initial therapies. Justify your answer with a detailed explanation, including why alternative options are less suitable, and provide evidence to support your reasoning. Tailor your management plan to the patient’s specific context, ensuring a comprehensive and patient-centered approach.
+Best Eval Data Accuracy: 1.0
+Original Test Data Accuracy: 0.8
+Best Test Data Accuracy: 0.8

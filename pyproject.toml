@@ -16,6 +16,7 @@ rouge-score = "^0.1.2"
 bert-score = "^0.3.13"
 loguru = "^0.7.3"
 tenacity = "^9.0.0"
+fire = "^0.7.0"
 
 
 [build-system]
