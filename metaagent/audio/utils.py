@@ -1,6 +1,5 @@
 import pyaudio  
 import numpy as np  
-import time  
 
 
 def list_audio_devices(pyaudio_instance):  

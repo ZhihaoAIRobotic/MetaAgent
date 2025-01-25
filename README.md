@@ -47,6 +47,9 @@ Multi-modal agent, draw images and make videos for you.
 
 ![Elon](Docs/resource/output.gif)
 
+## Requirement
+Cuda12.2
+Pytorch2.5.1
 
 ## Installation
 #### 1. Python Environment
