@@ -7,7 +7,10 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
+torch = {version = "^2.5.1+cu121", source = "pytorch"}
+torchvision = {version = "^0.20.1+cu121", source = "pytorch"}
+torchaudio = {version = "^2.5.1+cu121", source = "pytorch"}
 litellm = "^1.53.9"
 requests = "^2.32.3"
 langid = "^1.1.6"
@@ -21,15 +24,14 @@ pyaudio = "^0.2.14"
 phonemizer = "^3.3.0"
 munch = "^4.0.0"
 parler-tts = {git = "https://github.com/huggingface/parler-tts.git"}
-torch = {version = "^2.5.1+cu121", source = "pytorch"}
-torchvision = {version = "^0.20.1+cu121", source = "pytorch"}
-torchaudio = {version = "^2.5.1+cu121", source = "pytorch"}
-flash-attn = {url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.5cxx11abiFALSE-cp39-cp39-linux_x86_64.whl"}
+flash-attn = {url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl"}
 numpy = "<2"
 resampy = "^0.4.3"
 pydub = "^0.25.1"
 stream2sentence = "^0.3.0"
 typing-extensions = "^4.12.2"
+transformers = "4.46.1"
+tokenizers = "0.20"
 
 [[tool.poetry.source]]
 name = "pytorch"

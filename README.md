@@ -47,15 +47,14 @@ Multi-modal agent, draw images and make videos for you.
 
 ![Elon](Docs/resource/output.gif)
 
-## Requirement
-Cuda12.2
-Pytorch2.5.1
 
 ## Installation
 #### 1. Python Environment
 ```
+Requirement： Cuda12.2
 git clone https://github.com/ZhihaoAIRobotic/MetaAgent.git
-conda env create -f environment.yaml
+poetry config virtualenvs.create true
+poetry install  
 ```
 #### 2. Frontend install
 ```

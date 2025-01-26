@@ -139,6 +139,7 @@ class TextToAudioStream:
         self.player = None
         self.play_lock = threading.Lock()
         self.is_playing_flag = False
+        self.first_chunk_generated = False
 
         self._create_iterators()
 
@@ -336,6 +337,7 @@ class TextToAudioStream:
                 logging.warning("play() called while already playing audio, skipping")
                 return
 
+        self.is_playing_flag = True
 
         # Log the start of the stream
         logging.info("stream start")
@@ -378,12 +380,13 @@ class TextToAudioStream:
                 # Start the audio player to handle playback
                 if self.player:
                     self.player.start()
+
                     self.player.on_audio_chunk = self._on_audio_chunk
-                self.is_playing_flag = True    
                 # Directly synthesize audio using the character iterator
                 self.char_iter.log_characters = self.log_characters
 
                 self.engine.synthesize(self.char_iter)
+                self.first_chunk_generated = True 
 
             finally:
 
@@ -399,6 +402,7 @@ class TextToAudioStream:
                     self.chunk_callback = None
 
                 finally:
+                    self.first_chunk_generated = False
                     if output_wavfile and self.wf:
                         self.wf.close()
                         self.wf = None
@@ -523,7 +527,7 @@ class TextToAudioStream:
                         sentence_queue.put(sentence)
                     else:
                         continue  # Skip empty sentences
-
+                self.first_chunk_generated = True
                 # Signal to the worker to stop
                 sentence_queue.put(None)
                 worker_thread.join()
@@ -537,6 +541,7 @@ class TextToAudioStream:
                 print(f"Error: {e}")
 
             finally:
+                self.first_chunk_generated = False
                 try:
                     if self.player:
                         self.player.stop()

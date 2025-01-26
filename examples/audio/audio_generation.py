@@ -15,7 +15,8 @@ while True:
     time_start = time.time()
     stream.feed(input_text)
     stream.play_async()
-    while not stream.is_playing():
+    print(stream.first_chunk_generated)
+    while not stream.first_chunk_generated:
         pass
     time_end = time.time()
     print("Time to first token:", time_end - time_start)

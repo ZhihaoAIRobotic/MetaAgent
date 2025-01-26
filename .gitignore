@@ -6,3 +6,5 @@ log.txt
 *.log
 result.json
 mermaid.py
+.pytest_cache/
+.venv/
