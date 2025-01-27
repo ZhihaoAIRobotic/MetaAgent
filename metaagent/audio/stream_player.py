@@ -182,7 +182,8 @@ class AudioStream:
                         "On linux and windows you can install it from https://mpv.io/"
                     )
                     raise ValueError(message)
-
+                
+                print("Opening mpv stream for mpeg audio chunks")
                 mpv_command = [
                     "mpv",
                     "--no-terminal",
@@ -190,8 +191,8 @@ class AudioStream:
                     "--demuxer-max-bytes=4096",
                     "--demuxer-max-back-bytes=4096",
                     "--ad-queue-max-bytes=4096",
-                    "--cache=no",
-                    "--cache-secs=0",
+                    # "--cache=no",
+                    # "--cache-secs=0",
                     "--",
                     "fd://0"
                 ]
@@ -199,8 +200,8 @@ class AudioStream:
                 self.mpv_process = subprocess.Popen(
                     mpv_command,
                     stdin=subprocess.PIPE,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE
                 )
                 return
 
@@ -421,7 +422,8 @@ class StreamPlayer:
 
         # handle mpeg
         if self.audio_stream.config.format == pyaudio.paCustomFormat and self.audio_stream.config.channels == -1 and self.audio_stream.config.rate == -1:
-            try:
+            # try:
+            if True:
                 # Pause playback if the event is set
                 if not self.first_chunk_played and self.on_playback_start:
                     self.on_playback_start()
@@ -439,9 +441,9 @@ class StreamPlayer:
                 while self.pause_event.is_set():
                     time.sleep(0.01)
 
-            except Exception as e:
-                print(f"Error sending audio data to mpv: {e}")
-            return
+            # except Exception as e:
+            #     print(f"Error sending audio data to mpv: {e}")
+            # return
 
         if self.audio_stream.config.format == pyaudio.paCustomFormat:
             segment = AudioSegment.from_file(io.BytesIO(chunk), format="mp3")

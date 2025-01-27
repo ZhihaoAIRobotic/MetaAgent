@@ -32,6 +32,8 @@ stream2sentence = "^0.3.0"
 typing-extensions = "^4.12.2"
 transformers = "4.46.1"
 tokenizers = "0.20"
+elevenlabs = "^1.50.5"
+keyboard = "^0.13.5"
 
 [[tool.poetry.source]]
 name = "pytorch"
