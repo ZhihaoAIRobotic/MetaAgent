@@ -12,9 +12,8 @@ def dummy_generator():
 def dummy_generator_2():
     yield "And here we are! "
     yield "You’re now listening to the second voice model, with a different style and tone. "
-    yield "It’s fascinating how Kokoro can adapt seamlessly. "
 # Adjust these paths to your local setup
-kokoro_root = "/home/lzh/CodeNew/MetaAgenttest/MetaAgent/Kokoro-82M"
+kokoro_root = "/home/lzh/CodeNew/MetaAgenttest/Kokoro-82M"
 # Initialize the engine with the first voice
 engine = KokoroEngine(
     kokoro_root=kokoro_root,

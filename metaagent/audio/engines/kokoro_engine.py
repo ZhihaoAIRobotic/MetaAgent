@@ -57,8 +57,8 @@ class KokoroEngine(BaseEngine):
         if not os.path.exists(model_path):
             model_path = os.path.join(self.kokoro_root, model_path)
         self.model = build_model(model_path, self.device)
-        if self.debug:
-            print(f"Kokoro model loaded from: {model_path} (device: {self.device})")
+
+        print(f"Kokoro model loaded from: {model_path} (device: {self.device})")
 
         # If user didn't provide a voice list, fall back to defaults
         if voice_names is None:
@@ -140,7 +140,7 @@ class KokoroEngine(BaseEngine):
             tuple: (format, channels, rate)
         """
         # Kokoro examples use a 24 kHz sample rate
-        return (pyaudio.paInt16, 1, 24000)
+        return (pyaudio.paInt16, 1, 22050)
 
     def synthesize(self, text: str) -> bool:
         """
