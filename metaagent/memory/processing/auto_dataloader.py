@@ -1,14 +1,11 @@
 import os
-import shutil
 from pathlib import Path
 from typing import List
-import argparse
 import tiktoken
-from abc import ABC, abstractmethod
+from abc import ABC
 from langchain.document_loaders import (
     CSVLoader,
     EverNoteLoader,
-    GitLoader,
     NotebookLoader,
     OnlinePDFLoader,
     PDFMinerLoader,

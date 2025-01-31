@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../.
 
 import time
 
-from metaagent.audio.engines.parler_engine import ParlerEngine
+from metaagent.audio.tts_engines.parler_engine import ParlerEngine
 from metaagent.audio.text_to_stream import TextToAudioStream
 
 engine = ParlerEngine()

@@ -1,6 +1,6 @@
 from parler_tts import ParlerTTSForConditionalGeneration, ParlerTTSStreamer
 from transformers import AutoTokenizer
-from metaagent.audio.engines.base_engine import BaseEngine
+from metaagent.audio.tts_engines.base_engine import BaseEngine
 from threading import Thread
 from typing import Union
 import pyaudio

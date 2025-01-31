@@ -1,7 +1,7 @@
 from elevenlabs.client import ElevenLabs
 from elevenlabs import Voice, VoiceSettings
 from typing import Iterator, Union
-from metaagent.audio.engines.base_engine import BaseEngine
+from metaagent.audio.tts_engines.base_engine import BaseEngine
 import logging
 import pyaudio
 import os

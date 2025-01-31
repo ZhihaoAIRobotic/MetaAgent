@@ -1,7 +1,7 @@
 from metaagent.audio.threadsafe_generators import CharIterator, AccumulatingThreadSafeGenerator
 from metaagent.audio.stream_player import StreamPlayer, AudioConfiguration
 from typing import Union, Iterator, List
-from metaagent.audio.engines import BaseEngine
+from metaagent.audio.tts_engines import BaseEngine
 try:
     import pyaudio._portaudio as pa
 except ImportError:

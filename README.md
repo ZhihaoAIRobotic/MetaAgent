@@ -49,28 +49,26 @@ Multi-modal agent, draw images and make videos for you.
 
 
 ## Installation
-#### 1. Python Environment
+### Package install
 ```
 Requirement： Cuda12.2
 git clone https://github.com/ZhihaoAIRobotic/MetaAgent.git
 poetry config virtualenvs.create true
 poetry install  
 ```
-#### 2. Frontend install
+### TTS Install
+- KokoroTTS
+```
+Installation Tutorial: https://huggingface.co/hexgrad/Kokoro-82M#usage
+```
+- ParlerTTS
+```
+poetry install
+```
+
+### Frontend install
 ```
 cd frontend
 npm install
 ```
 
-## Usage
-
-#### 1. Run API service
-```
-cd MetaAgent/metaagent
-python manager.py
-```
-#### 2. Run Chat UI.
-```
-cd frontend 
-npm run dev
-```
