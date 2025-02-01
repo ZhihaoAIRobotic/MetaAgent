@@ -3,8 +3,7 @@ from pathlib import Path
 from typing import List
 import tiktoken
 from abc import ABC
-from langchain.document_loaders import (
-    CSVLoader,
+from langchain_community.document_loaders import (
     EverNoteLoader,
     NotebookLoader,
     OnlinePDFLoader,
@@ -21,12 +20,11 @@ from langchain.document_loaders import (
     WebBaseLoader,
 )
 from langchain.document_loaders.base import BaseLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from tqdm import tqdm
 
 
 FILE_LOADER_MAPPING = {
-    ".csv": (CSVLoader, {"encoding": "utf-8"}),
     ".doc": (UnstructuredWordDocumentLoader, {}),
     ".docx": (UnstructuredWordDocumentLoader, {}),
     ".enex": (EverNoteLoader, {}),
@@ -49,10 +47,15 @@ WEB_LOADER_MAPPING = {
 
 
 class Dataloader(ABC):
-    def __init__(self, chunk_size=1024, chunk_overlap=32, tokenizer=tiktoken.get_encoding('cl100k_base')):
+    def __init__(self, chunk_size=1024, chunk_overlap=32, headers_to_split_on = [
+    ("#", "Header 1"),
+    ("##", "Header 2"),
+    ("###", "Header 3"),
+    ("####", "Header 4"),
+    ]):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-        self.tokenizer = tokenizer
+        self.headers_to_split_on = headers_to_split_on
 
     def load_directory(self, path: str, silent_errors=True):
         # We don't load hidden files starting with "."
@@ -99,34 +102,36 @@ class Dataloader(ABC):
             e.args += (error_msg,)
             raise e
 
-    def __call__(self, file_path: str):
+    def split_data_from_source(self, file_path: str):
+        ext = "." + file_path.rsplit(".", 1)[-1]
         docs = self.load_data_source(file_path)
-        doc_text = ""
 
-        def length_function(text: str) -> int:
-            # count chunks like the embeddings model tokenizer does
-            return len(self.tokenizer.encode(text, disallowed_special=()))
-
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=self.chunk_size,
-            chunk_overlap=self.chunk_overlap,
-            length_function=length_function,
-            separators=["\n\n", "\n", " ", ""],
-        )
+        if ext == ".md":
+            text_splitter = MarkdownHeaderTextSplitter(self.headers_to_split_on)
+        else:
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=self.chunk_size,
+                chunk_overlap=self.chunk_overlap,
+            )
 
         splitted_docs = text_splitter.split_documents(docs)
-        doc_text_list = [docs.page_content for docs in splitted_docs]
-        for i in doc_text_list:
-            doc_text += i
 
-        return doc_text
+        return splitted_docs
+    
+    def split_data_from_str(self, content: str, is_markdown: bool):
+        if is_markdown:
+            text_splitter = MarkdownHeaderTextSplitter(self.headers_to_split_on)
+        else:
+            text_splitter = RecursiveCharacterTextSplitter(chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+        return text_splitter.split_text(content)
+
 
 
 def main():
     dataloader = Dataloader()
-    docs = dataloader('https://github.com/ZhihaoAIRobotic/MetaAgent')
+    docs = dataloader.split_data_from_source('https://github.com/ZhihaoAIRobotic/MetaAgent')
     print(type(docs))
-    print(docs)
+    # print(docs)
 
 
 if __name__ == '__main__':

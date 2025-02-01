@@ -2,7 +2,7 @@ from marker.converters.pdf import PdfConverter
 from marker.models import create_model_dict
 from marker.output import text_from_rendered
 
-def pdf2markdown(filepath: str):
+def pdf2md(filepath: str):
     converter = PdfConverter(
         artifact_dict=create_model_dict(),
     )
@@ -14,7 +14,7 @@ def pdf2markdown(filepath: str):
 if __name__ == "__main__":
     import time
     start = time.time()
-    text, images = pdf2markdown("example.pdf")
+    text, images = pdf2md("example.pdf")
     end = time.time()
     print(f"Time taken: {end - start} seconds")
     # print(text)

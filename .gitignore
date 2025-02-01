@@ -9,3 +9,4 @@ mermaid.py
 .pytest_cache/
 .venv/
 Kokoro-82M/
+.qodo
