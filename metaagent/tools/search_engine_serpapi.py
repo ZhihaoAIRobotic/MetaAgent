@@ -1,16 +1,43 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-@Time    : 2023/5/23 18:27
-@Author  : alexanderwu
-@File    : search_engine_serpapi.py
-"""
 from typing import Any, Dict, Optional, Tuple
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 import requests
 
 from metaagent.config import CONFIG
+
+
+from typing import List
+
+import yagooglesearch
+
+
+class OutreachSearchResult(BaseModel):
+    rank: int
+    title: str
+    description: str
+    url: str
+
+
+async def get_google_search(query: str, max_search: int = 5):
+    client = yagooglesearch.SearchClient(
+        query,
+        tbs="li:1",
+        max_search_result_urls_to_return=max_search,
+        http_429_cool_off_time_in_minutes=5,
+        http_429_cool_off_factor=1.5,
+        # proxy="socks5h://127.0.0.1:9050",
+        verbosity=5,
+        verbose_output=True,  # False (only URLs) or True (rank, title, description, and URL)
+    )
+    client.assign_random_user_agent()
+    urls = client.search()
+
+    search_response: List[OutreachSearchResult] = []
+    for u in urls:
+        search_response.append(OutreachSearchResult.model_validate(u))
+    return search_response
 
 
 class SerpAPIWrapper(BaseModel):
@@ -29,7 +56,7 @@ class SerpAPIWrapper(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 
-    @validator("serpapi_api_key", always=True)
+    @field_validator("serpapi_api_key", mode='before')
     @classmethod
     def check_serpapi_api_key(cls, val: str):
         val = val or CONFIG.serpapi_api_key
@@ -77,8 +104,10 @@ class SerpAPIWrapper(BaseModel):
         """Process response from SerpAPI."""
         # logger.debug(res)
         focus = ["title", "snippet", "link"]
-        get_focused = lambda x: {i: j for i, j in x.items() if i in focus}
-
+        
+        def get_focused(x):
+            return {i: j for i, j in x.items() if i in focus}
+            
         if "error" in res.keys():
             raise ValueError(f"Got error from SerpAPI: {res['error']}")
         if "answer_box" in res.keys() and "answer" in res["answer_box"].keys():
@@ -106,6 +135,8 @@ class SerpAPIWrapper(BaseModel):
 
 
 if __name__ == "__main__":
-    import fire
-
-    fire.Fire(SerpAPIWrapper().run)
+    # import fire
+    import asyncio
+    # fire.Fire(SerpAPIWrapper().run)
+    res = asyncio.run(get_google_search("what is the weather in boston"))
+    print(res)
