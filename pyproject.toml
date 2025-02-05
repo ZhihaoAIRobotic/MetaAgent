@@ -42,6 +42,7 @@ langchain-community = "^0.3.16"
 langchain-text-splitters = "^0.3.5"
 faster-whisper = "^1.1.1"
 yagooglesearch = "^1.10.0"
+diffusers = "^0.32.2"
 
 [[tool.poetry.source]]
 name = "pytorch"

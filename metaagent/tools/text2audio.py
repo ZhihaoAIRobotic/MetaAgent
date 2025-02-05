@@ -3,7 +3,6 @@ from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5Hif
 from datasets import load_dataset
 import torchaudio
 from torchaudio.utils import download_asset
-from docarray.typing import AudioBytes, AudioTensor
 
 
 class TextToSpeech:
