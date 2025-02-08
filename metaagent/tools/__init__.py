@@ -13,3 +13,6 @@ class WebBrowserEngineType(Enum):
     PLAYWRIGHT = "playwright"
     SELENIUM = "selenium"
     CUSTOM = "custom"
+
+
+    

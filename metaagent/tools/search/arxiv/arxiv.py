@@ -1,4 +1,5 @@
 import arxiv
+import asyncio
 
 
 class ArxivSearch:
@@ -12,7 +13,7 @@ class ArxivSearch:
         self.sort = arxiv.SortCriterion.SubmittedDate if sort == 'SubmittedDate' else arxiv.SortCriterion.Relevance
         
 
-    def search(self, max_results=5):
+    async def search(self, max_results=5):
         """
         Performs the search
         :param query:
@@ -20,17 +21,16 @@ class ArxivSearch:
         :return:
         """
 
-        arxiv_gen = list(arxiv.Client().results(
-        self.arxiv.Search(
-            query= self.query, #+
-            max_results=max_results,
-            sort_by=self.sort,
-        )))
+        arxiv_gen = await asyncio.to_thread(list, arxiv.Client().results(
+            self.arxiv.Search(
+                query=self.query,
+                max_results=max_results,
+                sort_by=self.sort,
+            )))
 
         search_result = []
 
         for result in arxiv_gen:
-
             search_result.append({
                 "title": result.title,
                 "href": result.pdf_url,
@@ -38,3 +38,4 @@ class ArxivSearch:
             })
         
         return search_result
+    
