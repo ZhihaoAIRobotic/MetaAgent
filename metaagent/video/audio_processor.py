@@ -19,7 +19,7 @@ class AudioProcessor:
     def __init__(self, 
                  language: str | None = None,
                  model_size_or_path: str = "medium",
-                 device: str = "cpu"):
+                 device: str = "cuda"):
         """Initialize audio processor with specified Whisper model size or model path. By default, the medium model is used."""
         try:
             from faster_whisper import WhisperModel
@@ -35,7 +35,8 @@ class AudioProcessor:
 
             self.language = language if language else None
             # TODO: fix the bug when using cuda, Could not load library libcudnn_ops_infer.so.8. Error: libcudnn_ops_infer.so.8: cannot open shared object file: No such file or directory
-            # If you want to use cuda, make sure to install the 11.8 version of cuda and cudnn https://github.com/SYSTRAN/faster-whisper/issues/516
+            # If you want to use cuda, make sure to install the 12 version of cuda and cudnn9
+
             self.model = WhisperModel(
                 model_size_or_path,
                 device=device,
@@ -161,7 +162,7 @@ if __name__ == "__main__":
     import time
     time_start = time.time()
     audio_processor = AudioProcessor()
-    transcript = audio_processor.transcribe("/home/lzh/1 TRILLION messages #javascript #python #web #coding #programming.mp4")
+    transcript = audio_processor.transcribe("/home/lzh/videoplayback.mp4")
     print(transcript.text)
     print(transcript.segments)
     print(transcript.language)

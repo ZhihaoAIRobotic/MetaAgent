@@ -1,14 +1,15 @@
 import uuid
 from typing import Any, Optional, Iterable, List
+
 import chromadb
-from chromadb import Settings
-from metaagent.config import CHROMA_HOST_NAME, CHROMA_PORT
 from chromadb.utils import embedding_functions
-# TODO: 1. add a test for this. 2. integrated into longterm memory 3. Confirm functions: init, save, delete, load, add texts, add documents, query
-SUPPORTED_EMBEDDING_FUNCTION = ['OpenAI', 'huggingface']
 
+from metaagent.memory.vector_store.base import VectorStoreBase
+from metaagent.logs import logger
 
-class ChromaVS():
+# TODO: Coming soon, the chroma vector store is still under development. We will support after the chroma vector store is stable.
+
+class ChromaVS(VectorStoreBase):
     def __init__(
             self,
             collection_name: str,
@@ -21,13 +22,7 @@ class ChromaVS():
             embedding_model: The name of the embedding model to use, now support ['OpenAI', 'huggingface'].
             ApiKey: The api key to use for the embedding model.
         """
-        embedding_model = None
-        if (embedding_model is not None) and (embedding_model not in SUPPORTED_EMBEDDING_FUNCTION):
-            raise ValueError(
-                f"embedding_model {embedding_model} is not supported. "
-                f"Supported embedding_model: {SUPPORTED_EMBEDDING_FUNCTION}"
-            )
-        
+
         if embedding_model == 'OpenAI':
             self.embedding_model = embedding_functions.OpenAIEmbeddingFunction(
                 api_key=ApiKey,
@@ -48,32 +43,14 @@ class ChromaVS():
         Args:
         collection_name: The name of the collection to create.
         """
+        collections = self.list_cols()
+        for collection in collections:
+            if collection.name == self.collection_name:
+                logger.debug(f"Collection {self.collection_name} already exists. Skipping creation.")
         if self.embedding_model is None:
             self.collection = self.client.get_or_create_collection(name=self.collection_name)  # Use the default embedding function
         else:
             self.collection = self.client.get_or_create_collection(name=self.collection_name, embedding_function=self.embedding_model)
-        return self.collection
-    
-    def create_collection(self):
-        """Create a Chroma Collection.
-        Args:
-        collection_name: The name of the collection to create.
-        """
-        if self.embedding_model is None:
-            self.collection = self.client.create_collection(name=self.collection_name)  # Use the default embedding function
-        else:
-            self.collection = self.client.create_collection(name=self.collection_name, embedding_function=self.embedding_model)
-        return self.collection
-
-    def load_collection(self):
-        """Load a Chroma Collection.
-        Args:
-        collection_name: The name of the collection to load.
-        """
-        if self.embedding_model is None:
-            self.collection = self.client.get_collection(name=self.collection_name)  # Use the default embedding function
-        else:
-            self.collection = self.client.get_collection(name=self.collection_name, embedding_function=self.embedding_model)
         return self.collection
 
     def clear_collection(self):
