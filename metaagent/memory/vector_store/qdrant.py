@@ -18,9 +18,7 @@ from metaagent.memory.vector_store.base import VectorStoreBase
 class Qdrant(VectorStoreBase):
     def __init__(
 		self,
-		embedding_model: Union[str, List[dict]],
 		collection_name: str,
-		embedding_batch: int = 100,
 		client_type: str = "docker",
         embedding_model_dims: int = 1536,
         similarity_metric: str = "cosine",
@@ -35,8 +33,9 @@ class Qdrant(VectorStoreBase):
         self.ingest_batch = ingest_batch
         self.parallel = parallel
         self.max_retries = max_retries   
+        self.embedding_model_dims = embedding_model_dims
+        self.similarity_metric = similarity_metric
 
-        
         if client_type == "docker":
             self.client = QdrantClient(
                 url=url,
@@ -52,7 +51,6 @@ class Qdrant(VectorStoreBase):
                 "supported client types are: docker, cloud"
             )   
         self.create_col(collection_name, embedding_model_dims, on_disk, similarity_metric)
-
 
     def create_col(self, collection_name: str, vector_size: int, on_disk: bool = False, similarity_metric: str = "cosine"):
         """
@@ -89,7 +87,7 @@ class Qdrant(VectorStoreBase):
         
         return True
 
-    def query(self, query: list, limit: int = 5, filters: dict = None) -> list:
+    def query_vectors(self, vectors: list, limit: int = 5, filters: dict = None) -> list:
         """
         Search for similar vectors.
 
@@ -104,11 +102,21 @@ class Qdrant(VectorStoreBase):
         query_filter = self._create_filter(filters) if filters else None
         hits = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query,
+            query_vector=vectors,
             query_filter=query_filter,
             limit=limit,
         )
         return hits
+    
+    def query_docs(self, doc: str, limit: int = 5, filters: dict = None) -> list:
+        """
+        Query for similar docs.
+        """
+        search_result = self.client.query(collection_name=self.collection_name,
+                                          query_text=doc,
+                                          limit=limit,
+                                          query_filter=filters)
+        return search_result
     
     def get(self, vector_id: int) -> dict:
         """
@@ -123,7 +131,7 @@ class Qdrant(VectorStoreBase):
         result = self.client.retrieve(collection_name=self.collection_name, ids=[vector_id], with_payload=True)
         return result[0] if result else None
     
-    def insert(self, vectors: list, payloads: list = None, ids: list = None):
+    def insert_vectors(self, vectors: list, payloads: list = None, ids: list = None):
         """
         Insert vectors into a collection.
 
@@ -142,6 +150,22 @@ class Qdrant(VectorStoreBase):
             for idx, vector in enumerate(vectors)
         ]
         self.client.upsert(collection_name=self.collection_name, points=points)
+
+    def insert_docs(self, docs: list, payloads: list = None, ids: list = None, embedding_model: str = None):
+        """
+        insert docs using FastEmbed directly
+        """
+        # TODO: Support embedding model
+        # if embedding_model:
+        #     embeddings = embedding_model.embed_documents(docs)
+        #     if len(embeddings) != self.embedding_model_dims:
+        #         raise ValueError(f"Embedding model dimensions {len(embeddings)} do not match the expected dimensions {self.embedding_model_dims}")
+        #     self.insert(embeddings, payloads, ids)
+        # else:
+        self.client.add(collection_name=self.collection_name,
+                        documents=docs,
+                        metadata=payloads,
+                        ids=ids)
 
     def delete(self, vector_id: int):
         """
