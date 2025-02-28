@@ -18,7 +18,7 @@ async def main_jina_qdrant():
     qdrant = AsyncQdrant_VS(collection_name="test_jina_256", client_type="cloud", embedding_model_name="jina", api_key=qdrant_api_key, url="Your Qdrant URL", embedding_model_dims=256)
 
     dataloader = DataLoader()
-    text_content, images = pdf2md('Your PDF file path')
+    text_content, images = pdf2md('path/to/your/pdf/file.pdf')
     docs = dataloader.split_data_from_str(text_content, True)
     # print the sum of the length of docs
     print(sum([len(doc.page_content) for doc in docs]))
@@ -36,7 +36,9 @@ async def main_jina_pinecone():
     pinecone = AsyncPinecone_VS(collection_name="test-jina-256", api_key=pinecone_api_key, embedding_model_dims=256, embedding_model_name="jina")
 
     dataloader = DataLoader()
-    docs = dataloader.split_data_from_source('Your PDF file path')
+    docs = dataloader.split_data_from_source('path/to/your/pdf/file.pdf')
+    # print the sum of the length of docs
+    print(sum([len(doc.page_content) for doc in docs]))
 
     vectors = await jina_embedding.process_data([EmbeddingText(id=i, text=doc.page_content) for i, doc in enumerate(docs)])
     await pinecone.insert_vectors(vectors=[vector['values'] for vector in vectors], ids=[str(vector['id']) for vector in vectors], payloads=[{"content": vector['text']} for vector in vectors], user_id="test2")
@@ -48,4 +50,4 @@ async def main_jina_pinecone():
 
 
 if __name__ == "__main__":
-    asyncio.run(main_jina_qdrant())
+    asyncio.run(main_jina_pinecone())
