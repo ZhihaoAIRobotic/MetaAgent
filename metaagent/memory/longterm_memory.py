@@ -2,7 +2,7 @@ from typing import List, Union, TypeVar
 from collections.abc import Iterable
 
 from metaagent.information import Info
-from metaagent.memory.vector_store.chroma import ChromaVS
+from metaagent.memory.vectordb.chroma import ChromaVS
 from metaagent.memory.shortterm_memory import ShortTermMemory
 from metaagent.memory.processing.auto_dataloader import Dataloader
 import langid

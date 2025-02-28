@@ -4,7 +4,7 @@ from typing import Any, Optional, Iterable, List
 import chromadb
 from chromadb.utils import embedding_functions
 
-from metaagent.memory.vector_store.base import VectorStoreBase
+from metaagent.memory.vectordb.base import VectorStoreBase
 from metaagent.logs import logger
 
 # TODO: Coming soon, the chroma vector store is still under development. We will support after the chroma vector store is stable.

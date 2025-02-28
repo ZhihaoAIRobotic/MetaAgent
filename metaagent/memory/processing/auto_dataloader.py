@@ -46,7 +46,7 @@ WEB_LOADER_MAPPING = {
 }
 
 
-class Dataloader(ABC):
+class DataLoader():
     def __init__(self, chunk_size=1024, chunk_overlap=32, headers_to_split_on = [
     ("#", "Header 1"),
     ("##", "Header 2"),
@@ -128,7 +128,7 @@ class Dataloader(ABC):
 
 
 def main():
-    dataloader = Dataloader()
+    dataloader = DataLoader()
     docs = dataloader.split_data_from_source('https://github.com/ZhihaoAIRobotic/MetaAgent')
     print(type(docs))
     # print(docs)

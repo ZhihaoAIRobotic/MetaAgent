@@ -21,3 +21,10 @@ class MetaAgentSchema(BaseModel):
     The schema for the agent.
     """
     pass
+
+class EmbeddingText(BaseModel):
+    """
+    The schema for the embedding text.
+    """
+    id: int
+    text: str
