@@ -7,7 +7,8 @@ from qdrant_client.models import (
 	Filter,
     MatchValue,
     Range,
-    FieldCondition
+    FieldCondition,
+    HnswConfigDiff
 )
 from qdrant_client import AsyncQdrantClient
 
@@ -90,6 +91,10 @@ class Qdrant_VS(VectorStoreBase):
                 vectors_config=VectorParams(
                     size=vector_size,
                     distance=distance,
+                ),
+                hnsw_config=HnswConfigDiff(
+                    payload_m=16,
+                    m=0,
                 ),
             )
         else:

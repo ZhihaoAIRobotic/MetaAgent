@@ -40,7 +40,7 @@ class JinaEmbedding(EmbeddingBase):
             'Authorization': f'Bearer {self.api_key}'
         }
 
-    async def get_embeddings(
+    async def send_request(
         self,
         texts: List[str],
         semaphore: asyncio.Semaphore | None = None
@@ -83,6 +83,27 @@ class JinaEmbedding(EmbeddingBase):
                     print(f"Exception occurred: {e}")
                     return None
 
+    async def get_embeddings(
+        self,
+        texts: List[str]
+    ) -> Dict[str, Any]:
+        """
+        Fetch embeddings from the Jina API asynchronously with concurrency control.
+        
+        Args:
+            texts: List of texts to embed
+            
+        Returns:
+            Dictionary containing the embeddings data from Jina API
+        """
+        semaphore = asyncio.Semaphore(self.concurrency_limit)
+        results = await self.send_request(texts, semaphore)
+        embeddings = []
+        if results and "data" in results:
+            for result in results["data"]:
+                embeddings.append(result["embedding"])
+        return embeddings
+
     async def process_data(self, data: List[EmbeddingText]) -> List[dict]:
         """
         Process the data to fetch embeddings concurrently.
@@ -95,7 +116,7 @@ class JinaEmbedding(EmbeddingBase):
         """
         semaphore = asyncio.Semaphore(self.concurrency_limit)
         texts = [d.text for d in data]
-        results = await self.get_embeddings(texts, semaphore)
+        results = await self.send_request(texts, semaphore)
         vectors = []
         if results and "data" in results:
             for d, result in zip(data, results["data"]):
@@ -147,7 +168,7 @@ async def main():
 
     semaphore = asyncio.Semaphore(concurrency_limit)
     texts = [d["text"] for d in data]
-    result = await jina.get_embeddings(texts, semaphore)
+    result = await jina.send_request(texts, semaphore)
 
     if result and "data" in result:
         embeddings = [item["embedding"] for item in result["data"]]
