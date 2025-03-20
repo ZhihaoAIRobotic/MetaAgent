@@ -50,10 +50,11 @@ Multi-modal agent, draw images and make videos for you.
 
 ## Installation
 ### Package install
+Make sure your python version is 3.10 and cuda version is 12.2
 ```
-Requirement： Cuda12.2
 git clone https://github.com/ZhihaoAIRobotic/MetaAgent.git
-poetry config virtualenvs.create true
+conda create -n metaagent python=3.10
+conda activate metaagent
 poetry install  
 ```
 ### TTS Install
