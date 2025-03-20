@@ -55,6 +55,7 @@ Make sure your python version is 3.10 and cuda version is 12.2
 git clone https://github.com/ZhihaoAIRobotic/MetaAgent.git
 conda create -n metaagent python=3.10
 conda activate metaagent
+sudo apt-get update && sudo apt-get install -y portaudio19-dev
 poetry install  
 ```
 ### TTS Install
