@@ -28,7 +28,7 @@ We are dedicated to developing a universal **multi-modal multi-agent** framework
 
 - ChatUI, support multiple sessions.
   ![alt text](<Docs/resource/Multiple sessions.gif>)
-
+- UI for Graph RAG
   ![alt text](<Docs/resource/graph_demo.gif>)
 
 #### :fire: Framework
@@ -40,12 +40,6 @@ Comics Company, create a comic about Elon lands on mars.
 
 ![图片9](https://github.com/ZhihaoAIRobotic/MetaAgent/assets/25542404/fb37f50a-b325-4747-82ed-a968ec030112)
 
-
-Multi-modal agent, draw images and make videos for you.
-
-<img src="Docs/resource/elon.jpg" width="256" height="260">
-
-![Elon](Docs/resource/output.gif)
 
 
 ## Installation
