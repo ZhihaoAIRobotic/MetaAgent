@@ -5,7 +5,7 @@ import chromadb
 from chromadb.utils import embedding_functions
 
 from metaagent.memory.vectordb.base import VectorStoreBase
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 
 # TODO: Coming soon, the chroma vector store is still under development. We will support after the chroma vector store is stable.
 

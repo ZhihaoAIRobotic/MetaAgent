@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from metaagent.agents.message_queue import MessageQueue
 from metaagent.llms.llmapi import LLM_API
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 from metaagent.agents.agent import ConversationalAgent
 
 

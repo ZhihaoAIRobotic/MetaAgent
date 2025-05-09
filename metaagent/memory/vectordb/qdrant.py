@@ -12,7 +12,7 @@ from qdrant_client.models import (
 )
 from qdrant_client import AsyncQdrantClient
 
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 from metaagent.memory.vectordb.base import VectorStoreBase
 
 

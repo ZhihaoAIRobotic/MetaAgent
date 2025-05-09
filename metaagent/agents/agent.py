@@ -7,7 +7,7 @@ from metaagent.agents.message_queue import MessageQueue
 from actions.action_register import get_agent_action
 from actions.action import Action
 from prompts.agent_prompt import ACTION_AGENT_TEMPLATE, EXAMPLE_TEMPLATE, CONVERSATIONAL_AGENT_TEMPLATE
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 
 
 class ConversationalAgent:

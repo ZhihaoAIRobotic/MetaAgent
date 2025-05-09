@@ -3,7 +3,7 @@ import asyncio
 
 from datetime import datetime
 
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 
 
 class MessageQueue:

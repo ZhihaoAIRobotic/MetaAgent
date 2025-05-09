@@ -1,5 +1,5 @@
 from typing import List
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 from metaagent.tools.text2audio import TextToSpeech
 import torchaudio
 from metaagent.LLMs.openai_llm import OpenAIGPTAPI

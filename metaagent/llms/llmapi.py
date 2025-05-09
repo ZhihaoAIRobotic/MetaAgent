@@ -1,7 +1,7 @@
 import litellm
 from typing import Dict, List, Optional, Union
 from litellm.integrations.custom_logger import CustomLogger
-from metaagent.logs import logger
+from MetaAgent.metaagent.simple_logger import logger
 
 
 class CustomHandler(CustomLogger):
