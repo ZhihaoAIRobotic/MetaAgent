@@ -231,7 +231,7 @@ def get_current_context() -> Context:
     For async usage, use aget_current_context instead.
     """
     global _global_context
-    if _global_context is None:
+    if _global_context is None: # prevent the global context from being initialized multiple times, use threading pool to execute the initialization in a separate thread
         try:
             # Try to get the current event loop
             loop = asyncio.get_event_loop()

@@ -20,7 +20,7 @@ from metaagent.logging.logger import get_logger
 from metaagent.mcp.gen_client import gen_client
 
 from metaagent.context_dependent import ContextDependent
-from metaagent.mcp.metaagent_client_session import MCPAgentClientSession
+from metaagent.mcp.mcp_agent_client_session import MCPAgentClientSession
 from metaagent.mcp.mcp_connection_manager import MCPConnectionManager
 
 if TYPE_CHECKING:
@@ -262,9 +262,7 @@ class MCPAggregator(ContextDependent):
 
         if server_name not in self.server_names:
             raise ValueError(f"Server '{server_name}' not found in server list")
-
         _, tools, prompts = await self._fetch_capabilities(server_name)
-
         # Process tools
         async with self._tool_map_lock:
             self._server_to_tool_map[server_name] = []
@@ -275,7 +273,6 @@ class MCPAggregator(ContextDependent):
                     server_name=server_name,
                     namespaced_tool_name=namespaced_tool_name,
                 )
-
                 self._namespaced_tool_map[namespaced_tool_name] = namespaced_tool
                 self._server_to_tool_map[server_name].append(namespaced_tool)
 

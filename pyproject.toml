@@ -52,6 +52,7 @@ unstructured = {extras = ["pdf"], version = "^0.17.2"}
 pinecone = "^6.0.1"
 websockets = "^15.0.1"
 rich = "^14.0.0"
+mcp = "1.7.1"
 
 [[tool.poetry.source]]
 name = "pytorch"

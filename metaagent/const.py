@@ -15,7 +15,7 @@ def get_project_root():
         current_path = parent_path
 
 
-PROJECT_ROOT = get_project_root()
+PROJECT_ROOT = Path("/home/ubuntu/code_project/MetaAgent") #get_project_root()
 DATA_PATH = PROJECT_ROOT / 'data'
 WORKSPACE_ROOT = PROJECT_ROOT / 'workspace'
 PROMPT_PATH = PROJECT_ROOT / 'metagpt/prompts'

@@ -32,6 +32,7 @@ class ContextDependent:
 
             return get_current_context()
         except Exception as e:
+            print(e)
             raise RuntimeError(
                 f"No context available for {self.__class__.__name__}. "
                 "Either initialize MCPApp first or pass context explicitly."

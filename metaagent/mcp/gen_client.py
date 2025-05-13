@@ -31,7 +31,6 @@ async def gen_client(
         raise ValueError(
             "Server registry not found in the context. Please specify one either on this method, or in the context."
         )
-
     async with server_registry.initialize_server(
         server_name=server_name,
         client_session_factory=client_session_factory,
@@ -56,7 +55,6 @@ async def connect(
         raise ValueError(
             "Server registry not found in the context. Please specify one either on this method, or in the context."
         )
-
     server_connection = await server_registry.connection_manager.get_server(
         server_name=server_name,
         client_session_factory=client_session_factory,

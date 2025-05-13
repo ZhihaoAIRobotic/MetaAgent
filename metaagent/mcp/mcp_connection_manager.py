@@ -160,17 +160,18 @@ async def _server_lifecycle_task(server_conn: ServerConnection) -> None:
     Runs inside the MCPConnectionManager's shared TaskGroup.
     """
     server_name = server_conn.server_name
+    
     try:
         transport_context = server_conn._transport_context_factory()
 
         async with transport_context as (read_stream, write_stream):
             # Build a session
             server_conn.create_session(read_stream, write_stream)
-
+    
             async with server_conn.session:
                 # Initialize the session
                 await server_conn.initialize_session()
-
+    
                 # Wait until we're asked to shut down
                 await server_conn.wait_for_shutdown_request()
 
