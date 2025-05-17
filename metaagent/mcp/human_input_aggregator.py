@@ -34,13 +34,11 @@ HUMAN_INPUT_TOOL_NAME = "__human_input__"
 class HumanInputAggregator(MCPAggregator):
     """
     An HumanInputAggregator is an entity that has access to a set of MCP servers and can interact with them.
-    Each human input aggregator should have a purpose defined by its instruction.
     """
 
     def __init__(
         self,
         name: str,  # agent name
-        instruction: str | Callable[[Dict], str] = "You are a helpful agent.",
         server_names: List[str] = None,
         functions: List[Callable] = None,
         connection_persistence: bool = True,
@@ -57,7 +55,6 @@ class HumanInputAggregator(MCPAggregator):
         )
 
         self.name = name
-        self.instruction = instruction
         self.functions = functions or []
         self.executor = self.context.executor
         self.logger = get_logger(f"{__name__}.{name}")
