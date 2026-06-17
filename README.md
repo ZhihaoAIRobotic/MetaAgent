@@ -18,7 +18,7 @@ We are dedicated to developing a universal **multi-modal multi-agent** framework
 
 - Multi-modal agents, agents can interact with users using texts, audios, images, and videos. 
 
-- Vector database and knowledge embeddings
+- Vector database and knowledge embeddings.
 
 - UI for chatting with AI agents.
 
